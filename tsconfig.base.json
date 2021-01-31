@@ -16,9 +16,8 @@
       "dom"
     ],
     "paths": {
-      "ngs": [
-        "dist/ngs/ngs",
-        "dist/ngs"
+      "@ng-solid/components": [
+        "dist/components"
       ]
     }
   }

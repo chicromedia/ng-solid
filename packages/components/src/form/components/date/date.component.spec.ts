@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NgsComponent } from './ngs.component';
+import { NsDateComponent } from './date.component';
 
-describe('NgsComponent', () => {
-  let component: NgsComponent;
-  let fixture: ComponentFixture<NgsComponent>;
+describe('DateComponent', () => {
+  let component: NsDateComponent;
+  let fixture: ComponentFixture<NsDateComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NgsComponent ]
+      declarations: [ NsDateComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NgsComponent);
+    fixture = TestBed.createComponent(NsDateComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

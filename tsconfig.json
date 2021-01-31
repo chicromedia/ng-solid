@@ -14,10 +14,10 @@
       "path": "./tsconfig.spec.json"
     },
     {
-      "path": "./projects/ng-solid/tsconfig.lib.json"
+      "path": "./packages/components/tsconfig.lib.json"
     },
     {
-      "path": "./projects/ng-solid/tsconfig.spec.json"
+      "path": "./packages/components/tsconfig.spec.json"
     }
 ]
 }

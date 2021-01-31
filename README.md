@@ -1,3 +1,4 @@
-# NgSolid
+# NG-SOLID
 
-Librería de componentes de interfaz de usuarios basados ​​en Angular y Ant Design.
+A suite of development tools focused on streamlining Angular application development.
+

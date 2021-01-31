@@ -1,7 +1,12 @@
 {
-  "name": "@chicromedia/ng-solid",
+  "name": "@ng-solid/components",
   "version": "1.0.0",
   "private": false,
+  "description": "An Angular UI component library based on Ant Design.",
+  "engines": {
+    "node": "^12.0.0"
+  },
+  "homepage": "https://gitlab.com/chicromedia/ng-solid",
   "author": {
     "name": "Ulises Familia Rodríguez",
     "email": "chicromedia@hotmail.com",
@@ -13,5 +18,11 @@
   },
   "dependencies": {
     "tslib": "^2.0.0"
-  }
+  },
+  "keywords": [
+    "ng-solid",
+    "angular",
+    "chicromedia",
+    "ant-design"
+  ]
 }

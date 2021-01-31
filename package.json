@@ -1,22 +1,19 @@
 {
-  "name": "@chicromedia/core",
+  "name": "ng-solid",
   "version": "1.0.0",
-  "author": {
-    "name": "Ulises Familia Rodríguez",
-    "email": "chicromedia@hotmail.com",
-    "url": "https://gitlab.com/chicromedia"
-  },
+  "author": "Ulises Familia Rodríguez <chicromedia@hotmail.com> (https://gitlab.com/chicromedia)",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build:lib": "ng-packagr -p projects/ng-solid/ng-package.json",
-    "build:publish": "npm publish dist/ng-solid --access=public",
+    "build:components": "ng-packagr -p packages/components/ng-package.json",
+    "build:publish": "npm publish dist/components --access=public",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
   "private": false,
+  "license": "MIT",
   "dependencies": {
     "@angular/animations": "~10.0.5",
     "@angular/common": "~10.0.5",
@@ -51,5 +48,24 @@
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
     "typescript": "~3.9.5"
-  }
+  },
+  "keywords": [
+    "ng-solid",
+    "angular",
+    "ui-components",
+    "ant-design",
+    "ts"
+  ],
+  "engines": {
+    "node": "^12.0.0"
+  },
+  "description": "A suite of development tools focused on streamlining Angular application development.",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/chicromedia/ng-solid.git"
+  },
+  "bugs": {
+    "url": "https://gitlab.com/chicromedia/ng-solid/issues"
+  },
+  "homepage": "https://gitlab.com/chicromedia/ng-solid#readme"
 }
