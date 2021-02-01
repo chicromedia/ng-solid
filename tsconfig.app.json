@@ -3,7 +3,15 @@
   "extends": "./tsconfig.base.json",
   "compilerOptions": {
     "outDir": "./out-tsc/app",
-    "types": []
+    "types": [],
+    "paths": {
+      "@ng-solid/components": [
+        "packages/components/src/public_api.ts"
+      ],
+      "@ng-solid/facebook": [
+        "packages/facebook/src/public_api.ts"
+      ]
+    }
   },
   "files": [
     "src/main.ts",

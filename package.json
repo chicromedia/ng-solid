@@ -2,12 +2,15 @@
   "name": "ng-solid",
   "version": "1.0.0",
   "author": "Ulises Familia Rodríguez <chicromedia@hotmail.com> (https://gitlab.com/chicromedia)",
+  "homepage": "https://gitlab.com/chicromedia/ng-solid#readme",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "build:components": "ng-packagr -p packages/components/ng-package.json",
-    "build:publish": "npm publish dist/components --access=public",
+    "build:facebook": "ng-packagr -p packages/facebook/ng-package.json",
+    "publish:components": "npm publish dist/components --access=public",
+    "publish:facebook": "npm publish dist/facebook --access=public",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -23,6 +26,8 @@
     "@angular/platform-browser": "~10.0.5",
     "@angular/platform-browser-dynamic": "~10.0.5",
     "@angular/router": "~10.0.5",
+    "@ngx-translate/core": "^13.0.0",
+    "@ngx-translate/http-loader": "^6.0.0",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"
@@ -66,6 +71,5 @@
   },
   "bugs": {
     "url": "https://gitlab.com/chicromedia/ng-solid/issues"
-  },
-  "homepage": "https://gitlab.com/chicromedia/ng-solid#readme"
+  }
 }

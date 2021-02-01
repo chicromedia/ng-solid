@@ -14,11 +14,6 @@
     "lib": [
       "es2018",
       "dom"
-    ],
-    "paths": {
-      "@ng-solid/components": [
-        "dist/components"
-      ]
-    }
+    ]
   }
 }

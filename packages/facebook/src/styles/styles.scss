@@ -1,0 +1,44 @@
+@import "variables";
+
+@mixin fb-button {
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+  color: #fff;
+  border-radius: $btn-radius-default;
+  background-color: $primary-color;
+  font-family: $font-family;
+  align-items: center;
+  padding: 0 .5rem;
+  font-weight: 800;
+  -webkit-font-smoothing: antialiased;
+  cursor: pointer;
+
+  &.fb-button, .fb-button {
+    &-small {
+      width: $btn-min-width;
+      height: $btn-height-small;
+    }
+
+    &-medium {
+      min-width: $btn-min-width;
+      max-width: $btn-max-width-medium;
+      height: $btn-height-medium;
+    }
+
+    &-large {
+      min-width: $btn-min-width-large;
+      max-width: $btn-max-width-large;
+      height: $btn-height-large;
+    }
+
+    &-rounded {
+      border-radius: $btn-radius-rounded;
+      padding: 0 .2rem;
+    }
+
+    &-text {
+      margin-left: -10px;
+    }
+  }
+}
