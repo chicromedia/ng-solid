@@ -14,6 +14,8 @@ export class NsFacebookShareComponent implements OnInit
   size: fb.FacebookButtonSize = 'large';
   @Input()
   layout: 'default' | 'rounded' = 'default';
+  @Input()
+  rounded: boolean;
 
   constructor() { }
 

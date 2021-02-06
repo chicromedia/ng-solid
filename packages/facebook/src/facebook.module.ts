@@ -35,6 +35,7 @@ export class NsFacebookModule
     return {
       ngModule: NsFacebookModule,
       providers: [
+        NsFacebookService,
         {
           provide: NS_FACEBOOK_CONFIG_TOKEN,
           useValue: <fb.InitParams>{

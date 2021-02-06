@@ -27,8 +27,6 @@ export class NsFacebookLoginComponent implements OnInit, OnDestroy
   @Output()
   onLogin: Subject<fb.StatusResponse> = new Subject<fb.StatusResponse>();
 
-  private destroy$: Subject<void> = new Subject<void>();
-
   constructor(private facebook: NsFacebookService) { }
 
   ngOnInit(): void
@@ -50,7 +48,7 @@ export class NsFacebookLoginComponent implements OnInit, OnDestroy
   };
 
   @HostListener('click', [ "$event" ])
-  login()
+  login(event: MouseEvent)
   {
     this.facebook.login(this.scope).subscribe(
       status => this.onLogin.next(status)

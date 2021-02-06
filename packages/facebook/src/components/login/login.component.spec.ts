@@ -1,25 +1,28 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { NsFacebookLoginComponent } from './login.component';
 
-import { LoginComponent } from './login.component';
+describe('LoginComponent', () =>
+{
+  let component: NsFacebookLoginComponent;
+  let fixture: ComponentFixture<NsFacebookLoginComponent>;
 
-describe('LoginComponent', () => {
-  let component: LoginComponent;
-  let fixture: ComponentFixture<LoginComponent>;
-
-  beforeEach(async(() => {
+  beforeEach(async(() =>
+  {
     TestBed.configureTestingModule({
-      declarations: [ LoginComponent ]
+      declarations: [ NsFacebookLoginComponent ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(LoginComponent);
+  beforeEach(() =>
+  {
+    fixture = TestBed.createComponent(NsFacebookLoginComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create', () =>
+  {
     expect(component).toBeTruthy();
   });
 });
