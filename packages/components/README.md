@@ -1,4 +1,9 @@
-# @NG-SOLID/COMPONENTS
+# Angular UI Components
+
+[![NPM version][npm-image]][npm-url]
+
+[npm-image]: https://img.shields.io/npm/v/@ng-solid/facebook.svg?style=flat-square
+[npm-url]: https://www.npmjs.com/@ng-solid/facebook
 
 An Angular UI component library based on Ant Design.
 
@@ -9,6 +14,7 @@ $ ng new PROJECT_NAME
 $ cd PROJECT_NAME
 $ ng add @ng-solid/components
 ```
+
 You can also install `@ng-solid/components` with npm or yarn
 
 ## Usage

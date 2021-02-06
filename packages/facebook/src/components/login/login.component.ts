@@ -13,10 +13,6 @@ export class NsFacebookLoginComponent implements OnInit, OnDestroy
 {
 
   @Input()
-  label: 'continue_with' | 'login_with' = 'continue_with';
-  @Input()
-  labelArgs: string[] = [ 'Facebook' ];
-  @Input()
   with: number = 240;
   @Input()
   size: fb.FacebookButtonSize = 'large';
@@ -39,13 +35,6 @@ export class NsFacebookLoginComponent implements OnInit, OnDestroy
   {
     return `${ this.with }px`;
   }
-
-  get params()
-  {
-    return {
-      ...this.labelArgs
-    }
-  };
 
   @HostListener('click', [ "$event" ])
   login(event: MouseEvent)

@@ -1,6 +1,18 @@
-# @NG-SOLID/FACEBOOK
+# Facebook Integration for Angular
 
-An Angular UI component library based on Ant Design.
+[![NPM version][npm-image]][npm-url]
+
+[npm-image]: https://img.shields.io/npm/v/@ng-solid/facebook.svg?style=flat-square
+
+[npm-url]: https://www.npmjs.com/@ng-solid/facebook
+
+A library of Facebook UI components for Angular
+
+## Components
+
+- Login button (provides user information and signed request)
+- Like button (developing)
+- Share button (developing)
 
 ## Installation
 
@@ -33,4 +45,36 @@ import { NsFacebookModule } from '@ng-solid/facebook';
 export class AppModule
 {
 }
+```
+
+## Like button
+
+```ts
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-component',
+  templateUrl: './app.component.html',
+  styleUrls: [ './app.component.scss' ]
+})
+export class AppComponent implements OnInit
+{
+  constructor() {}
+
+  ngOnInit()
+  {
+
+  }
+
+  onLogin(status: fb.StatusResponse)
+  {
+
+  }
+}
+```
+
+Add this to your template:
+
+```html
+<ns-facebook-login [rounded]="true" (onLogin)="onLogin($event)">Continue with Facebook</ns-facebook-login>
 ```

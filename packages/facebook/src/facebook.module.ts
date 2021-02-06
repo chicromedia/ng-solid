@@ -1,7 +1,6 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { NsFacebookLoginComponent } from "./components/login/login.component";
 import { CommonModule } from "@angular/common";
-import { TranslateModule, TranslateService, TranslateStore } from "@ngx-translate/core";
 import { NsFacebookService } from "./services/facebook.service";
 import { NS_FACEBOOK_CONFIG_TOKEN } from "./providers/config.provider";
 import { NsFacebookShareComponent } from './components/share/share.component';
@@ -10,8 +9,7 @@ import { NsFacebookLikeComponent } from './components/like/like.component';
 
 @NgModule({
   imports: [
-    CommonModule,
-    TranslateModule.forChild()
+    CommonModule
   ],
   declarations: [
     NsFacebookLoginComponent,
@@ -45,9 +43,7 @@ export class NsFacebookModule
             developmentMode: false,
             ...config
           }
-        },
-        TranslateService,
-        TranslateStore
+        }
       ]
     }
   };

@@ -1,4 +1,5 @@
-<svg height="100%" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;" version="1.1"
+<svg class="fb-button-icon" height="100%"
+     style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;" version="1.1"
      viewBox="0 0 512 512" width="24" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
     <g>
     <path
@@ -10,4 +11,6 @@
     </g>
 </svg>
 
-<span class="fb-button-text">{{label | translate: params }}</span>
+<span class="fb-button-text">
+	<ng-content></ng-content>
+</span>

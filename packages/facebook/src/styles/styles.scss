@@ -2,7 +2,6 @@
 
 @mixin fb-button {
   display: flex;
-  justify-content: space-around;
   align-content: center;
   color: #fff;
   border-radius: $btn-radius-default;
@@ -37,8 +36,8 @@
       padding: 0 .2rem;
     }
 
-    &-text {
-      margin-left: -10px;
+    &-icon, &-text {
+      margin-left: 7px;
     }
   }
 }
