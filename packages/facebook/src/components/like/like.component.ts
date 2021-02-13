@@ -16,6 +16,8 @@ export class NsFacebookLikeComponent implements OnInit
   layout: 'default' | 'rounded' = 'default';
   @Input()
   rounded: boolean;
+  @Input()
+  disabled: boolean = true;
 
   constructor() { }
 

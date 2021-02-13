@@ -1,6 +1,9 @@
 import { Inject, Injectable } from '@angular/core';
-import { Observable, Subject } from "rxjs";
+import { BehaviorSubject, Observable, Subject } from "rxjs";
 import { NS_FACEBOOK_CONFIG_TOKEN } from "../providers/config.provider";
+import { filter } from "rxjs/operators";
+import { NsCookieService } from "@ng-solid/core";
+import FacebookEventCallback = fb.FacebookEventCallback;
 
 @Injectable({
   providedIn: 'root'
@@ -8,9 +11,12 @@ import { NS_FACEBOOK_CONFIG_TOKEN } from "../providers/config.provider";
 export class NsFacebookService
 {
 
-  private script: string = 'https://connect.facebook.net/en_US/sdk.js';
+  private readonly ready$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false)
+  private readonly script: string = 'https://connect.facebook.net/en_US/sdk.js';
 
-  constructor(@Inject(NS_FACEBOOK_CONFIG_TOKEN) private config: fb.InitParams) { }
+  constructor(@Inject(NS_FACEBOOK_CONFIG_TOKEN) private config: fb.InitParams,
+              private cookie: NsCookieService)
+  { }
 
   private loadScript()
   {
@@ -32,6 +38,7 @@ export class NsFacebookService
     if ( this.config && this.config.appId )
     {
       this.loadScript();
+      this.ready$.next(true);
       (window as any).fbAsyncInit = () =>
       {
         FB.init(this.config);
@@ -44,6 +51,11 @@ export class NsFacebookService
     {
       throw new Error("Cannot load configuration, since it is necessary to indicate the facebook appId");
     }
+  }
+
+  get onReady(): Observable<boolean>
+  {
+    return this.ready$.pipe(filter(value => !!value));
   }
 
   get checkLoginState(): Observable<fb.StatusResponse>
@@ -63,6 +75,19 @@ export class NsFacebookService
     const loginStatus$: Subject<fb.StatusResponse> = new Subject<fb.StatusResponse>();
     FB.login(response =>
     {
+      if ( this.config.cookie && response.status === 'connected' )
+      {
+        const [ type, domain ] = location.host.split('.').reverse();
+        this.cookie.set(
+          `fbsr_${ this.config.appId }`,
+          response.authResponse.signedRequest,
+          {
+            domain: `.${ [ domain, type ].join('.') }`,
+            path: location.pathname,
+            expires: response.authResponse.expiresIn
+          }
+        );
+      }
       loginStatus$.next(response);
       loginStatus$.complete();
     }, { scope })
@@ -78,5 +103,15 @@ export class NsFacebookService
       logoutStatus$.complete();
     })
     return logoutStatus$.asObservable();
+  }
+
+  subscribe(event: fb.FacebookEventType, callback: FacebookEventCallback<fb.FacebookEventType>)
+  {
+    FB.Event.subscribe(event, callback);
+  }
+
+  unsubscribe(event: fb.FacebookEventType, callback: FacebookEventCallback<fb.FacebookEventType>)
+  {
+    FB.Event.unsubscribe(event, callback);
   }
 }

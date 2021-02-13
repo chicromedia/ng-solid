@@ -4,8 +4,7 @@
   "lib": {
     "entryFile": "src/public_api.ts",
     "umdModuleIds": {
-      "@ngx-translate/core" : "ngx-translate"
-
+      "@ng-solid/core": "NsCoreModule"
     }
   },
   "assets": [

@@ -12,6 +12,7 @@
   font-weight: 800;
   -webkit-font-smoothing: antialiased;
   cursor: pointer;
+  margin-bottom: 15px;
 
   &.fb-button, .fb-button {
     &-small {
@@ -36,8 +37,18 @@
       padding: 0 .2rem;
     }
 
-    &-icon, &-text {
+    &-icon {
       margin-left: 7px;
     }
+
+    &-text {
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  &[disabled="true"], &:disabled {
+    pointer-events: none;
+    opacity: 0.8;
   }
 }

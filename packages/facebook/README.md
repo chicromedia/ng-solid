@@ -1,4 +1,4 @@
-# Facebook Integration for Angular
+# Facebook Integration
 
 [![NPM version][npm-image]][npm-url]
 
@@ -63,12 +63,10 @@ export class AppComponent implements OnInit
 
   ngOnInit()
   {
-
   }
 
   onLogin(status: fb.StatusResponse)
   {
-
   }
 }
 ```

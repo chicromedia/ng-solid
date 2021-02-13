@@ -24,6 +24,12 @@
     },
     {
       "path": "./packages/facebook/tsconfig.spec.json"
+    },
+    {
+      "path": "./packages/core/tsconfig.lib.json"
+    },
+    {
+      "path": "./packages/core/tsconfig.spec.json"
     }
   ]
 }

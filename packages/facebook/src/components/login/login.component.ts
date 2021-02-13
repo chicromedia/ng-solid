@@ -13,7 +13,7 @@ export class NsFacebookLoginComponent implements OnInit, OnDestroy
 {
 
   @Input()
-  with: number = 240;
+  with: number;
   @Input()
   size: fb.FacebookButtonSize = 'large';
   @Input()
@@ -22,12 +22,14 @@ export class NsFacebookLoginComponent implements OnInit, OnDestroy
   scope: string;
   @Output()
   onLogin: Subject<fb.StatusResponse> = new Subject<fb.StatusResponse>();
+  @Input()
+  disabled: boolean = true;
 
   constructor(private facebook: NsFacebookService) { }
 
   ngOnInit(): void
   {
-
+    this.facebook.onReady.subscribe(() => this.disabled = false);
   }
 
   @HostBinding('style.width')
@@ -39,9 +41,15 @@ export class NsFacebookLoginComponent implements OnInit, OnDestroy
   @HostListener('click', [ "$event" ])
   login(event: MouseEvent)
   {
-    this.facebook.login(this.scope).subscribe(
-      status => this.onLogin.next(status)
-    );
+    this.disabled = true;
+    this.facebook.login(this.scope)
+      .subscribe(status =>
+        {
+          this.disabled = false;
+          this.onLogin.next(status)
+        },
+        () => this.disabled = false
+      );
   }
 
   ngOnDestroy()
