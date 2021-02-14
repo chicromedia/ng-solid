@@ -5,6 +5,9 @@
     "outDir": "./out-tsc/app",
     "types": [],
     "paths": {
+      "@ng-solid/core": [
+        "packages/core/src/public_api.ts"
+      ],
       "@ng-solid/components": [
         "packages/components/src/public_api.ts"
       ],

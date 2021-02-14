@@ -7,7 +7,7 @@ import { DOCUMENT, isPlatformBrowser } from "@angular/common";
 export class NsCookieService
 {
 
-  constructor(@Inject(DOCUMENT) private document: any,
+  constructor(@Inject(DOCUMENT) private document: Document,
               @Inject(PLATFORM_ID) private platformId: InjectionToken<object>)
   { }
 

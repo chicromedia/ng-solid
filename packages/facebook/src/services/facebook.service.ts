@@ -82,7 +82,7 @@ export class NsFacebookService
           `fbsr_${ this.config.appId }`,
           response.authResponse.signedRequest,
           {
-            domain: `.${ [ domain, type ].join('.') }`,
+            domain: `.${ domain ? [ domain, type ].join('.') : type }`,
             path: location.pathname,
             expires: response.authResponse.expiresIn
           }
