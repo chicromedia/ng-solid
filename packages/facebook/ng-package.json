@@ -7,6 +7,9 @@
       "@ng-solid/core": "NsCoreModule"
     }
   },
+  "whitelistedNonPeerDependencies": [
+    "@ng-solid/core"
+  ],
   "assets": [
     "README.md"
   ]

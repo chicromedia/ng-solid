@@ -4,6 +4,9 @@
   "lib": {
     "entryFile": "src/public-api.ts"
   },
+  "whitelistedNonPeerDependencies": [
+    "@ng-solid/core"
+  ],
   "assets": [
     "README.md"
   ]

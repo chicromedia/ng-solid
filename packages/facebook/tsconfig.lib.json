@@ -11,7 +11,10 @@
     "declaration": true,
     "inlineSources": true,
     "skipLibCheck": true,
-    "types": []
+    "types": [],
+    "@ng-solid/core": [
+      "packages/core/src/public_api.ts"
+    ]
   },
   "angularCompilerOptions": {
     "skipTemplateCodegen": true,

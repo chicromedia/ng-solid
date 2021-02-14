@@ -5,11 +5,13 @@ import { NsFacebookService } from "./services/facebook.service";
 import { NS_FACEBOOK_CONFIG_TOKEN } from "./providers/config.provider";
 import { NsFacebookShareComponent } from './components/share/share.component';
 import { NsFacebookLikeComponent } from './components/like/like.component';
+import { NsCoreModule } from "@ng-solid/core";
 
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    NsCoreModule
   ],
   declarations: [
     NsFacebookLoginComponent,
@@ -37,7 +39,7 @@ export class NsFacebookModule
         {
           provide: NS_FACEBOOK_CONFIG_TOKEN,
           useValue: <fb.InitParams>{
-            cookie: true,
+            cookie: false,
             xfbml: true,
             version: 'v9.0',
             developmentMode: false,
