@@ -1,6 +1,6 @@
 {
   "name": "@ng-solid/facebook",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "license": "MIT",
   "description": "A library of Facebook UI components for Angular",
   "engines": {

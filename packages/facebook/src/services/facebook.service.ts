@@ -1,8 +1,10 @@
 import { Inject, Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, Subject } from "rxjs";
+import { BehaviorSubject, Observable } from "rxjs";
 import { NS_FACEBOOK_CONFIG_TOKEN } from "../providers/config.provider";
 import { filter } from "rxjs/operators";
 import { NsCookieService } from "@ng-solid/core";
+import { fromPromise } from "rxjs/internal-compatibility";
+import { Meta } from "@angular/platform-browser";
 import FacebookEventCallback = fb.FacebookEventCallback;
 
 @Injectable({
@@ -15,6 +17,7 @@ export class NsFacebookService
   private readonly script: string = 'https://connect.facebook.net/en_US/sdk.js';
 
   constructor(@Inject(NS_FACEBOOK_CONFIG_TOKEN) private config: fb.InitParams,
+              private meta: Meta,
               private cookie: NsCookieService)
   { }
 
@@ -60,49 +63,44 @@ export class NsFacebookService
 
   get checkLoginState(): Observable<fb.StatusResponse>
   {
-    const checkStatus$: Subject<fb.StatusResponse> = new Subject<fb.StatusResponse>();
-    FB.getLoginStatus(response =>
-    {
-      checkStatus$.next(response);
-      checkStatus$.complete();
-    })
-    return checkStatus$.asObservable();
+    return fromPromise(new Promise(
+      resolve => FB.getLoginStatus(resolve)
+    ))
   }
-
 
   login(scope: string)
   {
-    const loginStatus$: Subject<fb.StatusResponse> = new Subject<fb.StatusResponse>();
-    FB.login(response =>
-    {
-      if ( this.config.cookie && response.status === 'connected' )
+    return fromPromise(new Promise<fb.StatusResponse>((resolve, reject) =>
+      FB.login(response =>
       {
-        const [ type, domain ] = location.host.split('.').reverse();
-        this.cookie.set(
-          `fbsr_${ this.config.appId }`,
-          response.authResponse.signedRequest,
+        if ( response.status === 'connected' )
+        {
+          if ( this.config.cookie )
           {
-            domain: `.${ domain ? [ domain, type ].join('.') : type }`,
-            path: location.pathname,
-            expires: response.authResponse.expiresIn
+            const [ type, domain ] = location.host.split('.').reverse();
+            this.cookie.set(`fbsr_${ this.config.appId }`,
+              response.authResponse.signedRequest,
+              {
+                domain: `.${ domain ? [ domain, type ].join('.') : type }`,
+                path: location.pathname,
+                expires: response.authResponse.expiresIn
+              }
+            );
           }
-        );
-      }
-      loginStatus$.next(response);
-      loginStatus$.complete();
-    }, { scope })
-    return loginStatus$.asObservable();
+          resolve(response);
+        } else
+        {
+          reject(response);
+        }
+      }, { scope })
+    ))
   }
 
   logout()
   {
-    const logoutStatus$: Subject<fb.StatusResponse> = new Subject<fb.StatusResponse>();
-    FB.logout(response =>
-    {
-      logoutStatus$.next(response);
-      logoutStatus$.complete();
-    })
-    return logoutStatus$.asObservable();
+    return fromPromise(
+      new Promise(resolve => FB.logout(resolve))
+    )
   }
 
   subscribe(event: fb.FacebookEventType, callback: FacebookEventCallback<fb.FacebookEventType>)
@@ -113,5 +111,33 @@ export class NsFacebookService
   unsubscribe(event: fb.FacebookEventType, callback: FacebookEventCallback<fb.FacebookEventType>)
   {
     FB.Event.unsubscribe(event, callback);
+  }
+
+  share(link: string, hashtag?: string)
+  {
+    return fromPromise(
+      new Promise<fb.ShareDialogResponse>(resolve =>
+        FB.ui({
+          method: "share",
+          href: link,
+          hashtag: hashtag ? `#${ hashtag }` : null
+        }, resolve)
+      )
+    );
+  }
+
+  openGraph(definition: fb.OpenGraph)
+  {
+    Object.entries(definition).forEach(([ property, content ]) =>
+    {
+      const selector = `property=${ property }`;
+      if ( !this.meta.getTag(selector) )
+      {
+        this.meta.addTag({ property, content })
+      } else
+      {
+        this.meta.updateTag({ property, content }, selector);
+      }
+    })
   }
 }

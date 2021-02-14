@@ -480,8 +480,16 @@ declare namespace fb
     success: boolean;
   }
 
-  interface CollectionAdsDialogResponse
-    extends InstantExperiencesAdsDialogResponse
+  interface CollectionAdsDialogResponse extends InstantExperiencesAdsDialogResponse
   {
+  }
+
+  interface OpenGraph
+  {
+    title: string;
+    url: string;
+    type?: string;
+    description?: string;
+    image?: string;
   }
 }

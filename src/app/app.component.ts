@@ -18,4 +18,9 @@ export class AppComponent implements OnInit
   {
 
   }
+
+  onShared(shared: fb.ShareDialogResponse)
+  {
+
+  }
 }

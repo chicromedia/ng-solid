@@ -1,1 +1,11 @@
-<ns-facebook-login [rounded]="true" (onLogin)="onLogin($event)">Continue with Facebook</ns-facebook-login>
+<ns-facebook-login [rounded]="true"
+                   (onLogin)="onLogin($event)"
+>Continue with Facebook
+</ns-facebook-login>
+
+<ns-facebook-share [rounded]="true"
+                   [href]="'http://cartelurbanord.com'"
+                   [hashtag]="'ng-solid'"
+                   (onShared)="onShared($event)"
+>Compartir
+</ns-facebook-share>

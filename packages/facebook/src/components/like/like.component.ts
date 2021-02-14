@@ -13,11 +13,13 @@ export class NsFacebookLikeComponent implements OnInit
   @Input()
   size: fb.FacebookButtonSize = 'large';
   @Input()
-  layout: 'default' | 'rounded' = 'default';
+  layout: 'standard' | 'button_count' | 'button' | 'box_count' = 'standard';
   @Input()
   rounded: boolean;
   @Input()
   disabled: boolean = true;
+  @Input()
+  href: string;
 
   constructor() { }
 

@@ -47,7 +47,7 @@ export class AppModule
 }
 ```
 
-## Like button
+## Login button
 
 ```ts
 import { Component, OnInit } from '@angular/core';

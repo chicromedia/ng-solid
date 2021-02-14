@@ -19,7 +19,9 @@ import { NsCoreModule } from "@ng-solid/core";
     NsFacebookLikeComponent
   ],
   exports: [
-    NsFacebookLoginComponent
+    NsFacebookLoginComponent,
+    NsFacebookLikeComponent,
+    NsFacebookShareComponent,
   ]
 })
 export class NsFacebookModule
