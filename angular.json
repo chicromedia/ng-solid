@@ -11,7 +11,7 @@
           "inlineStyle": false
         }
       },
-      "root": "",
+      "root": ".",
       "sourceRoot": "src",
       "prefix": "ns",
       "architect": {
@@ -237,6 +237,46 @@
             "tsConfig": [
               "packages/core/tsconfig.lib.json",
               "packages/core/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "twitter": {
+      "projectType": "library",
+      "root": "packages/twitter",
+      "sourceRoot": "packages/twitter/src",
+      "prefix": "ns",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "packages/twitter/tsconfig.lib.json",
+            "project": "packages/twitter/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "packages/twitter/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "packages/twitter/src/test.ts",
+            "tsConfig": "packages/twitter/tsconfig.spec.json",
+            "karmaConfig": "packages/twitter/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "packages/twitter/tsconfig.lib.json",
+              "packages/twitter/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"

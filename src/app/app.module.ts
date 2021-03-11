@@ -6,6 +6,7 @@ import { NsFacebookModule } from "@ng-solid/facebook";
 import { TranslateModule } from "@ngx-translate/core";
 import { TRANSLATE_LOADER } from "./providers/translate";
 import { HttpClientModule } from "@angular/common/http";
+import { NsTwitterModule } from "@ng-solid/twitter";
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { HttpClientModule } from "@angular/common/http";
       appId: '703932639721384',
       developmentMode: !environment.production
     }),
+    NsTwitterModule,
     TranslateModule.forRoot({
       loader: TRANSLATE_LOADER,
       useDefaultLang: true,

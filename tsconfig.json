@@ -30,6 +30,12 @@
     },
     {
       "path": "./packages/core/tsconfig.spec.json"
+    },
+    {
+      "path": "./packages/twitter/tsconfig.lib.json"
+    },
+    {
+      "path": "./packages/twitter/tsconfig.spec.json"
     }
   ]
 }

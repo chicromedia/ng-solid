@@ -1,0 +1,13 @@
+{
+  "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../dist/twitter",
+  "lib": {
+    "entryFile": "src/public_api.ts",
+    "umdModuleIds": {
+      "@ng-solid/core": "NsCoreModule"
+    }
+  },
+  "whitelistedNonPeerDependencies": [
+    "@ng-solid/core"
+  ]
+}

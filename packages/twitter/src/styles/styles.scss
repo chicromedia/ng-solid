@@ -1,0 +1,58 @@
+@import "variables";
+
+@mixin twitter-button {
+  display: flex;
+  align-content: center;
+  color: #fff;
+  border-radius: $btn-radius-default;
+  background-color: $primary-color;
+  font-family: $font-family;
+  align-items: center;
+  padding: 0 .5rem;
+  font-weight: 800;
+  -webkit-font-smoothing: antialiased;
+  cursor: pointer;
+  margin-bottom: 15px;
+
+  &.twitter-button, .twitter-button {
+    &-small {
+      width: $btn-min-width;
+      height: $btn-height-small;
+    }
+
+    &-medium {
+      min-width: $btn-min-width;
+      max-width: $btn-max-width-medium;
+      height: $btn-height-medium;
+    }
+
+    &-large {
+      min-width: $btn-min-width-large;
+      max-width: $btn-max-width-large;
+      height: $btn-height-large;
+    }
+
+    &-rounded {
+      border-radius: $btn-radius-rounded;
+      padding: 0 .2rem;
+    }
+
+    &-icon {
+      margin-left: 7px;
+    }
+
+    &-text {
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  &[disabled="true"], &:disabled {
+    pointer-events: none;
+    opacity: 0.8;
+  }
+
+  &:hover {
+    background-color: #1A91DA;
+  }
+}

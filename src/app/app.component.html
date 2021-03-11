@@ -6,6 +6,11 @@
 <ns-facebook-share [rounded]="true"
                    [href]="'http://cartelurbanord.com'"
                    [hashtag]="'ng-solid'"
-                   (onShared)="onShared($event)"
->Compartir
+                   (onShared)="onShared($event)">Compartir
 </ns-facebook-share>
+
+<ns-twitter-share [url]="'http://cartelurbanord.com/music/recuerdame'"
+                  [text]="'Recuérdame de Pablo Alboran'"
+                  [rounded]="true"
+                  [via]="'cartelurbanord'">Compartir
+</ns-twitter-share>
