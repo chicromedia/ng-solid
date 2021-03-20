@@ -2,7 +2,7 @@ import { Inject, Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from "rxjs";
 import { NS_FACEBOOK_CONFIG_TOKEN } from "../providers/config.provider";
 import { filter } from "rxjs/operators";
-import { NsCookieService } from "@ng-solid/core";
+import { NsCookieService, NsWindowService } from "@ng-solid/core";
 import { fromPromise } from "rxjs/internal-compatibility";
 import { Meta } from "@angular/platform-browser";
 import FacebookEventCallback = fb.FacebookEventCallback;
@@ -18,8 +18,11 @@ export class NsFacebookService
 
   constructor(@Inject(NS_FACEBOOK_CONFIG_TOKEN) private config: fb.InitParams,
               private meta: Meta,
+              private windowRef: NsWindowService,
               private cookie: NsCookieService)
-  { }
+  {
+    this.init();
+  }
 
   private loadScript()
   {
@@ -36,7 +39,7 @@ export class NsFacebookService
     }
   }
 
-  init()
+  private init()
   {
     if ( this.config && this.config.appId )
     {
@@ -52,7 +55,7 @@ export class NsFacebookService
       }
     } else
     {
-      throw new Error("Cannot load configuration, since it is necessary to indicate the facebook appId");
+      console.warn("Cannot load configuration, since it is necessary to indicate the facebook appId")
     }
   }
 

@@ -1,4 +1,4 @@
-import { ModuleWithProviders, NgModule } from '@angular/core';
+import { ModuleWithProviders, NgModule, Self } from '@angular/core';
 import { NsFacebookLoginComponent } from "./components/login/login.component";
 import { CommonModule } from "@angular/common";
 import { NsFacebookService } from "./services/facebook.service";
@@ -27,9 +27,8 @@ import { NsCoreModule } from "@ng-solid/core";
 export class NsFacebookModule
 {
 
-  constructor(private facebook: NsFacebookService)
+  constructor(@Self() private facebook: NsFacebookService)
   {
-    this.facebook.init();
   }
 
   static forRoot(config: fb.InitParams): ModuleWithProviders<NsFacebookModule>
