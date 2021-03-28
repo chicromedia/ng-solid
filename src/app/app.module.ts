@@ -13,8 +13,8 @@ import { NsTwitterModule } from "@ng-solid/twitter";
     BrowserModule,
     HttpClientModule,
     NsFacebookModule.forRoot({
-      appId: '703932639721384',
-      developmentMode: !environment.production
+      appId: '1389249668088014',
+      debug: !environment.production
     }),
     NsTwitterModule,
     TranslateModule.forRoot({

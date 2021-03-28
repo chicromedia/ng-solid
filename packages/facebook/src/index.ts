@@ -234,7 +234,7 @@ declare namespace fb
     frictionlessRequests?: boolean;
     hideFlashCallback?: boolean;
     autoLogAppEvents?: boolean;
-    developmentMode?: boolean;
+    debug?: boolean;
   }
 
   interface LoginOptions

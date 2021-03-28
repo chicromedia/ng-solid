@@ -1,18 +1,20 @@
-import { Inject, Injectable } from '@angular/core';
-import { WINDOW } from "../providers/window.provider";
+import { Injectable } from '@angular/core';
 
 declare type Target = '_blank' | '_parent' | '_top' | '_self' | string;
 
-@Injectable({
-  providedIn: 'root'
-})
-export class NsWindowService
+@Injectable()
+export class WindowRef
 {
 
-  constructor(@Inject(WINDOW) private window: any) { }
+  constructor() { }
+
+  get nativeWindow()
+  {
+    return window;
+  }
 
   navigateTo(url: string, target?: Target, features?: string[])
   {
-    return this.window.open(url, target, features.join(','));
+    return this.nativeWindow.open(url, target, features.join(','));
   }
 }

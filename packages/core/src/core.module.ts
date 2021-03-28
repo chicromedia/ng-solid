@@ -1,15 +1,11 @@
 import { NgModule } from '@angular/core';
-import { NsCookieService } from "./services/cookie.service";
-import { NsWindowService } from "./services/window.service";
-import { WINDOW_PROVIDER } from "./providers/window.provider";
+import { BROWSER_GLOBAL_PROVIDERS } from "./providers/global.provider";
 
 @NgModule({
-  declarations: [],
   imports: [],
+  declarations: [],
   providers: [
-    NsCookieService,
-    NsWindowService,
-    WINDOW_PROVIDER
+    ...BROWSER_GLOBAL_PROVIDERS
   ],
   exports: []
 })

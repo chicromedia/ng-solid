@@ -1,61 +1,66 @@
-import { Inject, Injectable } from '@angular/core';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { BehaviorSubject, Observable } from "rxjs";
-import { NS_FACEBOOK_CONFIG_TOKEN } from "../providers/config.provider";
 import { filter } from "rxjs/operators";
-import { NsCookieService, NsWindowService } from "@ng-solid/core";
 import { fromPromise } from "rxjs/internal-compatibility";
 import { Meta } from "@angular/platform-browser";
+import { isPlatformBrowser } from "@angular/common";
+import { NS_FACEBOOK_CONFIG } from "../providers/config.provider";
 import FacebookEventCallback = fb.FacebookEventCallback;
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: "root" })
 export class NsFacebookService
 {
-
   private readonly ready$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false)
   private readonly script: string = 'https://connect.facebook.net/en_US/sdk.js';
 
-  constructor(@Inject(NS_FACEBOOK_CONFIG_TOKEN) private config: fb.InitParams,
-              private meta: Meta,
-              private windowRef: NsWindowService,
-              private cookie: NsCookieService)
+  constructor(@Inject(NS_FACEBOOK_CONFIG) private config: fb.InitParams,
+              @Inject(PLATFORM_ID) private platformId: string,
+              private meta: Meta)
   {
-    this.init();
+    this.init(this.config);
   }
 
-  private loadScript()
+  private loadScript(config: fb.InitParams)
   {
-    const facebookId: string = `ns-facebook-${ this.config.appId }`;
+    const facebookId: string = `ns-facebook-${ config.appId }`;
     if ( !document.getElementById(facebookId) )
     {
       const script = document.createElement('script') as HTMLScriptElement;
+      script.type = 'text/javascript';
       script.id = facebookId;
       script.async = true;
       script.defer = true;
       script.crossOrigin = 'anonymous';
       script.src = this.script;
       document.body.appendChild(script);
+
+      (window as any).fbAsyncInit = () =>
+      {
+        FB.init(config);
+      }
+
+      script.onload = () =>
+      {
+        if ( config.debug )
+        {
+          console.info(`Loaded FB SDK for ${ config.appId }`);
+        }
+        this.ready$.next(true);
+      }
     }
   }
 
-  private init()
+  private init(config: fb.InitParams)
   {
-    if ( this.config && this.config.appId )
+    if ( isPlatformBrowser(this.platformId) && config && config.appId )
     {
-      this.loadScript();
-      this.ready$.next(true);
-      (window as any).fbAsyncInit = () =>
-      {
-        FB.init(this.config);
-        if ( this.config.developmentMode )
-        {
-          console.log(`Facebook SDK for AppId - ${ this.config.appId }`)
-        }
-      }
-    } else
-    {
-      console.warn("Cannot load configuration, since it is necessary to indicate the facebook appId")
+      this.loadScript({
+        cookie: false,
+        xfbml: true,
+        version: 'v9.0',
+        debug: false,
+        ...config
+      });
     }
   }
 
@@ -78,18 +83,6 @@ export class NsFacebookService
       {
         if ( response.status === 'connected' )
         {
-          if ( this.config.cookie )
-          {
-            const [ type, domain ] = location.host.split('.').reverse();
-            this.cookie.set(`fbsr_${ this.config.appId }`,
-              response.authResponse.signedRequest,
-              {
-                domain: `.${ domain ? [ domain, type ].join('.') : type }`,
-                path: location.pathname,
-                expires: response.authResponse.expiresIn
-              }
-            );
-          }
           resolve(response);
         } else
         {

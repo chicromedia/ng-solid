@@ -1,8 +1,8 @@
-import { ModuleWithProviders, NgModule, Self } from '@angular/core';
+import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 import { NsFacebookLoginComponent } from "./components/login/login.component";
 import { CommonModule } from "@angular/common";
 import { NsFacebookService } from "./services/facebook.service";
-import { NS_FACEBOOK_CONFIG_TOKEN } from "./providers/config.provider";
+import { NS_FACEBOOK_CONFIG } from "./providers/config.provider";
 import { NsFacebookShareComponent } from './components/share/share.component';
 import { NsFacebookLikeComponent } from './components/like/like.component';
 import { NsCoreModule } from "@ng-solid/core";
@@ -27,7 +27,7 @@ import { NsCoreModule } from "@ng-solid/core";
 export class NsFacebookModule
 {
 
-  constructor(@Self() private facebook: NsFacebookService)
+  constructor(@Optional() @SkipSelf() private facebook: NsFacebookService)
   {
   }
 
@@ -38,14 +38,8 @@ export class NsFacebookModule
       providers: [
         NsFacebookService,
         {
-          provide: NS_FACEBOOK_CONFIG_TOKEN,
-          useValue: <fb.InitParams>{
-            cookie: false,
-            xfbml: true,
-            version: 'v9.0',
-            developmentMode: false,
-            ...config
-          }
+          provide: NS_FACEBOOK_CONFIG,
+          useValue: config
         }
       ]
     }

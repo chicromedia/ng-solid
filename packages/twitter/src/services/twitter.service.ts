@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ITwitterShare } from "../interfaces/share";
-import { NsWindowService } from "@ng-solid/core";
+import { WindowRef } from "@ng-solid/core";
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class NsTwitterService
   private height: number = 350;
   private lastPopup: any;
 
-  constructor(private window: NsWindowService)
+  constructor(private window: WindowRef)
   {
   }
 
