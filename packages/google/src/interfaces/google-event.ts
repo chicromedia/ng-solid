@@ -29,4 +29,11 @@ export interface GoogleEvent
   method?: string;
   checkout_option?: string;
   checkout_step?: number;
+  content_type?: string,
+  item_id?: number;
+  page_title?: string,
+  page_location?: string,
+  page_path?: string;
+  description?: string;
+  fatal?: boolean;
 }

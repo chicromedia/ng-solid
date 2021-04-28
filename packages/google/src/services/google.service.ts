@@ -6,6 +6,7 @@ import { GoogleSetup } from "../interfaces/google-setup";
 import { isPlatformBrowser } from "@angular/common";
 import { NavigationEnd, Router } from "@angular/router";
 import { filter } from "rxjs/operators";
+import { Title } from "@angular/platform-browser";
 
 declare const dataLayer: any[];
 
@@ -18,7 +19,8 @@ export class NsGoogleService
 
   constructor(@Inject(NS_GOOGLE_CONFIG) private config: GoogleSetup,
               @Inject(PLATFORM_ID) private platformId: string,
-              @Optional() private router: Router)
+              @Optional() private router: Router,
+              private title: Title)
   {
     this.init(this.config);
   }
@@ -53,7 +55,7 @@ export class NsGoogleService
       document.head.appendChild(script);
     }
 
-    this.addTag('config', config.analyticsId, { 'transport_type': 'beacon' });
+    this.addTag('config', config.analyticsId, { transport_type: 'beacon', send_page_view: !config.trackingPages });
     this.trackingPages(config && config.trackingPages);
     return canInitialize && !!document.getElementById(this.elementId);
   }
@@ -84,8 +86,11 @@ export class NsGoogleService
         filter(event => event instanceof NavigationEnd)
       ).subscribe((event: NavigationEnd) =>
       {
-        this.addTag("set", "page", event.urlAfterRedirects);
-        this.addTag("send", "pageview");
+        this.sendEvent(GoogleTags.PAGE_VIEW, {
+          page_title: this.title.getTitle(),
+          page_path: event.urlAfterRedirects,
+          page_location: location.href
+        })
       });
     }
   }
