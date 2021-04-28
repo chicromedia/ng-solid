@@ -7,6 +7,7 @@ import { TranslateModule } from "@ngx-translate/core";
 import { TRANSLATE_LOADER } from "./providers/translate";
 import { HttpClientModule } from "@angular/common/http";
 import { NsTwitterModule } from "@ng-solid/twitter";
+import { NsGoogleModule } from "../../packages/google/src/google.module";
 
 @NgModule({
   imports: [
@@ -15,6 +16,9 @@ import { NsTwitterModule } from "@ng-solid/twitter";
     NsFacebookModule.forRoot({
       appId: '1389249668088014',
       debug: !environment.production
+    }),
+    NsGoogleModule.forRoot({
+      analyticsId: 'G-2HK22MX8LY'
     }),
     NsTwitterModule,
     TranslateModule.forRoot({

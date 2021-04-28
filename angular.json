@@ -23,7 +23,7 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "aot": true,
+            "aot": false,
             "assets": [
               "src/favicon.ico",
               "src/assets"
@@ -49,6 +49,7 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
+              "aot": true,
               "budgets": [
                 {
                   "type": "initial",
@@ -129,7 +130,7 @@
       "projectType": "library",
       "root": "packages/components",
       "sourceRoot": "projects/components/src",
-      "prefix": "lib",
+      "prefix": "ns",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
@@ -277,6 +278,46 @@
             "tsConfig": [
               "packages/twitter/tsconfig.lib.json",
               "packages/twitter/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "google": {
+      "projectType": "library",
+      "root": "packages/google",
+      "sourceRoot": "packages/google/src",
+      "prefix": "ns",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "packages/twitter/tsconfig.lib.json",
+            "project": "packages/twitter/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "packages/google/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "packages/twitter/src/test.ts",
+            "tsConfig": "packages/google/tsconfig.spec.json",
+            "karmaConfig": "packages/google/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "packages/google/tsconfig.lib.json",
+              "packages/google/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"

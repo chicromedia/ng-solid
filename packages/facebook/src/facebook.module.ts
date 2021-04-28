@@ -7,7 +7,6 @@ import { NsFacebookShareComponent } from './components/share/share.component';
 import { NsFacebookLikeComponent } from './components/like/like.component';
 import { NsCoreModule } from "@ng-solid/core";
 
-
 @NgModule({
   imports: [
     CommonModule,
