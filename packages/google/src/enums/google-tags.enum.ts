@@ -13,5 +13,6 @@ export enum GoogleTags
   PAGE_VIEW = 'page_view',
   REMOVE_FROM_CART = 'remove_from_cart',
   CONVERSION = 'conversion',
-  SHARE = 'shared'
+  SHARE = 'shared',
+  DOWNLOAD = 'download'
 }

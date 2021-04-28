@@ -36,4 +36,6 @@ export interface GoogleEvent
   page_path?: string;
   description?: string;
   fatal?: boolean;
+  event_label?: string;
+  event_category?: string;
 }
