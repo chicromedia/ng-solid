@@ -22,6 +22,7 @@ export class NsGoogleService
               @Optional() private router: Router,
               private title: Title)
   {
+    Object.assign(this.config, { currency: 'USD', trackingPages: true, ...this.config });
     this.init(this.config);
   }
 

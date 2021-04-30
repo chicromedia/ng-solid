@@ -1,4 +1,4 @@
-import { Host, ModuleWithProviders, NgModule, Optional } from '@angular/core';
+import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 import { NsGoogleService } from "./services/google.service";
 import { NS_GOOGLE_CONFIG } from "./providers/google-setup.provider";
 import { GoogleSetup } from "./interfaces/google-setup";
@@ -13,7 +13,7 @@ import { CommonModule } from "@angular/common";
 })
 export class NsGoogleModule
 {
-  constructor(@Optional() @Host() private google: NsGoogleService)
+  constructor(@Optional() @SkipSelf() private google: NsGoogleService)
   {
   }
 
@@ -25,11 +25,7 @@ export class NsGoogleModule
         NsGoogleService,
         {
           provide: NS_GOOGLE_CONFIG,
-          useValue: <GoogleSetup>{
-            currency: 'USD',
-            trackingPages: true,
-            ...config
-          }
+          useValue: config
         }
       ]
     }
