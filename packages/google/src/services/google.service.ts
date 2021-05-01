@@ -22,7 +22,7 @@ export class NsGoogleService
               @Optional() private router: Router,
               private title: Title)
   {
-    Object.assign(this.config, { currency: 'USD', trackingPages: true, ...this.config });
+    Object.assign(this.config, { currency: 'USD', trackingPages: true, enabled: true, ...this.config });
     this.init(this.config);
   }
 
@@ -44,7 +44,7 @@ export class NsGoogleService
   init(config: GoogleSetup): boolean
   {
     (window as any).dataLayer = (window as any).dataLayer || [];
-    const canInitialize = config && isPlatformBrowser(this.platformId) && this.validateID(config.analyticsId);
+    const canInitialize = config && config.enabled && isPlatformBrowser(this.platformId) && this.validateID(config.analyticsId);
 
     if ( canInitialize && !document.getElementById(this.elementId) )
     {
@@ -56,8 +56,11 @@ export class NsGoogleService
       document.head.appendChild(script);
     }
 
-    this.addTag('config', config.analyticsId, { transport_type: 'beacon', send_page_view: !config.trackingPages });
-    this.trackingPages(config && config.trackingPages);
+    if ( canInitialize )
+    {
+      this.addTag('config', config.analyticsId, { transport_type: 'beacon', send_page_view: !config.trackingPages });
+      this.trackingPages(config && config.trackingPages);
+    }
     return canInitialize && !!document.getElementById(this.elementId);
   }
 
