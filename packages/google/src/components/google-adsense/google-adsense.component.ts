@@ -1,4 +1,14 @@
-import { AfterViewInit, Component, ElementRef, Inject, Input, OnInit, PLATFORM_ID, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  HostBinding,
+  Inject,
+  Input,
+  OnInit,
+  PLATFORM_ID,
+  ViewChild
+} from '@angular/core';
 import { NS_GOOGLE_CONFIG } from "../../providers/google-setup.provider";
 import { GoogleSetup } from "../../interfaces/google-setup";
 import { isPlatformBrowser } from "@angular/common";
@@ -21,7 +31,7 @@ export class GoogleAdsenseComponent implements OnInit, AfterViewInit
   @Input() layoutKey: string;
   @Input() pageLevelAds: boolean;
   @Input() fullWidthResponsive: boolean;
-  @Input('class') className: string = '';
+  @HostBinding('class') adClassName: string;
 
   @ViewChild('ins', { read: ElementRef, static: true }) ins: ElementRef;
 

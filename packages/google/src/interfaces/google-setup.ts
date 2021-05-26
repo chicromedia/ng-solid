@@ -6,12 +6,8 @@ export interface GoogleSetup
   adClient: string;
   adSlot: string | number;
   adFormat: string;
-  display: string;
-  width: number;
-  height: number;
-  layout: string;
-  layoutKey: string;
   pageLevelAds: boolean;
   fullWidthResponsive: boolean;
+  adClassName: string;
   enabled: boolean;
 }
