@@ -16,7 +16,7 @@ import { isPlatformBrowser } from "@angular/common";
 @Component({
   selector: 'ns-adsense',
   templateUrl: './google-adsense.component.html',
-  styleUrls: [ './google-adsense.component.css' ]
+  styleUrls: [ './google-adsense.component.scss' ]
 })
 export class GoogleAdsenseComponent implements OnInit, AfterViewInit
 {
@@ -24,7 +24,7 @@ export class GoogleAdsenseComponent implements OnInit, AfterViewInit
   @Input() adSlot: string | number;
   @Input() adFormat: string = 'auto';
   @Input() adRegion = 'page-' + Math.floor(Math.random() * 10000) + 1;
-  @Input() display: string = 'block';
+  @Input() display: string = 'flex';
   @Input() width: number;
   @Input() height: number;
   @Input() layout: string;
