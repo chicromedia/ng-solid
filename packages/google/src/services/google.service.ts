@@ -63,7 +63,7 @@ export class NsGoogleService
       document.head.appendChild(script);
     }
 
-    const canAdSense = config && isPlatformBrowser(this.platformId) && this.validAdClient(config.adClient);
+    const canAdSense = config && config.enabled && isPlatformBrowser(this.platformId) && this.validAdClient(config.adClient);
     if ( canAdSense && !document.getElementById(this.GOOGLE_ADSENSE_ID) )
     {
       const script = document.createElement('script') as HTMLScriptElement;

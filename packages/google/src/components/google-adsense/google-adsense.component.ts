@@ -49,11 +49,6 @@ export class GoogleAdsenseComponent implements OnInit, AfterViewInit
     })
   }
 
-  get adTest(): boolean
-  {
-    return !this.config.enabled;
-  }
-
   ngAfterViewInit(): void
   {
     if ( isPlatformBrowser(this.platform) )
