@@ -13,9 +13,12 @@ declare const dataLayer: any[];
 @Injectable()
 export class NsGoogleService
 {
+  private readonly GOOGLE_ANALYTICS_ID: string = 'ns-google-analytics';
+  private readonly GOOGLE_ADSENSE_ID: string = 'ns-google-adsense';
 
-  private readonly scriptUrl: string = 'https://www.googletagmanager.com/gtag/js';
-  private readonly elementId: string = 'ns-google-analytics';
+  private readonly analytics: string = 'https://www.googletagmanager.com/gtag/js';
+  private readonly adsense: string = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
+
 
   constructor(@Inject(NS_GOOGLE_CONFIG) private config: GoogleSetup,
               @Inject(PLATFORM_ID) private platformId: string,
@@ -26,9 +29,14 @@ export class NsGoogleService
     this.init(this.config);
   }
 
-  validateID(id: string)
+  validTagIds(id: string)
   {
     return /^(G|AW|UA|GTM)-(\w+|\w+-\w+)$/i.test(id);
+  }
+
+  validAdClient(id: string)
+  {
+    return /^ca-pub-(\d+)$/i.test(id);
   }
 
   addTag(command: 'config' | 'get' | 'set' | 'event' | "send" | string, ...params: any[])
@@ -44,24 +52,33 @@ export class NsGoogleService
   init(config: GoogleSetup): boolean
   {
     (window as any).dataLayer = (window as any).dataLayer || [];
-    const canInitialize = config && config.enabled && isPlatformBrowser(this.platformId) && this.validateID(config.analyticsId);
-
-    if ( canInitialize && !document.getElementById(this.elementId) )
+    const canTracking = config && config.enabled && isPlatformBrowser(this.platformId) && this.validTagIds(config.analyticsId);
+    if ( canTracking && !document.getElementById(this.GOOGLE_ANALYTICS_ID) )
     {
       this.addTag('js', new Date());
       const script = document.createElement('script') as HTMLScriptElement;
-      script.id = this.elementId;
+      script.id = this.GOOGLE_ANALYTICS_ID;
       script.async = true;
-      script.src = `${ this.scriptUrl }?id=${ config.analyticsId }`;
+      script.src = `${ this.analytics }?id=${ config.analyticsId }`;
       document.head.appendChild(script);
     }
 
-    if ( canInitialize )
+    const canAdSense = config && isPlatformBrowser(this.platformId) && this.validAdClient(config.adClient);
+    if ( canAdSense && !document.getElementById(this.GOOGLE_ADSENSE_ID) )
+    {
+      const script = document.createElement('script') as HTMLScriptElement;
+      script.id = this.GOOGLE_ADSENSE_ID;
+      script.async = true;
+      script.src = `${ this.adsense }`;
+      document.head.appendChild(script);
+    }
+
+    if ( canTracking )
     {
       this.addTag('config', config.analyticsId, { transport_type: 'beacon', send_page_view: !config.trackingPages });
       this.trackingPages(config && config.trackingPages);
     }
-    return canInitialize && !!document.getElementById(this.elementId);
+    return canTracking && !!document.getElementById(this.GOOGLE_ANALYTICS_ID);
   }
 
   addToCart(item: GoogleItem)
