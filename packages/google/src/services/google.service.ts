@@ -54,8 +54,10 @@ export class NsGoogleService
       display: 'block',
       adFormat: 'auto',
       currency: 'USD',
+      width: '100%',
       trackingPages: true,
       enabled: true,
+      adResponsive: true,
       ...this.config
     });
 

@@ -14,12 +14,12 @@ export class GoogleAdsenseComponent implements OnInit, AfterViewInit
   @Input() adSlot: string | number;
   @Input() adFormat: GoogleAdFormat;
   @Input() display: string;
-  @Input() width: number;
-  @Input() height: number;
+  @Input() width: string;
+  @Input() height: string;
   @Input() layout: string;
   @Input() layoutKey: string;
   @Input() pageLevelAds: boolean;
-  @Input() fullWidthResponsive: boolean;
+  @Input() adResponse: boolean;
   @Input() adClassName: string;
 
   adRegion = 'page-' + Math.floor(Math.random() * 10000) + 1;

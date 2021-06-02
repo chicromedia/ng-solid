@@ -12,7 +12,7 @@ export interface GoogleSetup
   layout: string;
   layoutKey: string;
   pageLevelAds: boolean;
-  fullWidthResponsive: boolean;
+  adResponsive: boolean;
   adClassName: string;
   enabled: boolean;
 }
