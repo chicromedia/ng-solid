@@ -1,14 +1,4 @@
-import {
-  AfterViewInit,
-  Component,
-  ElementRef,
-  HostBinding,
-  Inject,
-  Input,
-  OnInit,
-  PLATFORM_ID,
-  ViewChild
-} from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Inject, Input, OnInit, PLATFORM_ID, ViewChild } from '@angular/core';
 import { NS_GOOGLE_CONFIG } from "../../providers/google-setup.provider";
 import { GoogleSetup } from "../../interfaces/google-setup";
 import { isPlatformBrowser } from "@angular/common";
@@ -22,16 +12,17 @@ export class GoogleAdsenseComponent implements OnInit, AfterViewInit
 {
   @Input() adClient: string;
   @Input() adSlot: string | number;
-  @Input() adFormat: string = 'auto';
-  @Input() adRegion = 'page-' + Math.floor(Math.random() * 10000) + 1;
-  @Input() display: string = 'flex';
+  @Input() adFormat: GoogleAdFormat;
+  @Input() display: string;
   @Input() width: number;
   @Input() height: number;
   @Input() layout: string;
   @Input() layoutKey: string;
   @Input() pageLevelAds: boolean;
   @Input() fullWidthResponsive: boolean;
-  @HostBinding('class') adClassName: string;
+  @Input() adClassName: string;
+
+  adRegion = 'page-' + Math.floor(Math.random() * 10000) + 1;
 
   @ViewChild('ins', { read: ElementRef, static: true }) ins: ElementRef;
 
@@ -48,6 +39,11 @@ export class GoogleAdsenseComponent implements OnInit, AfterViewInit
       }
     })
   }
+
+  get classes()
+  {
+    return { 'adsbygoogle': true, [this.adClassName]: !!this.adClassName }
+  };
 
   ngAfterViewInit(): void
   {

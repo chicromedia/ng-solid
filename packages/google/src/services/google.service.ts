@@ -25,7 +25,6 @@ export class NsGoogleService
               @Optional() private router: Router,
               private title: Title)
   {
-    Object.assign(this.config, { currency: 'USD', trackingPages: true, enabled: true, ...this.config });
     this.init(this.config);
   }
 
@@ -51,6 +50,15 @@ export class NsGoogleService
 
   init(config: GoogleSetup): boolean
   {
+    Object.assign(this.config, {
+      display: 'block',
+      adFormat: 'auto',
+      currency: 'USD',
+      trackingPages: true,
+      enabled: true,
+      ...this.config
+    });
+
     (window as any).dataLayer = (window as any).dataLayer || [];
     const canTracking = config && config.enabled && isPlatformBrowser(this.platformId) && this.validTagIds(config.analyticsId);
     if ( canTracking && !document.getElementById(this.GOOGLE_ANALYTICS_ID) )
