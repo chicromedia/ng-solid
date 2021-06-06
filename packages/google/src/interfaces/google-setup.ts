@@ -7,8 +7,8 @@ export interface GoogleSetup
   adSlot: string | number;
   adFormat: GoogleAdFormat;
   display: string;
-  width: number;
-  height: number;
+  width: string;
+  height: string;
   layout: string;
   layoutKey: string;
   pageLevelAds: boolean;

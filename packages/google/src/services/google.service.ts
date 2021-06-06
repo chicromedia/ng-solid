@@ -55,6 +55,7 @@ export class NsGoogleService
       adFormat: 'auto',
       currency: 'USD',
       width: '100%',
+      height: 'auto',
       trackingPages: true,
       enabled: true,
       adResponsive: true,
