@@ -1,14 +1,13 @@
-<ins
-    #ins
-		[ngClass]="classes"
-		[style.display]="display"
-		[style.width]="width"
-		[style.height]="height"
-		[attr.data-ad-client]="adClient"
-		[attr.data-ad-slot]="adSlot"
-		[attr.data-ad-format]="adFormat"
-		[attr.data-ad-region]="adRegion"
-		[attr.data-layout]="layout"
-		[attr.data-layout-key]="layoutKey"
-		[attr.data-full-width-responsive]="adResponse"
+<ins #ins
+     [ngClass]="classes"
+     [style.display]="display || config?.adDisplay"
+     [style.width]="width || config?.adWidth"
+     [style.height]="height || config?.adHeight"
+     [attr.data-ad-client]="client || config?.adClient"
+     [attr.data-ad-slot]="slot || config?.adSlot"
+     [attr.data-ad-format]="format || config?.adFormat"
+     [attr.data-ad-region]="adRegion"
+     [attr.data-layout]="layout || config?.adLayout"
+     [attr.data-layout-key]="layoutKey || config?.adLayoutKey"
+     [attr.data-full-width-responsive]="response || config?.adResponsive"
 ></ins>

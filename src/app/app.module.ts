@@ -18,7 +18,12 @@ import { NsGoogleModule } from "../../packages/google/src/google.module";
       debug: !environment.production
     }),
     NsGoogleModule.forRoot({
-      analyticsId: 'G-2HK22MX8LY'
+      analyticsId: 'G-2HK22MX8LY',
+      adClient: "ca-pub-2914026827620139",
+      adSlot: 2858574739,
+      adClassName: 'mb-1',
+      adEnabled: environment.production,
+      adFormat: "rectangle"
     }),
     NsTwitterModule,
     TranslateModule.forRoot({

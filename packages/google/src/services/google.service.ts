@@ -54,16 +54,16 @@ export class NsGoogleService
       display: 'block',
       adFormat: 'auto',
       currency: 'USD',
-      width: '100%',
-      height: 'auto',
       trackingPages: true,
       enabled: true,
       adResponsive: true,
-      ...this.config
+      ...this.config,
+      width: this.config.adWidth ? `${ this.config.adWidth }px` : '100%',
+      height: this.config.adHeight ? `${ this.config.adHeight }px` : 'auto',
     });
 
     (window as any).dataLayer = (window as any).dataLayer || [];
-    const canTracking = config && config.enabled && isPlatformBrowser(this.platformId) && this.validTagIds(config.analyticsId);
+    const canTracking = config && config.adEnabled && isPlatformBrowser(this.platformId) && this.validTagIds(config.analyticsId);
     if ( canTracking && !document.getElementById(this.GOOGLE_ANALYTICS_ID) )
     {
       this.addTag('js', new Date());
@@ -74,7 +74,7 @@ export class NsGoogleService
       document.head.appendChild(script);
     }
 
-    const canAdSense = config && config.enabled && isPlatformBrowser(this.platformId) && this.validAdClient(config.adClient);
+    const canAdSense = config && config.adEnabled && isPlatformBrowser(this.platformId) && this.validAdClient(config.adClient);
     if ( canAdSense && !document.getElementById(this.GOOGLE_ADSENSE_ID) )
     {
       const script = document.createElement('script') as HTMLScriptElement;
