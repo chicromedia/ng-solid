@@ -1,5 +1,3 @@
-import { GoogleAdFormat } from "../enums/google-adformat.enum";
-
 export interface GoogleSetup
 {
   analyticsId: string;
