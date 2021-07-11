@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ITwitterShare } from "../interfaces/share";
+import { Meta } from "@angular/platform-browser";
+import { TwitterCard } from "../interfaces/card";
 import { WindowRef } from "@ng-solid/core";
 
 @Injectable({
@@ -13,8 +15,25 @@ export class NsTwitterService
   private height: number = 350;
   private lastPopup: any;
 
-  constructor(private window: WindowRef)
+  constructor(private meta: Meta, private windowRef: WindowRef)
   {
+  }
+
+  card(definition: TwitterCard)
+  {
+    definition = Object.assign({ card: "summary with large image" }, definition);
+    Object.entries(definition).forEach(([ property, content ]) =>
+    {
+      const selector = `name='twitter:${ property }'`;
+      const exits = this.meta.getTag(selector);
+      if ( !exits && content )
+      {
+        this.meta.addTag({ name: `twitter:${ property }`, content: content });
+      } else if ( exits )
+      {
+        this.meta.updateTag({ name: `twitter:${ property }`, content: content || '' }, selector)
+      }
+    });
   }
 
   share(setup: ITwitterShare)
@@ -41,6 +60,6 @@ export class NsTwitterService
       `left=${ left }`,
       `top=${ top }`
     ];
-    this.lastPopup = this.window.navigateTo(url, "Twitter", features);
+    this.lastPopup = this.windowRef.navigateTo(url, "Twitter", features);
   }
 }

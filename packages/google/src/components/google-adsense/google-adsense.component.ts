@@ -2,6 +2,7 @@ import { AfterViewInit, Component, ElementRef, Inject, Input, OnInit, PLATFORM_I
 import { NS_GOOGLE_CONFIG } from "../../providers/google-setup.provider";
 import { GoogleSetup } from "../../interfaces/google-setup";
 import { isPlatformBrowser } from "@angular/common";
+import { GoogleAdFormat } from "../../enums/google-adformat.enum";
 
 @Component({
   selector: 'ns-adsense',

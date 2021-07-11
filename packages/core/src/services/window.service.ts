@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 declare type Target = '_blank' | '_parent' | '_top' | '_self' | string;
 
-@Injectable()
+@Injectable({ providedIn: "root" })
 export class WindowRef
 {
 

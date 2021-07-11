@@ -11,7 +11,6 @@ export class AppComponent implements OnInit
 
   ngOnInit()
   {
-
   }
 
   onLogin(status: fb.StatusResponse)

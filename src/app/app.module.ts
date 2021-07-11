@@ -7,7 +7,7 @@ import { TranslateModule } from "@ngx-translate/core";
 import { TRANSLATE_LOADER } from "./providers/translate";
 import { HttpClientModule } from "@angular/common/http";
 import { NsTwitterModule } from "@ng-solid/twitter";
-import { NsGoogleModule } from "../../packages/google/src/google.module";
+import { GoogleAdFormat, NsGoogleModule } from "@ng-solid/google";
 
 @NgModule({
   imports: [
@@ -23,7 +23,7 @@ import { NsGoogleModule } from "../../packages/google/src/google.module";
       adSlot: 2858574739,
       adClassName: 'mb-1',
       adEnabled: environment.production,
-      adFormat: "rectangle"
+      adFormat: GoogleAdFormat.rectangle
     }),
     NsTwitterModule,
     TranslateModule.forRoot({

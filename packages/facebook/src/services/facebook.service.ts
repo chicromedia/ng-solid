@@ -54,13 +54,7 @@ export class NsFacebookService
   {
     if ( isPlatformBrowser(this.platformId) && config && config.appId )
     {
-      this.loadScript({
-        cookie: false,
-        xfbml: true,
-        version: 'v9.0',
-        debug: false,
-        ...config
-      });
+      this.loadScript({ cookie: false, xfbml: true, version: 'v9.0', debug: false, ...config });
     }
   }
 
@@ -124,15 +118,21 @@ export class NsFacebookService
 
   openGraph(definition: fb.OpenGraph)
   {
+    const selector = `property='fb:app_id'`;
+    this.meta.getTag(selector)
+      ? this.meta.updateTag({ property: 'fb:app_id', content: this.config.appId }, selector)
+      : this.meta.addTag({ property: 'fb:app_id', content: this.config.appId });
+
     Object.entries(definition).forEach(([ property, content ]) =>
     {
-      const selector = `property=${ property }`;
-      if ( !this.meta.getTag(selector) )
+      const selector = `property='og:${ property }'`;
+      const exits = this.meta.getTag(selector);
+      if ( !exits && content )
       {
-        this.meta.addTag({ property, content })
-      } else
+        this.meta.addTag({ property: `og:${ property }`, content: content });
+      } else if ( exits )
       {
-        this.meta.updateTag({ property, content }, selector);
+        this.meta.updateTag({ property: `og:${ property }`, content: content || '' }, selector)
       }
     })
   }
