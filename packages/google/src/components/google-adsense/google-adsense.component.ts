@@ -48,13 +48,17 @@ export class GoogleAdsenseComponent implements OnInit, AfterViewInit
   @Input()
   set width(value: string | number)
   {
-    this._width = typeof value == "string" ? value : `${ value }px`;
+    this._width = typeof value == "string" && value.includes('px')
+      ? value
+      : (value > 0 ? `${ value }px` : null);
   };
 
   @Input()
   set height(value: string | number)
   {
-    this._height = typeof value == "string" ? value : `${ value }px`;
+    this._height = typeof value == "string" && value.includes('px')
+      ? value
+      : (value > 0 ? `${ value }px` : null);
   };
 
   get width()

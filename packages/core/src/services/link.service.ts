@@ -5,11 +5,11 @@ import { DOCUMENT } from "@angular/common";
 @Injectable({
   providedIn: 'root'
 })
-export class LinkService
+export class NsLinkService
 {
   private renderer: Renderer2;
 
-  constructor(private rendererFactory: RendererFactory2, @Inject(DOCUMENT) private document: Document)
+  constructor(private rendererFactory: RendererFactory2, @Inject(DOCUMENT) private document: any)
   {
     this.renderer = this.rendererFactory.createRenderer(this.document, {
       id: '-1',

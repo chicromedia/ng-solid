@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
-import { BROWSER_GLOBAL_PROVIDERS } from "./providers/global.provider";
+import { WindowRef } from "./services/window.service";
+import { NsLinkService } from "./services/link.service";
 
 @NgModule({
   imports: [],
   declarations: [],
   providers: [
-    ...BROWSER_GLOBAL_PROVIDERS
+    WindowRef,
+    NsLinkService
   ],
   exports: []
 })
