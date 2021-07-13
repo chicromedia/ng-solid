@@ -14,6 +14,8 @@ export class GoogleAdsenseComponent implements OnInit, AfterViewInit
   @Input() slot: string | number;
   @Input() format: GoogleAdFormat;
   @Input() display: string;
+  @Input() width: number;
+  @Input() height: number;
   @Input() layout: string;
   @Input() layoutKey: string;
   @Input() pageLevelAds: boolean;
@@ -23,9 +25,6 @@ export class GoogleAdsenseComponent implements OnInit, AfterViewInit
   adRegion = 'page-' + Math.floor(Math.random() * 10000) + 1;
 
   @ViewChild('ins', { read: ElementRef, static: true }) ins: ElementRef;
-
-  private _width: string;
-  private _height: string;
 
   constructor(@Inject(NS_GOOGLE_CONFIG) private _config: GoogleSetup, @Inject(PLATFORM_ID) private platform: any)
   { }
@@ -45,31 +44,17 @@ export class GoogleAdsenseComponent implements OnInit, AfterViewInit
     return { 'adsbygoogle': true, [this.className]: !!this.className }
   };
 
-  @Input()
-  set width(value: string | number)
+  get widthStyle(): string
   {
-    this._width = typeof value == "string" && value.includes('px')
-      ? value
-      : (value > 0 ? `${ value }px` : null);
+    const width = this.width || this.config.adWidth;
+    return width ? `${ width }px` : '100%';
   };
 
-  @Input()
-  set height(value: string | number)
+  get heightStyle(): string
   {
-    this._height = typeof value == "string" && value.includes('px')
-      ? value
-      : (value > 0 ? `${ value }px` : null);
+    const height = this.height || this.config.adHeight;
+    return height ? `${ height }px` : 'auto';
   };
-
-  get width()
-  {
-    return this._width;
-  }
-
-  get height()
-  {
-    return this._height;
-  }
 
   ngAfterViewInit(): void
   {

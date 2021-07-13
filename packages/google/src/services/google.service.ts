@@ -50,16 +50,14 @@ export class NsGoogleService
 
   init(config: GoogleSetup): boolean
   {
-    Object.assign(this.config, {
+    Object.assign(this.config, <GoogleSetup>{
       display: 'block',
       adFormat: 'auto',
       currency: 'USD',
       trackingPages: true,
       enabled: true,
       adResponsive: true,
-      ...this.config,
-      width: this.config.adWidth ? `${ this.config.adWidth }px` : '100%',
-      height: this.config.adHeight ? `${ this.config.adHeight }px` : 'auto',
+      ...this.config
     });
 
     (window as any).dataLayer = (window as any).dataLayer || [];

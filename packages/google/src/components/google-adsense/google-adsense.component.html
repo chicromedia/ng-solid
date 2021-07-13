@@ -1,8 +1,8 @@
 <ins #ins
      [ngClass]="classes"
      [style.display]="display || config?.adDisplay"
-     [style.width]="width || config?.adWidth"
-     [style.height]="height || config?.adHeight"
+     [style.width]="widthStyle"
+     [style.height]="heightStyle"
      [attr.data-ad-client]="client || config?.adClient"
      [attr.data-ad-slot]="slot || config?.adSlot"
      [attr.data-ad-format]="format || config?.adFormat"
