@@ -14,8 +14,8 @@ export class GoogleAdsenseComponent implements OnInit, AfterViewInit
   @Input() slot: string | number;
   @Input() format: GoogleAdFormat;
   @Input() display: string;
-  @Input() width: number;
-  @Input() height: number;
+  @Input() width: number | string;
+  @Input() height: number | string;
   @Input() layout: string;
   @Input() layoutKey: string;
   @Input() pageLevelAds: boolean;
@@ -46,13 +46,21 @@ export class GoogleAdsenseComponent implements OnInit, AfterViewInit
 
   get widthStyle(): string
   {
-    const width = this.width || this.config.adWidth;
+    if ( this.width )
+    {
+      return typeof this.width === "string" ? this.width : `${ this.width }px`;
+    }
+    const width = this.config.adWidth;
     return width ? `${ width }px` : '100%';
   };
 
   get heightStyle(): string
   {
-    const height = this.height || this.config.adHeight;
+    if ( this.height )
+    {
+      return typeof this.height === "string" ? this.height : `${ this.height }px`;
+    }
+    const height = this.config.adHeight;
     return height ? `${ height }px` : 'auto';
   };
 
