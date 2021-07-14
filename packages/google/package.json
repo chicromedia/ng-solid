@@ -1,6 +1,6 @@
 {
   "name": "@ng-solid/google",
-  "version": "1.0.24",
+  "version": "1.0.25",
   "license": "MIT",
   "engines": {
     "node": ">=10.0.0"
