@@ -1,0 +1,50 @@
+<ng-container *ngIf="logged; else logoutTemp">
+	<div class="ns-comment-box" [ngClass]="{'ns-comment-invalid': invalid }">
+		<ns-avatar class="ns-comment-avatar" [src]="cover?.url" [name]="cover.alt"></ns-avatar>
+
+		<div class="ns-comment-input-wrap">
+			<div class="ns-comment-input">
+				<div class="ns-comment-input-content" contenteditable="true" #contentEditable (input)="change($event)"></div>
+
+				<ng-container *ngIf="!content">
+					<span class="ns-comment-input-placeholder">{{placeholder}}</span>
+				</ng-container>
+			</div>
+
+			<ng-container *ngIf="submitText">
+				<button class="ns-comment-submit" (click)="publish()" [disabled]="disabled">{{submitText}}</button>
+			</ng-container>
+		</div>
+	</div>
+</ng-container>
+
+<ng-template #logoutTemp>
+	<h4 class="ns-comment-title">
+		{{title}} <br>
+		<small class="ns-comment-description" [innerHTML]="description | nsSafeHtml"></small>
+	</h4>
+
+	<div class="ns-comment-logout">
+		<ng-content></ng-content>
+	</div>
+</ng-template>
+
+<ng-container *ngIf="messages?.length">
+	<ul class="ns-comment-list">
+		<li class="ns-comment" *ngFor="let comment of messages">
+			<ns-avatar class="ns-comment-cover" [src]="comment.cover?.url" [name]="comment.cover.alt"></ns-avatar>
+
+			<div class="ns-comment-wrap">
+				<div class="ns-comment-user-wrap">
+					<a [attr.href]="comment.author.link" class="ns-comment-author">{{comment.author.name}}</a>
+					<ng-container *ngIf="comment.date as date">
+						<span class="ns-comment-date">{{date}}</span>
+					</ng-container>
+
+					<div class="ns-comment-message" [innerHTML]="comment.message | nsSafeHtml"></div>
+				</div>
+			</div>
+		</li>
+	</ul>
+</ng-container>
+

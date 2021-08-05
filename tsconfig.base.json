@@ -22,6 +22,8 @@
     "node_modules"
   ],
   "angularCompilerOptions": {
-    "enableIvy": false
+    "enableIvy": false,
+    "fullTemplateTypeCheck": true,
+    "skipTemplateCodegen": false
   }
 }

@@ -7,12 +7,14 @@ import { TranslateModule } from "@ngx-translate/core";
 import { TRANSLATE_LOADER } from "./providers/translate";
 import { HttpClientModule } from "@angular/common/http";
 import { NsTwitterModule } from "@ng-solid/twitter";
-import { GoogleAdFormat, NsGoogleModule } from "@ng-solid/google";
+import { NsGoogleModule } from "@ng-solid/google";
+import { NsCoreModule } from "@ng-solid/core";
 
 @NgModule({
   imports: [
     BrowserModule,
     HttpClientModule,
+    NsCoreModule,
     NsFacebookModule.forRoot({
       appId: '1389249668088014',
       debug: !environment.production
@@ -23,7 +25,7 @@ import { GoogleAdFormat, NsGoogleModule } from "@ng-solid/google";
       adSlot: 2858574739,
       adClassName: 'mb-1',
       adEnabled: environment.production,
-      adFormat: GoogleAdFormat.rectangle
+      adFormat: "rectangle"
     }),
     NsTwitterModule,
     TranslateModule.forRoot({

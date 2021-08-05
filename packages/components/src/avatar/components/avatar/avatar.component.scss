@@ -1,0 +1,9 @@
+@import "../../../styles/variables";
+
+:host-context([data-theme="dark"]) {
+  .ns-avatar {
+    &-background {
+      fill: #292d32;
+    }
+  }
+}

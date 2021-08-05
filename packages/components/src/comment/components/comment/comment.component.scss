@@ -1,0 +1,152 @@
+@import "../../../styles/variables";
+
+:host {
+  display: block;
+  background-color: #fff;
+  border-radius: 0.4rem;
+  padding: 2rem 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: 300;
+  color: #555;
+}
+
+.ns-comment {
+  display: flex;
+  justify-content: flex-start;
+  align-content: center;
+
+  &-title {
+    margin-top: unset;
+    margin-bottom: 1rem;
+  }
+
+  &-list {
+    border-top: 1px solid #e8e8e8;
+    margin-top: .25rem;
+    padding: 2rem;
+  }
+
+  &-description {
+    font-weight: 300;
+    font-size: 70%;
+    color: #333;
+  }
+
+  &-cover, &-avatar {
+    border-radius: 50%;
+    height: 3.5rem;
+    overflow: hidden;
+    width: 4rem;
+
+    &:not(.ns-comment-avatar) {
+      margin-top: 0.7rem;
+    }
+  }
+
+  &-wrap {
+    padding: 1rem;
+    width: 100%;
+  }
+
+  &-date {
+    font-size: 12px;
+    color: #555;
+
+    &:before {
+      content: "•";
+      margin: 0 4px;
+    }
+  }
+
+  &-box {
+    display: flex;
+  }
+
+  &-input {
+    position: relative;
+    border-radius: 0.4rem;
+    padding: 1rem;
+    border: 1px solid #e8e8e8;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+
+    &-wrap {
+      width: 100%;
+    }
+
+    &-content {
+      position: relative;
+      z-index: 2;
+
+      &:focus-visible {
+        outline: none;
+      }
+    }
+
+    &-placeholder {
+      position: absolute;
+      top: 1rem;
+      color: #AAA;
+    }
+  }
+
+  &-submit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    color: #fff;
+    border-radius: $btn-radius-rounded;
+    background-color: $light-primary-color;
+    font-weight: 600;
+    border: 1px solid transparent;
+    line-height: 1.25;
+    transition: background, color, border 300ms linear;
+    font-size: 0.8rem;
+    height: 2.3rem;
+    padding: 0.37rem 1.5rem;
+    user-select: none;
+    text-transform: uppercase;
+    -webkit-appearance: button;
+
+    &:hover {
+      background-color: $light-hovered-color;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      background-color: #3bacf1;
+    }
+  }
+
+  &-invalid {
+    .ns-comment-input {
+      border-color: #ea400e;
+      transition: all 300ms ease-in-out;
+    }
+  }
+}
+
+:host-context([data-theme="dark"]) {
+  background-color: $dark-background-color;
+  color: $dark-color;
+
+  .ns-comment {
+    &-input {
+      border: 1px solid $dark-input-border-color;
+      background-color: $dark-input-bg;
+    }
+
+    &-description {
+      color: $dark-color;
+    }
+
+    &-submit {
+      background-color: $dark-primary-color;
+
+      &:hover {
+        background-color: $dark-hovered-color;
+      }
+    }
+  }
+}
