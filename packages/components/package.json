@@ -1,6 +1,6 @@
 {
   "name": "@ng-solid/components",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "license": "MIT",
   "description": "An Angular UI component library based on Ant Design.",
   "engines": {

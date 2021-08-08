@@ -7,3 +7,4 @@ export * from './form/forms.module';
 export * from './dropdown/dropdown.module';
 export * from './comment/comment.module';
 export * from './comment/interfaces/comment';
+export * from './avatar/avatar.module';
