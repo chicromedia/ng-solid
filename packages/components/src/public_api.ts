@@ -2,9 +2,9 @@
  * Public API Surface of @ng-solid/components
  */
 
-export * from './button/button.module';
-export * from './form/forms.module';
-export * from './dropdown/dropdown.module';
-export * from './comment/comment.module';
-export * from './comment/interfaces/comment';
-export * from './avatar/avatar.module';
+export { NsButtonModule } from './button/button.module';
+export { NsFormsModule } from './form/forms.module';
+export { NsDropdownModule } from './dropdown/dropdown.module';
+export { NsCommentModule } from './comment/comment.module';
+export { IComment } from './comment/interfaces/comment';
+export { NsAvatarModule } from './avatar/avatar.module';
