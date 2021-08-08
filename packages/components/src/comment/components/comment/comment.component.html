@@ -1,6 +1,6 @@
 <ng-container *ngIf="logged; else logoutTemp">
 	<div class="ns-comment-box" [ngClass]="{'ns-comment-invalid': invalid }">
-		<ns-avatar class="ns-comment-avatar" [ngModel]="cover?.url" [alt]="cover?.alt"></ns-avatar>
+		<ns-avatar class="ns-comment-avatar" [ngModel]="cover?.url" [shortName]="cover?.alt"></ns-avatar>
 
 		<div class="ns-comment-input-wrap">
 			<div class="ns-comment-input">
@@ -43,7 +43,7 @@
 		<li class="ns-comment" *ngFor="let comment of messages">
 			<ns-avatar class="ns-comment-cover"
 			           [ngModel]="comment.cover?.url"
-			           [alt]="comment.cover?.alt"
+			           [shortName]="comment.cover?.alt"
 			           [size]="50"
 			></ns-avatar>
 

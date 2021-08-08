@@ -19,11 +19,13 @@ export class NsAvatarComponent extends FormControlValueAccessor<string> implemen
 {
 
   @Input()
-  alt: string;
+  @HostBinding('class.ns-avatar-rounded')
+  rounded: boolean = true;
   @Input()
   size: number = 60;
 
   public fillColor: string
+  private _shortName: string;
 
   ngOnInit(): void
   {
@@ -39,7 +41,7 @@ export class NsAvatarComponent extends FormControlValueAccessor<string> implemen
   @HostBinding('style.height.px')
   get height()
   {
-    return this.size - (this.size * 0.13);
+    return this.size - (this.size * 0.11);
   }
 
   get canShowImage()
@@ -47,8 +49,14 @@ export class NsAvatarComponent extends FormControlValueAccessor<string> implemen
     return isValidURL(this.value) || this.value && this.value.startsWith('data:image');
   }
 
+  @Input()
+  set shortName(name: string)
+  {
+    this._shortName = name ? name.split(' ', 2).map(n => n.charAt(0).toUpperCase()).join('') : ''
+  }
+
   get shortName()
   {
-    return this.alt ? this.alt.split(' ', 2).map(n => n.charAt(0).toUpperCase()).join('') : '';
+    return this._shortName;
   }
 }

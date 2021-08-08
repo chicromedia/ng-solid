@@ -1,5 +1,5 @@
 <ng-container *ngIf="canShowImage; else avatarTemp">
-	<img class="ns-avatar" [src]="value" [attr.alt]="alt">
+	<img class="ns-avatar" [src]="value" [attr.alt]="shortName">
 </ng-container>
 
 <ng-template #avatarTemp>
