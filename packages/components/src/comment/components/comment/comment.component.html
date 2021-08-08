@@ -1,19 +1,28 @@
 <ng-container *ngIf="logged; else logoutTemp">
 	<div class="ns-comment-box" [ngClass]="{'ns-comment-invalid': invalid }">
-		<ns-avatar class="ns-comment-avatar" [src]="cover?.url" [name]="cover.alt"></ns-avatar>
+		<ns-avatar class="ns-comment-avatar" [ngModel]="cover?.url" [alt]="cover?.alt"></ns-avatar>
 
 		<div class="ns-comment-input-wrap">
 			<div class="ns-comment-input">
-				<div class="ns-comment-input-content" contenteditable="true" #contentEditable (input)="change($event)"></div>
+				<div class="ns-comment-input-content"
+				     nsContentEditable
+				     [maxlength]="maxLength"
+				     [(ngModel)]="content"
+				     [disabled]="disabled"
+				></div>
 
 				<ng-container *ngIf="!content">
 					<span class="ns-comment-input-placeholder">{{placeholder}}</span>
 				</ng-container>
 			</div>
 
-			<ng-container *ngIf="submitText">
-				<button class="ns-comment-submit" (click)="publish()" [disabled]="disabled">{{submitText}}</button>
-			</ng-container>
+			<div class="ns-comment-footer">
+				<span class="ns-comment-counter">Quedan {{counter}} caracteres</span>
+
+				<ng-container *ngIf="submitText">
+					<button class="ns-comment-submit" (click)="publish()" [disabled]="disabled">{{submitText}}</button>
+				</ng-container>
+			</div>
 		</div>
 	</div>
 </ng-container>
@@ -32,16 +41,22 @@
 <ng-container *ngIf="messages?.length">
 	<ul class="ns-comment-list">
 		<li class="ns-comment" *ngFor="let comment of messages">
-			<ns-avatar class="ns-comment-cover" [src]="comment.cover?.url" [name]="comment.cover.alt"></ns-avatar>
+			<ns-avatar class="ns-comment-cover"
+			           [ngModel]="comment.cover?.url"
+			           [alt]="comment.cover?.alt"
+			           [size]="50"
+			></ns-avatar>
 
 			<div class="ns-comment-wrap">
 				<div class="ns-comment-user-wrap">
-					<a [attr.href]="comment.author.link" class="ns-comment-author">{{comment.author.name}}</a>
-					<ng-container *ngIf="comment.date as date">
-						<span class="ns-comment-date">{{date}}</span>
+					<ng-container *ngIf="comment?.author as author">
+						<a [attr.href]="author.link" class="ns-comment-author">{{author.name}}</a>
+					</ng-container>
+					<ng-container *ngIf="comment?.created as date">
+						<span class="ns-comment-date">{{date | nsHumanize}}</span>
 					</ng-container>
 
-					<div class="ns-comment-message" [innerHTML]="comment.message | nsSafeHtml"></div>
+					<div class="ns-comment-message" [innerHTML]="comment?.message | nsSafeHtml"></div>
 				</div>
 			</div>
 		</li>

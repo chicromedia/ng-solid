@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, Output, Renderer2, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { IComment } from "../../interfaces/comment";
 import { Subject } from "rxjs";
 
@@ -24,49 +24,40 @@ export class NsCommentComponent implements OnInit
   submitText: string;
   @Input()
   logged: boolean;
+  @Input()
+  maxLength: number = 128;
+  @Input()
+  disabled: boolean;
 
   @Output()
-  submit: Subject<string> = new Subject<string>();
-
-  @ViewChild("contentEditable", { static: false, read: ElementRef }) elementRef: ElementRef<HTMLDivElement>;
+  commit: Subject<string> = new Subject<string>();
 
   public invalid: boolean = false;
-  private _disabled: boolean;
-  content: string;
+  public content: string = "";
 
-  constructor(private renderer: Renderer2) {}
+  private clearEmptyValues: RegExp = new RegExp(/(<div><br><\/div>)*/g);
+
+  constructor() {}
 
   ngOnInit(): void
   {
-  }
-
-  change(event: any)
-  {
-    this.content = event.target.innerHTML;
   }
 
   publish()
   {
     if ( this.content )
     {
-      this.submit.next(this.content);
+      this.commit.next(this.content.replace(this.clearEmptyValues, ""));
       this.content = "";
-      this.elementRef.nativeElement.innerHTML = "";
     } else
     {
       this.invalid = true;
     }
   }
 
-  @Input()
-  set disabled(value: boolean)
+  get counter()
   {
-    this._disabled = value;
-    this.renderer.setAttribute(this.elementRef.nativeElement, "contenteditable", String(!value));
-  }
-
-  get disabled()
-  {
-    return this._disabled;
+    const characters = this.maxLength - this.content.length;
+    return characters > 0 ? characters : 0;
   }
 }

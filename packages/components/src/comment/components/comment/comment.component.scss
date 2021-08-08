@@ -4,7 +4,7 @@
   display: block;
   background-color: #fff;
   border-radius: 0.4rem;
-  padding: 2rem 1.5rem;
+  padding: 1.5rem;
   margin-bottom: 1rem;
   font-weight: 300;
   color: #555;
@@ -21,9 +21,14 @@
   }
 
   &-list {
-    border-top: 1px solid #e8e8e8;
-    margin-top: .25rem;
-    padding: 2rem;
+    border-top: 1px solid #2c3035;
+    margin: 1.25rem -1.5rem 0;
+    padding: 1rem 2rem;
+  }
+
+  &-author {
+    font-weight: 500;
+    -webkit-font-smoothing: antialiased;
   }
 
   &-description {
@@ -50,7 +55,7 @@
 
   &-date {
     font-size: 12px;
-    color: #555;
+    color: #9c9c9c;
 
     &:before {
       content: "•";
@@ -67,11 +72,12 @@
     border-radius: 0.4rem;
     padding: 1rem;
     border: 1px solid #e8e8e8;
-    margin-left: 1rem;
     margin-bottom: 1rem;
+    min-height: 58px;
 
     &-wrap {
       width: 100%;
+      margin-left: 1rem;
     }
 
     &-content {
@@ -94,7 +100,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: auto;
     color: #fff;
     border-radius: $btn-radius-rounded;
     background-color: $light-primary-color;
@@ -108,6 +113,7 @@
     user-select: none;
     text-transform: uppercase;
     -webkit-appearance: button;
+    margin-left: auto;
 
     &:hover {
       background-color: $light-hovered-color;
@@ -117,6 +123,16 @@
       cursor: not-allowed;
       background-color: #3bacf1;
     }
+  }
+
+  &-footer {
+    display: flex;
+    align-items: center;
+  }
+
+  &-counter {
+    color: #9c9c9c;
+    margin-right: .5rem;
   }
 
   &-invalid {

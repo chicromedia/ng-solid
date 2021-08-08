@@ -1,7 +1,27 @@
 @import "../../../styles/variables";
 
+:host {
+  display: block;
+  position: relative;
+  user-select: none;
+
+  .ns-avatar {
+    &-text {
+      fill: #777;
+    }
+
+    &-background {
+      fill: #f4f4f4;
+    }
+  }
+}
+
 :host-context([data-theme="dark"]) {
   .ns-avatar {
+    &-text {
+      fill: #fff;
+    }
+
     &-background {
       fill: #292d32;
     }

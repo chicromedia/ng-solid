@@ -6,7 +6,7 @@ export interface IComment
     alt?: string;
   };
   message: string;
-  date?: string;
+  created?: string;
   author: {
     name: string;
     link?: string;

@@ -6,6 +6,7 @@ import { NsDateComponent } from './components/date/date.component';
 import { NsTextAreaComponent } from './components/text-area/text-area.component';
 import { NsCheckboxComponent } from './components/checkbox/checkbox.component';
 import { NsPasswordComponent } from './components/password/password.component';
+import { NsFormContentEditableDirective } from './directives/form-content-editable.directive';
 
 
 @NgModule({
@@ -19,14 +20,16 @@ import { NsPasswordComponent } from './components/password/password.component';
     NsDateComponent,
     NsTextAreaComponent,
     NsCheckboxComponent,
-    NsPasswordComponent
+    NsPasswordComponent,
+    NsFormContentEditableDirective
   ],
   exports: [
     NsInputComponent,
     NsDateComponent,
     NsTextAreaComponent,
     NsCheckboxComponent,
-    NsPasswordComponent
+    NsPasswordComponent,
+    NsFormContentEditableDirective
   ]
 })
 export class NsFormsModule
