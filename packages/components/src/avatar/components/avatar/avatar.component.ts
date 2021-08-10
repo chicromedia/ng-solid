@@ -41,7 +41,7 @@ export class NsAvatarComponent extends FormControlValueAccessor<string> implemen
   @HostBinding('style.height.px')
   get height()
   {
-    return this.size - (this.size * 0.11);
+    return this.size - (this.size * 0.09);
   }
 
   get canShowImage()
