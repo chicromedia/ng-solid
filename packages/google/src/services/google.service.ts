@@ -68,8 +68,9 @@ export class NsGoogleService
       const script = document.createElement('script') as HTMLScriptElement;
       script.id = this.GOOGLE_ANALYTICS_ID;
       script.async = true;
+      script.defer = true;
       script.src = `${ this.analytics }?id=${ config.analyticsId }`;
-      document.head.appendChild(script);
+      document.body.appendChild(script);
     }
 
     const canAdSense = config && config.adEnabled && isPlatformBrowser(this.platformId) && this.validAdClient(config.adClient);
@@ -78,6 +79,7 @@ export class NsGoogleService
       const script = document.createElement('script') as HTMLScriptElement;
       script.id = this.GOOGLE_ADSENSE_ID;
       script.async = true;
+      script.defer = true;
       script.src = `${ this.adsense }`;
       document.head.appendChild(script);
     }
