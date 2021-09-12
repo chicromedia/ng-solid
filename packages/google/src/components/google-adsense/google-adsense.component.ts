@@ -32,6 +32,7 @@ export class GoogleAdsenseComponent implements OnInit, AfterViewInit
   ngOnInit(): void
   {
     this.className = this.className || this.config.adClassName;
+    this.display = this.config.adEnabled ? this.display || this.config.adDisplay : 'none';
   }
 
   get config()
