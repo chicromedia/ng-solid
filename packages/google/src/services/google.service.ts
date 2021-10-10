@@ -81,7 +81,7 @@ export class NsGoogleService
       script.async = true;
       script.defer = true;
       script.src = `${ this.adsense }`;
-      document.head.appendChild(script);
+      document.body.appendChild(script);
     }
 
     if ( canTracking )
