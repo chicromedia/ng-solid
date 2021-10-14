@@ -2,7 +2,9 @@ export interface TwitterCard
 {
   title: string;
   description: string;
-  card?: 'photo' | 'player' | 'summary' | 'summary with large image';
-  url: string;
+  card?: 'photo' | 'player' | 'summary' | 'summary_large_image';
+  type?: string;
+  site: string
   image: string;
+  'image:alt'?: string;
 }

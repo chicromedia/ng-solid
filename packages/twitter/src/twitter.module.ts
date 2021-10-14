@@ -2,12 +2,10 @@ import { ModuleWithProviders, NgModule } from '@angular/core';
 import { NsTwitterComponent } from './components/share/share.component';
 import { CommonModule } from "@angular/common";
 import { NsTwitterService } from "./services/twitter.service";
-import { NsCoreModule } from "@ng-solid/core";
 
 @NgModule({
   imports: [
-    CommonModule,
-    NsCoreModule
+    CommonModule
   ],
   declarations: [
     NsTwitterComponent

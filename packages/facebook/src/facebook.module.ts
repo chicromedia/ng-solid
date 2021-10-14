@@ -5,12 +5,10 @@ import { NsFacebookService } from "./services/facebook.service";
 import { NS_FACEBOOK_CONFIG } from "./providers/config.provider";
 import { NsFacebookShareComponent } from './components/share/share.component';
 import { NsFacebookLikeComponent } from './components/like/like.component';
-import { NsCoreModule } from "@ng-solid/core";
 
 @NgModule({
   imports: [
-    CommonModule,
-    NsCoreModule
+    CommonModule
   ],
   declarations: [
     NsFacebookLoginComponent,

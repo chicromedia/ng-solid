@@ -21,7 +21,7 @@ export class NsTwitterService
 
   card(definition: TwitterCard)
   {
-    definition = Object.assign({ card: "summary with large image" }, definition);
+    definition = Object.assign({ card: "summary_large_image", "image:alt": definition.title }, definition);
     Object.entries(definition).forEach(([ property, content ]) =>
     {
       const selector = `name='twitter:${ property }'`;
