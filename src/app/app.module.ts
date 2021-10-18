@@ -9,6 +9,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { NsTwitterModule } from "@ng-solid/twitter";
 import { NsGoogleModule } from "@ng-solid/google";
 import { NsCoreModule } from "@ng-solid/core";
+import { NsSchemaMarkupModule } from "@ng-solid/components";
 
 @NgModule({
   imports: [
@@ -32,7 +33,8 @@ import { NsCoreModule } from "@ng-solid/core";
       loader: TRANSLATE_LOADER,
       useDefaultLang: true,
       defaultLanguage: 'es_ES'
-    })
+    }),
+    NsSchemaMarkupModule
   ],
   declarations: [
     AppComponent
