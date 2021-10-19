@@ -62,5 +62,19 @@ export interface NsSchemaMarkup
       },
       "query-input": string
     }
-  ]
+  ],
+  track?: {
+    "@type": "ItemList";
+    numberOfItems: number;
+    itemListElement: {
+      "@type": "ListItem";
+      position: number;
+      item: {
+        "@type": "MusicRecording";
+        name: string;
+        url: string;
+        duration: string;
+      }
+    }[]
+  }
 }
