@@ -11,6 +11,7 @@
     "@ng-solid/core"
   ],
   "assets": [
-    "README.md"
+    "README.md",
+    "assets"
   ]
 }

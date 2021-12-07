@@ -9,7 +9,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { NsTwitterModule } from "@ng-solid/twitter";
 import { NsGoogleModule } from "@ng-solid/google";
 import { NsCoreModule } from "@ng-solid/core";
-import { NsSchemaMarkupModule } from "@ng-solid/components";
+import { NsIconModule, NsSchemaMarkupModule } from "@ng-solid/components";
 
 @NgModule({
   imports: [
@@ -34,7 +34,8 @@ import { NsSchemaMarkupModule } from "@ng-solid/components";
       useDefaultLang: true,
       defaultLanguage: 'es_ES'
     }),
-    NsSchemaMarkupModule
+    NsSchemaMarkupModule,
+    NsIconModule.forRoot({ path: './assets/icons' })
   ],
   declarations: [
     AppComponent
