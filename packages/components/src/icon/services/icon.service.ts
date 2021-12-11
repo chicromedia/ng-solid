@@ -62,14 +62,14 @@ export class NsIconService
     return this.http.get(safeUrl, { responseType: "text", headers: { ContentType: 'image/svg+xml' } });
   }
 
-  normalizeSVG(svg: SVGElement, width: number, height: number)
+  normalizeSVG(svg: SVGElement, size: number)
   {
     if ( !svg.getAttribute('viewBox') )
     {
-      this.renderer.setAttribute(svg, 'viewBox', `0 0 ${ width } ${ height }`);
+      this.renderer.setAttribute(svg, 'viewBox', `0 0 ${ size } ${ size }`);
     }
-    this.renderer.setAttribute(svg, 'width', String(width));
-    this.renderer.setAttribute(svg, 'height', String(height));
+    this.renderer.setAttribute(svg, 'width', String(size));
+    this.renderer.setAttribute(svg, 'height', String(size));
     if ( !svg.getAttribute('fill') )
     {
       this.renderer.setAttribute(svg, 'fill', 'currentColor');
