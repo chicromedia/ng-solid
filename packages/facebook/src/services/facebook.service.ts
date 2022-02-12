@@ -118,10 +118,15 @@ export class NsFacebookService
 
   openGraph(definition: fb.OpenGraph)
   {
-    const selector = `property='fb:app_id'`;
-    this.meta.getTag(selector)
-      ? this.meta.updateTag({ property: 'fb:app_id', content: this.config.appId }, selector)
+    const appId = `property='fb:app_id'`;
+    this.meta.getTag(appId)
+      ? this.meta.updateTag({ property: 'fb:app_id', content: this.config.appId }, appId)
       : this.meta.addTag({ property: 'fb:app_id', content: this.config.appId });
+
+    const siteName = `property='og:site_name'`;
+    this.meta.getTag(siteName)
+      ? this.meta.updateTag({ property: 'og:site_name', content: this.config.siteName }, siteName)
+      : this.meta.addTag({ property: 'og:site_name', content: this.config.siteName });
 
     Object.entries(definition).forEach(([ property, content ]) =>
     {

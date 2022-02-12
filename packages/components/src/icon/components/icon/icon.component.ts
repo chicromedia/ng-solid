@@ -1,7 +1,5 @@
-import { Component, ElementRef, Input, OnDestroy, OnInit, Renderer2 } from '@angular/core';
+import { Component, ElementRef, Input, OnChanges, OnDestroy, OnInit, Renderer2, SimpleChanges } from '@angular/core';
 import { NsIconService } from "../../services/icon.service";
-import { Subject } from "rxjs";
-import { takeUntil } from "rxjs/operators";
 
 @Component({
   selector: 'ns-icon',
@@ -11,14 +9,12 @@ import { takeUntil } from "rxjs/operators";
     '[class.ns-icon]': 'true'
   },
 })
-export class NsIconComponent implements OnInit, OnDestroy
+export class NsIconComponent implements OnInit, OnChanges, OnDestroy
 {
   @Input()
   name: string;
   @Input()
   size: number = 24;
-
-  private destroy$: Subject<void> = new Subject<void>();
 
   constructor(private readonly element: ElementRef<HTMLElement>,
               private readonly renderer: Renderer2,
@@ -27,15 +23,22 @@ export class NsIconComponent implements OnInit, OnDestroy
 
   ngOnInit()
   {
-    this.iconService.add(this.name).pipe(takeUntil(this.destroy$)).subscribe(({ icon }) =>
+  }
+
+  ngOnChanges({ name }: SimpleChanges)
+  {
+    if ( name && name.currentValue )
     {
-      this.renderer.setProperty(this.element.nativeElement, 'innerHTML', icon);
-      const svg: SVGElement = this.element.nativeElement.querySelector('svg');
-      if ( svg )
+      this.iconService.add(name.currentValue).subscribe(({ icon }) =>
       {
-        this.iconService.normalizeSVG(svg, this.size);
-      }
-    })
+        this.renderer.setProperty(this.element.nativeElement, 'innerHTML', icon);
+        const svg: SVGElement = this.element.nativeElement.querySelector('svg');
+        if ( svg )
+        {
+          this.iconService.normalizeSVG(svg, this.size);
+        }
+      })
+    }
   }
 
   ngAfterContentChecked(): void
@@ -53,8 +56,6 @@ export class NsIconComponent implements OnInit, OnDestroy
 
   ngOnDestroy(): void
   {
-    this.destroy$.next();
-    this.destroy$.complete();
   }
 
 }

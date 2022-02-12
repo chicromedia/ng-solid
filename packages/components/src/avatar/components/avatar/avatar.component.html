@@ -3,8 +3,5 @@
 </ng-container>
 
 <ng-template #avatarTemp>
-	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
-		<rect x="1" y="1" width="300" height="300" class="ns-avatar-background"/>
-		<text x="50" y="200" font-family="Arial" font-size="150" class="ns-avatar-text">{{shortName}}</text>
-	</svg>
+	<h4 class="ns-avatar-text" [ngStyle]="{'font-size': fontSize}">{{shortName}}</h4>
 </ng-template>

@@ -26,7 +26,12 @@
             "aot": false,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "**/*.svg",
+                "input": "dist/components/assets",
+                "output": "assets/icons"
+              }
             ],
             "styles": [
               "src/styles.scss"

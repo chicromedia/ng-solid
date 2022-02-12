@@ -1,4 +1,4 @@
-import { Component, forwardRef, HostBinding, Input, OnInit } from '@angular/core';
+import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { isValidURL } from "@ng-solid/core";
 import { FormControlValueAccessor } from "../../../form/models/form-control-value-accessor";
 import { NG_VALUE_ACCESSOR } from "@angular/forms";
@@ -13,13 +13,18 @@ import { NG_VALUE_ACCESSOR } from "@angular/forms";
       useExisting: forwardRef(() => NsAvatarComponent),
       multi: true
     }
-  ]
+  ],
+  host: {
+    '[class.ns-avatar]': 'true',
+    '[class.ns-avatar-rounded]': 'rounded == true',
+    '[style.width.px]': 'size',
+    '[style.height.px]': 'size'
+  }
 })
 export class NsAvatarComponent extends FormControlValueAccessor<string> implements OnInit
 {
 
   @Input()
-  @HostBinding('class.ns-avatar-rounded')
   rounded: boolean = true;
   @Input()
   size: number = 60;
@@ -32,21 +37,15 @@ export class NsAvatarComponent extends FormControlValueAccessor<string> implemen
     this.fillColor = `#${ Math.floor(Math.random() * 16777215).toString(16) }`;
   }
 
-  @HostBinding('style.width.px')
-  get width()
-  {
-    return this.size
-  }
-
-  @HostBinding('style.height.px')
-  get height()
-  {
-    return this.size - (this.size * 0.09);
-  }
-
   get canShowImage()
   {
     return isValidURL(this.value) || this.value && this.value.startsWith('data:image');
+  }
+
+  @Input()
+  set src(value: string)
+  {
+    this._value = value;
   }
 
   @Input()
@@ -58,5 +57,10 @@ export class NsAvatarComponent extends FormControlValueAccessor<string> implemen
   get shortName()
   {
     return this._shortName;
+  }
+
+  get fontSize()
+  {
+    return `calc(${this.size}px/2.2)`;
   }
 }

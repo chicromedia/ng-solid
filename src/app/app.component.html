@@ -19,4 +19,4 @@
 
 <ns-schema [data]="{name: 'cartelurbnord', description: '', url: ''}"></ns-schema>
 
-<ns-icon [name]="'add'"></ns-icon>
+<ns-icon [name]="show ? 'eye-hide': 'eye-show'" (click)="show = !show"></ns-icon>

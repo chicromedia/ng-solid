@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit
 {
+  show: boolean;
   constructor() {}
 
   ngOnInit()

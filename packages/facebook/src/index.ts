@@ -227,6 +227,7 @@ declare namespace fb
   interface InitParams
   {
     appId: string;
+    siteName?: string,
     version?: string;
     cookie?: boolean;
     status?: boolean;
