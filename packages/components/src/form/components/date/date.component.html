@@ -1,1 +1,33 @@
-<p>date works!</p>
+<ng-container *ngIf="label">
+	<label>{{label}}</label>
+</ng-container>
+
+<div class="form-row">
+	<ng-container *ngIf="fields?.includes('day')">
+		<div [ngClass]="{'col-3': fields.length > 1, 'col-12': fields.length == 1}">
+			<select class="form-control" [(ngModel)]="day" (change)="changeDate()" [disabled]="disabled">
+				<option value="">Día</option>
+				<option *ngFor="let day of daysItems" [value]="day">{{day}}</option>
+			</select>
+		</div>
+	</ng-container>
+
+	<ng-container *ngIf="fields?.includes('month')">
+		<div [ngClass]="{'col-5': fields.length > 1, 'col-12': fields.length == 1}">
+			<select class="form-control" [(ngModel)]="month" (change)="changeDate()" [disabled]="disabled">
+				<option value="">Mes</option>
+				<option *ngFor="let month of monthItems; index as i" [value]="month">{{months?.get(i)}}</option>
+			</select>
+		</div>
+	</ng-container>
+
+	<ng-container *ngIf="fields?.includes('year')">
+		<div [ngClass]="{'col-4': fields.length > 1, 'col-12': fields.length == 1}">
+			<select class="form-control" [(ngModel)]="year" (change)="changeDate()" [disabled]="disabled">
+				<option value="">Año</option>
+				<option *ngFor="let year of yearItems" [value]="year">{{year}}</option>
+			</select>
+		</div>
+	</ng-container>
+</div>
+

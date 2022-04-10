@@ -1,1 +1,4 @@
-<p>checkbox works!</p>
+<label class="form-check-label">
+	<input class="form-check-input" [(ngModel)]="value" type="checkbox" (blur)="onTouched()" [disabled]="disabled">
+	{{label}}
+</label>

@@ -1,1 +1,11 @@
-<p>input works!</p>
+<ng-container *ngIf="label">
+	<label [attr.for]="id">{{label}}</label>
+</ng-container>
+
+<input [(ngModel)]="value"
+       class="form-control"
+       [type]="type"
+       [placeholder]="placeholder"
+       [disabled]="disabled"
+       (blur)="onTouched()"
+>

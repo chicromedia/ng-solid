@@ -2,7 +2,7 @@ import { ControlValueAccessor } from "@angular/forms";
 import { HostBinding, Input } from "@angular/core";
 import { Guid } from "@ng-solid/core";
 
-export class FormControlValueAccessor<T = any> implements ControlValueAccessor
+export abstract class FormControlValueAccessor<T = any> implements ControlValueAccessor
 {
 
   @Input()
@@ -14,13 +14,11 @@ export class FormControlValueAccessor<T = any> implements ControlValueAccessor
 
   @HostBinding('attr.id') id = Guid.create();
 
-  protected onTouched = () => {};
-  protected onChange = (value: T) => {};
+  public onTouched = () => {};
+  public onChange = (value: T) => {};
   protected _value: T;
 
   public disabled: boolean;
-
-  constructor() {}
 
   writeValue(value: T): void
   {

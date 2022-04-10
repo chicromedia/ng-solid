@@ -1,1 +1,11 @@
-<p>text-area works!</p>
+<ng-container *ngIf="label">
+	<label>{{label}}</label>
+</ng-container>
+
+<textarea class="form-control"
+          [(ngModel)]="value"
+          [rows]="rows"
+          [placeholder]="placeholder"
+          (blur)="onTouched()"
+          [disabled]="disabled"
+></textarea>

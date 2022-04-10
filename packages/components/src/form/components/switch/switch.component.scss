@@ -1,0 +1,17 @@
+:host {
+  display: flex;
+  align-items: center;
+  min-height: 36px;
+}
+
+.custom-control {
+  &-label {
+    line-height: 2;
+  }
+
+  &-input:not(:disabled) {
+    ~ .custom-control-label, .custom-control-label::before, .custom-control-label::after {
+      cursor: pointer;
+    }
+  }
+}
