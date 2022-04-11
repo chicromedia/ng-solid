@@ -4,13 +4,14 @@
   "compilerOptions": {
     "outDir": "../../out-tsc/lib",
     "target": "es2015",
-    "declaration": true,
-    "inlineSources": true,
-    "types": [],
     "lib": [
       "dom",
       "es2018"
-    ]
+    ],
+    "declaration": true,
+    "inlineSources": true,
+    "skipLibCheck": true,
+    "types": []
   },
   "angularCompilerOptions": {
     "skipTemplateCodegen": true,

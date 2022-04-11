@@ -8,8 +8,8 @@ import { NsCheckboxComponent } from './components/checkbox/checkbox.component';
 import { NsPasswordComponent } from './components/password/password.component';
 import { NsFormContentEditableDirective } from './directives/form-content-editable.directive';
 import { RouterModule } from "@angular/router";
-import { NsIconModule } from "../icon/icon.module";
 import { NsSwitchComponent } from './components/switch/switch.component';
+import { NsIconModule } from "../icon/icon.module";
 
 
 @NgModule({

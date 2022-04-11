@@ -1,6 +1,6 @@
 {
   "name": "@ng-solid/components",
-  "version": "1.1.5",
+  "version": "1.1.7",
   "license": "MIT",
   "description": "An Angular UI component library based on Ant Design.",
   "engines": {
@@ -14,8 +14,10 @@
   },
   "peerDependencies": {
     "@angular/common": "^8.2.14",
+    "@angular/forms": "^8.2.14",
+    "@angular/router": "^8.2.14",
     "@angular/core": "^8.2.14",
-    "@ng-solid/core": "^1.0.15"
+    "@ng-solid/core": "^1.0.20"
   },
   "dependencies": {
     "tslib": "^2.0.0"

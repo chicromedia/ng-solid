@@ -14,8 +14,9 @@ import { HttpClient } from "@angular/common/http";
 import { filter, map } from "rxjs/operators";
 import { BehaviorSubject } from "rxjs";
 import { DOCUMENT } from "@angular/common";
+import { IconSetup } from "../interfaces/icon-setup";
 
-export const NS_ICONS_PATCH = new InjectionToken('ns_icons_patch');
+export const NS_ICONS_SETUP = new InjectionToken('ns_icons_setup');
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +26,7 @@ export class NsIconService
   private cache: BehaviorSubject<Map<string, IconDefinition>> = new BehaviorSubject(new Map<string, IconDefinition>());
   private renderer: Renderer2;
 
-  constructor(@Self() @Inject(NS_ICONS_PATCH) private path: string,
+  constructor(@Self() @Inject(NS_ICONS_SETUP) private setup: IconSetup,
               private http: HttpClient,
               private rendererFactory: RendererFactory2,
               @Inject(DOCUMENT) private document: any,
@@ -43,9 +44,9 @@ export class NsIconService
   {
     if ( !this.cache.value.has(name) )
     {
-      this.importIcon(this.path.concat(`/${ name }`)).subscribe(
+      this.importIcon(this.setup.path.concat(`/${ name }`)).subscribe(
         icon => this.cache.next(this.cache.value.set(name, new IconDefinition({ name, icon }))),
-        () => () => console.warn(`Cannot find resource for icon '${ name }' in ${ this.path }`)
+        error => console.warn(`Cannot find resource for icon '${ name }' in ${ this.setup.path }`)
       )
     }
     return this.get(name);
