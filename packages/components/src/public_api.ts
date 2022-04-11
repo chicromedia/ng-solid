@@ -12,3 +12,6 @@ export { NsIconModule } from './icon/icon.module';
 
 export { NsSchemaMarkup } from './schema/models/schema';
 export { IComment } from './comment/interfaces/comment';
+
+export { NsSchemaComponent } from './schema/components/schema.component';
+export { NsAvatarComponent } from './avatar/components/avatar/avatar.component';
