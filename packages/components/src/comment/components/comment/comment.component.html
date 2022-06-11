@@ -4,12 +4,11 @@
 
 		<div class="ns-comment-input-wrap">
 			<div class="ns-comment-input">
-				<div class="ns-comment-input-content"
-				     nsContentEditable
+				<ns-content-editable class="ns-comment-input-content"
 				     [maxlength]="maxLength"
 				     [(ngModel)]="content"
 				     [disabled]="disabled"
-				></div>
+				></ns-content-editable>
 
 				<ng-container *ngIf="!content">
 					<span class="ns-comment-input-placeholder">{{placeholder}}</span>

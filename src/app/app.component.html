@@ -1,22 +1,4 @@
-<ns-facebook-login [rounded]="true"
-                   (onLogin)="onLogin($event)"
->Continue with Facebook
-</ns-facebook-login>
-
-<ns-facebook-share [rounded]="true"
-                   [href]="'http://cartelurbanord.com'"
-                   [hashtag]="'ng-solid'"
-                   (onShared)="onShared($event)">Compartir en Facebook
-</ns-facebook-share>
-
-<ns-twitter-share [url]="'http://cartelurbanord.com/music/recuerdame'"
-                  [text]="'Recuérdame de Pablo Alboran'"
-                  [rounded]="true"
-                  [via]="'cartelurbanord'">Compartir en Twitter
-</ns-twitter-share>
-
-<ns-adsense></ns-adsense>
-
-<ns-schema [data]="{name: 'cartelurbnord', description: '', url: ''}"></ns-schema>
-
-<ns-icon [name]="show ? 'eye-hide': 'eye-show'" (click)="show = !show"></ns-icon>
+<ns-dropdown label="Status">
+    <ns-dropdown-item [label]="'Activo'" [value]="'Y'"></ns-dropdown-item>
+    <ns-dropdown-item [label]="'Deactivado'" [value]="'N'"></ns-dropdown-item>
+</ns-dropdown>

@@ -1,29 +1,29 @@
-import { Component, HostBinding, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, HostBinding, Inject, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
 import { NsSchemaMarkup } from "../models/schema";
 
-@Component({
-  selector: 'ns-schema',
-  template: ''
-})
+@Component( {
+    selector: 'ns-schema',
+    template: ''
+} )
 export class NsSchemaComponent implements OnInit, OnChanges
 {
-  @Input()
-  data: Partial<NsSchemaMarkup>;
+    @Input()
+    data: Partial<NsSchemaMarkup>;
 
-  @HostBinding('innerHTML') innerHTML: SafeHtml;
+    @HostBinding( 'innerHTML' ) innerHTML: SafeHtml;
 
-  constructor(private dom: DomSanitizer)
-  { }
+    constructor( @Inject( DomSanitizer ) private sanitizer: DomSanitizer )
+    { }
 
-  ngOnInit()
-  {
-  }
+    ngOnInit()
+    {
+    }
 
-  ngOnChanges({ data }: SimpleChanges)
-  {
-    const json = { "@context": "https://schema.org", ...data.currentValue };
-    const template = `<script type="application/ld+json">${ JSON.stringify(json, null, 2) }</script>`;
-    this.innerHTML = this.dom.bypassSecurityTrustHtml(template);
-  }
+    ngOnChanges( { data }: SimpleChanges )
+    {
+        const json = { "@context": "https://schema.org", ...data.currentValue };
+        const template = `<script type="application/ld+json">${ JSON.stringify( json, null, 2 ) }</script>`;
+        this.innerHTML = this.sanitizer.bypassSecurityTrustHtml( template );
+    }
 }

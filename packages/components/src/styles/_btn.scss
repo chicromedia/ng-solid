@@ -1,0 +1,25 @@
+@import "variables";
+
+@mixin btn {
+  display: inline-block;
+  position: relative;
+  border-radius: 4px;
+  text-transform: none;
+  border: 1px solid rgb(219, 214, 225);
+  font-size: 0.875rem;
+  line-height: 1rem;
+  padding: 10px 16px;
+  box-shadow: rgb(43 34 51 / 4%) 0 1px 4px;
+}
+
+@mixin btn-secondary {
+  color: #3e3446;
+  background-color: #fff;
+
+  &:focus, &:active {
+    color: #3e3446;
+    background-color: #f5f3f7;
+    border: 1px solid rgb(219, 214, 225);
+    box-shadow: rgb(43 34 51 / 4%) 0 1px 4px !important;
+  }
+}

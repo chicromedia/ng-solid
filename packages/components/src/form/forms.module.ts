@@ -6,7 +6,7 @@ import { NsDateComponent } from './components/date/date.component';
 import { NsTextAreaComponent } from './components/text-area/text-area.component';
 import { NsCheckboxComponent } from './components/checkbox/checkbox.component';
 import { NsPasswordComponent } from './components/password/password.component';
-import { NsFormContentEditableDirective } from './directives/form-content-editable.directive';
+import { NsFormContentEditableComponent } from './components/content-editable/content-editable.directive';
 import { RouterModule } from "@angular/router";
 import { NsSwitchComponent } from './components/switch/switch.component';
 import { NsIconModule } from "../icon/icon.module";
@@ -26,7 +26,7 @@ import { NsIconModule } from "../icon/icon.module";
     NsTextAreaComponent,
     NsCheckboxComponent,
     NsPasswordComponent,
-    NsFormContentEditableDirective,
+    NsFormContentEditableComponent,
     NsSwitchComponent
   ],
   exports: [
@@ -35,7 +35,7 @@ import { NsIconModule } from "../icon/icon.module";
     NsTextAreaComponent,
     NsCheckboxComponent,
     NsPasswordComponent,
-    NsFormContentEditableDirective
+    NsFormContentEditableComponent
   ]
 })
 export class NsFormsModule

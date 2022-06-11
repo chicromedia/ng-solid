@@ -1,6 +1,6 @@
-import { Component, forwardRef, OnInit } from '@angular/core';
-import { FormControlValueAccessor } from "../../models/form-control-value-accessor";
-import { NG_VALUE_ACCESSOR } from "@angular/forms";
+import {Component, forwardRef, Input, OnInit} from '@angular/core';
+import { FormControlValueAccessor } from '../../models/form-control-value-accessor';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'ns-input',
@@ -16,6 +16,11 @@ import { NG_VALUE_ACCESSOR } from "@angular/forms";
 })
 export class NsInputComponent extends FormControlValueAccessor implements OnInit
 {
+
+  @Input()
+  prepend: string;
+  @Input()
+  append: string;
 
   constructor() {super();}
 

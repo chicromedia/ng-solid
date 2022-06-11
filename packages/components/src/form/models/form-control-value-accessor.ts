@@ -1,60 +1,63 @@
-import { ControlValueAccessor } from "@angular/forms";
-import { HostBinding, Input } from "@angular/core";
-import { Guid } from "@ng-solid/core";
+import { ControlValueAccessor } from '@angular/forms';
+import { Directive, HostBinding, Input } from '@angular/core';
+import { Guid } from '@ng-solid/core';
 
+@Directive()
 export abstract class FormControlValueAccessor<T = any> implements ControlValueAccessor
 {
 
-  @Input()
-  public type: string = 'text';
-  @Input()
-  public placeholder: string = '';
-  @Input()
-  public label: string;
+    @Input()
+    public type = 'text';
+    @Input()
+    public placeholder = '';
+    @Input()
+    public label: string;
 
-  @HostBinding('attr.id') id = Guid.create();
+    @HostBinding( 'attr.id' ) id = Guid.create();
+    protected _value: T;
 
-  public onTouched = () => {};
-  public onChange = (value: T) => {};
-  protected _value: T;
+    public disabled: boolean;
 
-  public disabled: boolean;
+    public onTouched = () => {};
+    public onChange = ( value: T ) => {};
 
-  writeValue(value: T): void
-  {
-    if ( typeof value !== 'undefined' )
+    constructor() {}
+
+    writeValue( value: T ): void
     {
-      this._value = value;
+        if ( typeof value !== 'undefined' )
+        {
+            this._value = value;
+        }
     }
-  }
 
-  @Input()
-  set value(value: T)
-  {
-    if ( typeof value !== 'undefined' )
+    @Input()
+    set value( value: T )
     {
-      this._value = value;
-      this.onChange(this._value);
+        if ( typeof value !== 'undefined' )
+        {
+            this._value = value;
+            this.onChange( this._value );
+        }
     }
-  }
 
-  get value(): T
-  {
-    return this._value;
-  }
+    get value(): T
+    {
+        return this._value;
+    }
 
-  registerOnChange(fn: (value: T) => void): void
-  {
-    this.onChange = fn;
-  }
+    registerOnChange( fn: ( value: T ) => void ): void
+    {
+        this.onChange = fn;
+    }
 
-  registerOnTouched(fn: () => void): void
-  {
-    this.onTouched = fn;
-  }
+    registerOnTouched( fn: () => void ): void
+    {
+        this.onTouched = fn;
+    }
 
-  setDisabledState(isDisabled: boolean): void
-  {
-    this.disabled = isDisabled;
-  }
+    setDisabledState( isDisabled: boolean ): void
+    {
+        this.disabled = isDisabled;
+    }
 }

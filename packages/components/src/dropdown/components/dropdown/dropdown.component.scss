@@ -1,0 +1,71 @@
+@import "../../../styles/styles";
+
+.btn {
+  @include btn;
+  margin-bottom: 0.3rem;;
+
+  &-secondary {
+    @include btn-secondary;
+  }
+}
+
+.dropdown {
+  &-menu {
+    min-width: 100%;
+
+    li {
+      position: static;
+      margin: 0;
+      padding: 0 4px;
+    }
+  }
+
+  &-toggle {
+    transform: rotate(0deg);
+    transition: transform 120ms ease-in-out 0s;
+    margin-left: 6px;
+    flex-shrink: 0;
+  }
+
+  &:not(:host.show) {
+    .dropdown-toggle {
+      transform: rotate(180deg);
+    }
+  }
+
+  &-item {
+    display: flex;
+    position: relative;
+    border-radius: 4px;
+    box-sizing: border-box;
+    align-items: center;
+    z-index: 1;
+
+    .icon-check-mark {
+      opacity: 0;
+      margin: 0 0.35rem 0 -0.35rem;
+    }
+
+    &.active, &:hover {
+      color: initial;
+      background: rgb(108 96 199 / 8%);
+    }
+
+    &.active {
+      color: #584ac0;
+
+      .icon-check-mark {
+        opacity: 1;
+      }
+    }
+
+    span {
+      line-height: 1.4;
+      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      width: 100%;
+    }
+  }
+}
