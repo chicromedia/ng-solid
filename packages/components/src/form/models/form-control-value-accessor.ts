@@ -16,12 +16,19 @@ export abstract class FormControlValueAccessor<T = any> implements ControlValueA
     @HostBinding( 'attr.id' ) id = Guid.create();
     protected _value: T;
 
+    @Input()
     public disabled: boolean;
 
-    public onTouched = () => {};
-    public onChange = ( value: T ) => {};
+    public onTouched = () =>
+    {
+    };
+    public onChange = ( value: T ) =>
+    {
+    };
 
-    constructor() {}
+    constructor()
+    {
+    }
 
     writeValue( value: T ): void
     {

@@ -8,7 +8,7 @@
     </ng-container>
 
     <ng-template #valueOnlyTemp>
-        <span [innerHtml]="!!value ? value[labelField] : label"></span>
+        <span [innerHtml]="!!value ? value[labelField] : placeholder"></span>
     </ng-template>
 
     <svg class="dropdown-toggle" viewBox="0 0 16 16" fill="currentColor" height="12px" width="12px">
@@ -16,7 +16,10 @@
     </svg>
 </button>
 
-<ul class="dropdown-menu" [attr.aria-labelledby]="id" [ngClass]="{'show': show}">
+<ul class="dropdown-menu" [attr.aria-labelledby]="id"
+    [ngClass]="{'show': show, 'dropdown-start': placement !== 'end', 'dropdown-end' : placement == 'end' }"
+    (mouseleave)="show = false"
+>
     <ng-container *ngIf="items?.length; else collectionTemp">
         <li *ngFor="let item of items">
             <button class="dropdown-item"

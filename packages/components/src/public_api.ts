@@ -9,6 +9,7 @@ export * from './comment/comment.module';
 export * from './avatar/avatar.module';
 export * from './schema/schema-markup.module';
 export * from './icon/icon.module';
+export * from './image-upload/image-upload.module';
 
 export { NsSchemaMarkup } from './schema/models/schema';
 export { IComment } from './comment/interfaces/comment';

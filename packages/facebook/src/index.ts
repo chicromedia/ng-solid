@@ -262,7 +262,7 @@ declare namespace fb
 
   interface ShareDialogParams extends DialogParams
   {
-    method: 'share';
+    method?: 'share';
     href: string;
     hashtag?: string;
     quote?: string;

@@ -1,8 +1,8 @@
-import { Component, ContentChildren, forwardRef, OnInit, QueryList, Input, HostListener } from '@angular/core';
+import { AfterContentInit, Component, ContentChildren, forwardRef, HostListener, Input, OnInit, QueryList } from '@angular/core';
 import { FormControlValueAccessor } from '../../../form/models/form-control-value-accessor';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { NsDropdownItemDirective } from '../directives/dropdown-item.directive';
-import { notEmpty } from "@ng-solid/core";
+import { isEmpty, notEmpty } from '@ng-solid/core';
 
 @Component( {
     selector: 'ns-dropdown',
@@ -20,7 +20,7 @@ import { notEmpty } from "@ng-solid/core";
         }
     ]
 } )
-export class NsDropdownComponent extends FormControlValueAccessor implements OnInit
+export class NsDropdownComponent extends FormControlValueAccessor implements OnInit, AfterContentInit
 {
 
     @Input()
@@ -33,12 +33,17 @@ export class NsDropdownComponent extends FormControlValueAccessor implements OnI
     iconName: string;
     @Input()
     defaultFirst: boolean = true;
+    @Input()
+    placement: 'start' | 'end' = 'start';
 
     @ContentChildren( NsDropdownItemDirective ) items: QueryList<NsDropdownItemDirective>;
 
     public show: boolean = false;
 
-    constructor() { super(); }
+    constructor()
+    {
+        super();
+    }
 
     ngOnInit(): void
     {
@@ -46,11 +51,17 @@ export class NsDropdownComponent extends FormControlValueAccessor implements OnI
 
     writeValue( value: any )
     {
-        if ( typeof value !== "undefined" )
+        if ( typeof value !== 'undefined' && notEmpty( this.collection ) )
         {
-            this._value = notEmpty( this.collection )
-                ? this.collection.find( item => item[ this.valueField ] == value )
-                : this.items.find( item => item[ this.valueField ] == value )
+            this._value = this.collection.find( item => item[ this.valueField ] == value );
+        }
+    }
+
+    ngAfterContentInit()
+    {
+        if ( isEmpty( this.collection ) && !!this.items )
+        {
+            this.collection = this.items.toArray();
         }
     }
 
@@ -73,11 +84,5 @@ export class NsDropdownComponent extends FormControlValueAccessor implements OnI
     onClick()
     {
         this.show = !this.show;
-    }
-
-    @HostListener( 'mouseleave' )
-    onFocusout()
-    {
-        this.show = false;
     }
 }
