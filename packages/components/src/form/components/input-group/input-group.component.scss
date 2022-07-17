@@ -1,0 +1,15 @@
+@import "../../../styles/form";
+
+:host {
+  @include form;
+}
+
+.input-group {
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+
+  &-text {
+    background-color: #fff;
+    border: none;
+  }
+}

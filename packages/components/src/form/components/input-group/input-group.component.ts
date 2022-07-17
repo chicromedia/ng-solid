@@ -1,20 +1,20 @@
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
-import { FormControlValueAccessor } from '../../models/form-control-value-accessor';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { FormControlValueAccessor } from '../../models/form-control-value-accessor';
 
 @Component( {
-    selector: 'ns-input',
-    templateUrl: './input.component.html',
-    styleUrls: [ './input.component.scss' ],
+    selector: 'ns-input-group',
+    templateUrl: './input-group.component.html',
+    styleUrls: [ './input-group.component.scss' ],
     providers: [
         {
             provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef( () => NsInputComponent ),
+            useExisting: forwardRef( () => NsInputGroupComponent ),
             multi: true
         }
     ]
 } )
-export class NsInputComponent extends FormControlValueAccessor<string> implements OnInit
+export class NsInputGroupComponent extends FormControlValueAccessor implements OnInit
 {
 
     @Input()

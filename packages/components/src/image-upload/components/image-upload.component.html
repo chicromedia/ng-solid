@@ -1,14 +1,3 @@
-<div class="ns-image-header">
-    <ng-container *ngIf="selected.length as quantity; else imageLoadedTemp">
-        <label>{{quantity}} imagenes seleccionada</label>
-        <button class="btn btn-link" type="button" (click)="removeAll()">Remover</button>
-    </ng-container>
-
-    <ng-template #imageLoadedTemp>
-        <label>{{value?.length ? value.length + ' imagenes cargadas' : 'No hay imagen cargadas'}}</label>
-    </ng-template>
-</div>
-
 <div class="ns-image-wrap" [ngClass]="{'ns-image-multi': multi && value && value.length}">
     <ng-container *ngIf="multi">
         <div class="ns-image-thumbnail" *ngFor="let image of value; index as i"
@@ -33,7 +22,7 @@
             (click)="onClick()"
             [hidden]="multi && value?.length >= limit">
         <ng-container *ngIf="value && !multi">
-            <img class="ns-image-fluid" [src]="value | nsImageUrl" [ngClass]="{disabled: disabled}">
+            <img class="ns-image-fluid" [src]="value | nsImageUrl" [ngClass]="{disabled: disabled}" alt>
         </ng-container>
 
         <ng-container *ngIf="!disabled">

@@ -1,5 +1,5 @@
 import { ControlValueAccessor } from '@angular/forms';
-import { Directive, HostBinding, Input } from '@angular/core';
+import { Directive, Input } from '@angular/core';
 import { Guid } from '@ng-solid/core';
 
 @Directive()
@@ -12,19 +12,15 @@ export abstract class FormControlValueAccessor<T = any> implements ControlValueA
     public placeholder = '';
     @Input()
     public label: string;
-
-    @HostBinding( 'attr.id' ) id = Guid.create();
-    protected _value: T;
-
     @Input()
     public disabled: boolean;
 
-    public onTouched = () =>
-    {
-    };
-    public onChange = ( value: T ) =>
-    {
-    };
+    public id = Guid.create();
+
+    protected _value: T;
+
+    public onTouched = () => {};
+    public onChange = ( value: T ) => {};
 
     constructor()
     {

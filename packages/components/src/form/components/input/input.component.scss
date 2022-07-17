@@ -1,20 +1,5 @@
-.input-group {
-  border: 1px solid #ced4da;
-  border-radius: 0.25rem;
+@import "../../../styles/form";
 
-  &-text {
-    background-color: #fff;
-    border: none;
-  }
-
-  .form-control {
-    padding: 0.3rem;
-    border: none;
-
-    &:focus {
-      outline: none;
-      border-color: rgb(108, 95, 199);
-      box-shadow: rgb(108 95 199) 0 0 0 1px;
-    }
-  }
+:host {
+  @include form;
 }

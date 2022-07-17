@@ -1,7 +1,8 @@
-import { Component, ElementRef, forwardRef, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { Component, ElementRef, forwardRef, Input, OnInit, Output, Renderer2, ViewChild } from '@angular/core';
 import { FormControlValueAccessor } from '../../form/models/form-control-value-accessor';
 import { ImageUpload } from '../models/image-upload';
 import { NG_VALIDATORS } from '@angular/forms';
+import { Subject } from 'rxjs';
 
 @Component( {
     selector: 'ns-image-upload',
@@ -25,9 +26,12 @@ export class NsImageUploadComponent extends FormControlValueAccessor implements 
 
     @ViewChild( 'input', { static: false, read: ElementRef } ) imgRef: ElementRef<HTMLInputElement>;
 
-    selected: number[] = [];
-    private fromIndex: number;
-    private toIndex: number;
+    @Output()
+    selected: Subject<number[]> = new Subject<number[]>();
+
+    private _selected: number[] = [];
+    private _fromIndex: number;
+    private _toIndex: number;
 
     constructor( private renderer: Renderer2 )
     {
@@ -80,22 +84,23 @@ export class NsImageUploadComponent extends FormControlValueAccessor implements 
 
     select( target: EventTarget, index: number )
     {
-        this.selected = ( target as HTMLInputElement ).checked
-            ? this.selected.concat( index )
-            : this.selected.filter( i => i !== index );
+        this._selected = ( target as HTMLInputElement ).checked
+            ? this._selected.concat( index )
+            : this._selected.filter( i => i !== index );
+        this.selected.next( this._selected );
     }
 
     dragstart( event: DragEvent, index: number )
     {
         this.renderer.setStyle( event.target, 'opacity', .4 );
         event.dataTransfer.dropEffect = 'move';
-        this.fromIndex = index;
+        this._fromIndex = index;
     }
 
     dragover( event: DragEvent, index: number )
     {
         event.preventDefault();
-        this.toIndex = index;
+        this._toIndex = index;
     }
 
     dragend( event: DragEvent )
@@ -106,18 +111,12 @@ export class NsImageUploadComponent extends FormControlValueAccessor implements 
     drop( event: DragEvent )
     {
         event.stopPropagation();
-        if ( this.fromIndex !== this.toIndex )
+        if ( this._fromIndex !== this._toIndex )
         {
-            const element = this._value[ this.fromIndex ];
-            this._value.splice( this.fromIndex, 1 );
-            this._value.splice( this.toIndex, 0, element );
+            const element = this._value[ this._fromIndex ];
+            this._value.splice( this._fromIndex, 1 );
+            this._value.splice( this._toIndex, 0, element );
             this.onChange( this.value );
         }
-    }
-
-    removeAll()
-    {
-        this.value = this.value.filter( ( item, i ) => !this.selected.includes( i ) );
-        this.selected = [];
     }
 }

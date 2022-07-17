@@ -1,0 +1,22 @@
+@import "../../../styles/btn";
+
+.btn {
+  @include btn;
+  display: block;
+  vertical-align: center;
+  margin-bottom: 0.3rem;
+  min-width: 200px;
+  padding: 9px;
+  text-align: center;
+  height: 42px;
+  border-radius: 0.5rem;
+
+  &-primary {
+    background-color: #3665f3;
+    color: #fff;
+  }
+
+  &-secondary {
+    @include btn-secondary;
+  }
+}

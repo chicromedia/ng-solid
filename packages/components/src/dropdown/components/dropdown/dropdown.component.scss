@@ -1,8 +1,20 @@
-@import "../../../styles/styles";
+@import "../../../styles/form";
+@import "../../../styles/btn";
+
+:host {
+  @include form;
+  display: block;
+  margin-bottom: .5rem;
+}
 
 .btn {
   @include btn;
-  margin-bottom: 0.3rem;;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.3rem;
+  min-width: 200px;
+  padding: 9px;
 
   &-secondary {
     @include btn-secondary;

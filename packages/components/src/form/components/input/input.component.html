@@ -1,27 +1,12 @@
 <ng-container *ngIf="label">
-	<label [attr.for]="id">{{label}}</label>
+    <label class="form-label" [attr.for]="id">{{label}}</label>
 </ng-container>
 
-<div class="input-group" [ngClass]="{'input-group-focus':''}">
-	<ng-container *ngIf="prepend">
-		<span class="input-group-text">
-			<ns-icon [name]="prepend" [size]="16"></ns-icon>
-		</span>
-	</ng-container>
-
-	<input [(ngModel)]="value"
-		   class="form-control"
-		   [type]="type"
-		   [placeholder]="placeholder"
-		   [disabled]="disabled"
-		   (blur)="onTouched()"
-		   #input
-	>
-
-	<ng-container *ngIf="append">
-		<span class="input-group-text">
-			<ns-icon [name]="append" [size]="16"></ns-icon>
-		</span>
-	</ng-container>
-</div>
-
+<input [(ngModel)]="value"
+       class="form-control"
+       [attr.id]="id"
+       [type]="type"
+       [placeholder]="placeholder"
+       [disabled]="disabled"
+       (blur)="onTouched()"
+>

@@ -1,3 +1,9 @@
+@import "../../../styles/form";
+
+:host {
+  @include form;
+}
+
 .form-check {
   &-input {
     position: relative;

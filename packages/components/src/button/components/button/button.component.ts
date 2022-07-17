@@ -1,17 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
-@Component({
-  selector: 'ns-button',
-  templateUrl: './button.component.html',
-  styleUrls: [ './button.component.scss' ]
-})
+@Component( {
+    selector: 'ns-button',
+    templateUrl: './button.component.html',
+    styleUrls: [ './button.component.scss' ],
+    host: {
+        '[class.d-grid]': 'isBlock'
+    }
+} )
 export class NsButtonComponent implements OnInit
 {
+    @Input()
+    label: string;
+    @Input()
+    type: 'submit' | 'button' | 'link' = 'button';
+    @Input()
+    primary: boolean = true;
+    @Input()
+    href: string;
+    @Input()
+    isBlock: boolean;
 
-  constructor() { }
+    constructor()
+    {
+    }
 
-  ngOnInit(): void
-  {
-  }
+    ngOnInit(): void
+    {
+    }
 
 }

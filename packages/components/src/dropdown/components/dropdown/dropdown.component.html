@@ -1,9 +1,13 @@
+<ng-container *ngIf="labelTop">
+    <label class="form-label">{{label}}</label>
+</ng-container>
+
 <button class="btn btn-secondary" [id]="id" type="button">
     <ng-container *ngIf="iconName">
         <ns-icon [name]="iconName" [size]="16"></ns-icon>
     </ng-container>
 
-    <ng-container *ngIf="label && value; else valueOnlyTemp">
+    <ng-container *ngIf="!labelTop && label && value; else valueOnlyTemp">
         <strong>{{label}}: </strong><span [innerHtml]="value[labelField]"></span>
     </ng-container>
 

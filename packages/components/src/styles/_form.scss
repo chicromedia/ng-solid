@@ -1,0 +1,35 @@
+@mixin form {
+  font-size: .875rem;
+
+  .form {
+    &-control {
+      border: 1px solid #cfcfdb;
+      border-radius: 0.375rem;
+      color: #3665f3;
+      font-size: 1rem;
+      line-height: 1.5;
+      padding: 0.3125rem 0.5rem;
+      resize: vertical;
+      width: 100%;
+      margin-bottom: 0.5rem;
+
+      &:focus {
+        border-color: #567af0;
+        box-shadow: 0 0 15px rgb(144 147 193 / 20%);
+        outline: 0;
+      }
+
+      &::placeholder {
+        color: #bdbed4;
+        font-weight: 600;
+        font-size: .875rem;
+      }
+    }
+  }
+
+  label {
+    color: #362d59;
+    display: block;
+    font-weight: 700;
+  }
+}

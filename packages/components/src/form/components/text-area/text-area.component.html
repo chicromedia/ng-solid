@@ -1,9 +1,10 @@
 <ng-container *ngIf="label">
-	<label>{{label}}</label>
+    <label class="form-label" [attr.for]="id">{{label}}</label>
 </ng-container>
 
 <textarea class="form-control"
           [(ngModel)]="value"
+          [id]="id"
           [rows]="rows"
           [placeholder]="placeholder"
           (blur)="onTouched()"

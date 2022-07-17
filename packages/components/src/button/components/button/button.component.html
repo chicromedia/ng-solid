@@ -1,1 +1,9 @@
-<p>button works!</p>
+<ng-container [ngSwitch]="type">
+    <ng-template [ngSwitchCase]="'link'">
+        <a class="btn btn-link" [attr.href]="href">{{label}}</a>
+    </ng-template>
+
+    <ng-template ngSwitchDefault>
+        <button [attr.type]="type" class="btn" [ngClass]="{'btn-primary': primary, 'btn-block': isBlock}">{{label}}</button>
+    </ng-template>
+</ng-container>

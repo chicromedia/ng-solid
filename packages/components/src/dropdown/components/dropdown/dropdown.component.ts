@@ -34,6 +34,8 @@ export class NsDropdownComponent extends FormControlValueAccessor implements OnI
     @Input()
     defaultFirst: boolean = true;
     @Input()
+    labelTop: boolean = true;
+    @Input()
     placement: 'start' | 'end' = 'start';
 
     @ContentChildren( NsDropdownItemDirective ) items: QueryList<NsDropdownItemDirective>;

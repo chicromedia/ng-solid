@@ -1,4 +1,7 @@
+@import "../../../styles/form";
+
 :host {
+  @include form;
   display: flex;
   align-items: center;
   min-height: 36px;
