@@ -1,7 +1,10 @@
-import { Injectable } from '@angular/core';
 import { Labels } from '../models/labels';
 import { NsEditorSetup } from '../interfaces/editor-config';
 import { Commands } from '../enums/commands.enum';
+import { Inject, Injectable, InjectionToken, Optional } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+
+export const NS_EDITOR_SETUP_TOKEN = new InjectionToken<NsEditorSetup>( 'NsEditorSetup' );
 
 @Injectable( {
     providedIn: 'root'
@@ -12,9 +15,10 @@ export class NsEditorService
     private selectedText: string;
     private readonly labels: Labels;
 
-    constructor( private config: NsEditorSetup, private doc: Document )
+    constructor( @Inject( NS_EDITOR_SETUP_TOKEN ) @Optional() private config: NsEditorSetup,
+                 @Inject( DOCUMENT ) private doc: any )
     {
-        this.labels = new Labels( config.labels );
+        this.labels = new Labels( config ? config.labels : {} );
     }
 
     translate( key: string ): string

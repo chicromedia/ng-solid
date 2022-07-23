@@ -1,4 +1,4 @@
-import { Component, ElementRef, forwardRef, Input, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, ElementRef, forwardRef, HostListener, Input, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormControlValueAccessor } from '../form/models/form-control-value-accessor';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { NsFormContentEditableComponent } from '../form/components/content-editable/content-editable.directive';
@@ -39,7 +39,7 @@ const DEFAULT_COLOR_PRESETS = [
         '[class.ns-editor__disabled]': 'disabled'
     }
 } )
-export class NsEditorComponent extends FormControlValueAccessor<string> implements OnInit
+export class NsEditorComponent extends FormControlValueAccessor<string> implements OnInit, OnDestroy
 {
 
     @Input()
@@ -49,7 +49,10 @@ export class NsEditorComponent extends FormControlValueAccessor<string> implemen
     @Input()
     colorPresets: string[] = DEFAULT_COLOR_PRESETS;
 
-    @ViewChild( NsFormContentEditableComponent, { read: ElementRef } ) textArea: ElementRef<HTMLElement>;
+    @ViewChild( NsFormContentEditableComponent, { read: ElementRef, static: true } ) textArea: ElementRef<HTMLElement>;
+
+    @HostListener( 'click' )
+    focused = () => this.textArea.nativeElement.focus();
 
     constructor( private editor: NsEditorService )
     {
@@ -80,8 +83,11 @@ export class NsEditorComponent extends FormControlValueAccessor<string> implemen
 
     blur(): void
     {
-        this.textArea.nativeElement.focus();
         this.editor.saveSelection();
         this.onTouched();
+    }
+
+    ngOnDestroy()
+    {
     }
 }
