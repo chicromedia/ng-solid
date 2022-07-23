@@ -2,7 +2,7 @@ import { AfterContentInit, Component, ContentChildren, forwardRef, HostListener,
 import { FormControlValueAccessor } from '../../../form/models/form-control-value-accessor';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { NsDropdownItemDirective } from '../directives/dropdown-item.directive';
-import { isEmpty, notEmpty } from '@ng-solid/core';
+import { isEmpty } from '@ng-solid/core';
 
 @Component( {
     selector: 'ns-dropdown',
@@ -51,39 +51,17 @@ export class NsDropdownComponent extends FormControlValueAccessor implements OnI
     {
     }
 
-    writeValue( value: any )
-    {
-        if ( typeof value !== 'undefined' && notEmpty( this.collection ) )
-        {
-            this._value = this.collection.find( item => item[ this.valueField ] == value );
-        }
-    }
-
     ngAfterContentInit()
     {
         if ( isEmpty( this.collection ) && !!this.items )
         {
             this.collection = this.items.toArray();
         }
-        if ( notEmpty( this.collection ) && this.defaultFirst )
-        {
-            [ this.value ] = this.collection;
-        }
     }
 
-    @Input()
-    set value( value: any )
+    get selected()
     {
-        if ( typeof value !== 'undefined' )
-        {
-            this._value = value;
-            this.onChange( this._value[ this.valueField ] );
-        }
-    }
-
-    get value()
-    {
-        return this._value;
+        return this.collection.find( item => item[ this.valueField ] == this.value );
     }
 
     @HostListener( 'click', [ '$event' ] )

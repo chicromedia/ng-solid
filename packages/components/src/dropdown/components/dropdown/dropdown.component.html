@@ -7,12 +7,12 @@
         <ns-icon [name]="iconName" [size]="16"></ns-icon>
     </ng-container>
 
-    <ng-container *ngIf="!labelTop && label && value; else valueOnlyTemp">
-        <strong>{{label}}: </strong><span [innerHtml]="value[labelField]"></span>
+    <ng-container *ngIf="!labelTop && label && selected; else valueOnlyTemp">
+        <strong>{{label}}: </strong><span [innerHtml]="selected[labelField]"></span>
     </ng-container>
 
     <ng-template #valueOnlyTemp>
-        <span [innerHtml]="!!value ? value[labelField] : placeholder"></span>
+        <span [innerHtml]="!!selected ? selected[labelField] : placeholder"></span>
     </ng-template>
 
     <svg class="dropdown-toggle" viewBox="0 0 16 16" fill="currentColor" height="12px" width="12px">
@@ -27,8 +27,8 @@
     <ng-container *ngIf="items?.length; else collectionTemp">
         <li *ngFor="let item of items">
             <button class="dropdown-item"
-                    [ngClass]="{'active': value === item}"
-                    (click)="value = item">
+                    [ngClass]="{'active': selected === item}"
+                    (click)="value = item[valueField]">
                 <svg class="icon-check-mark" viewBox="0 0 16 16" fill="currentColor" height="16px" width="16px">
                     <path d="M6.19,14.51a.77.77,0,0,1-.57-.25l-4.2-4.8a.75.75,0,0,1,1.13-1l3.56,4.06L13.36,1.82a.75.75,0,0,1,1-.21.76.76,0,0,1,.21,1.05L6.81,14.18a.73.73,0,0,1-.58.33Z"></path>
                 </svg>
@@ -40,8 +40,8 @@
     <ng-template #collectionTemp>
         <li *ngFor="let item of collection">
             <button class="dropdown-item"
-                    [ngClass]="{'active': value === item}"
-                    (click)="value = item">
+                    [ngClass]="{'active': selected === item}"
+                    (click)="value = item[valueField]">
                 <svg class="icon-check-mark" viewBox="0 0 16 16" fill="currentColor" height="16px" width="16px">
                     <path d="M6.19,14.51a.77.77,0,0,1-.57-.25l-4.2-4.8a.75.75,0,0,1,1.13-1l3.56,4.06L13.36,1.82a.75.75,0,0,1,1-.21.76.76,0,0,1,.21,1.05L6.81,14.18a.73.73,0,0,1-.58.33Z"></path>
                 </svg>
