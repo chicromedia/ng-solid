@@ -1,0 +1,54 @@
+.ns-editor {
+  &__color-text {
+    position: relative;
+
+    span {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 17px;
+      margin: auto;
+      width: 12px;
+      height: 3px;
+      border-radius: 3px;
+      background: linear-gradient(to right, rgb(101, 84, 192) 25%, rgb(0, 184, 217) 25%, rgb(0, 184, 217) 50%, rgb(255, 153, 31) 50%, rgb(255, 153, 31) 75%, rgb(222, 53, 11) 75%);
+    }
+  }
+
+  &__popup {
+    position: absolute;
+    min-width: 10rem;
+    padding: 0.8rem;
+    width: 230px;
+    margin: 0;
+    z-index: 1000;
+    font-size: 1rem;
+    color: #212529;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 0.25rem;
+  }
+
+  &__color--container {
+    display: flex;
+    justify-content: space-between;
+
+    & + .ns-editor__color--container {
+      margin-top: 5px;
+    }
+  }
+
+  &__color {
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+  }
+}
+
+

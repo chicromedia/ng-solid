@@ -1,0 +1,26 @@
+<button type="button" class="btn" (click)="toggle()">
+    <span class="ns-editor__color-text">
+        <svg role="presentation" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14 12.5h-4l-.874 2.186A.5.5 0 0 1 8.66 15H7.273a.5.5 0 0 1-.456-.705l4.05-9A.5.5 0 0 1 11.323 5h1.354a.5.5 0 0 1 .456.295l4.05 9a.5.5 0 0 1-.456.705h-1.388a.5.5 0 0 1-.465-.314L14 12.5zm-.6-1.5L12 7.5 10.6 11h2.8z"
+                  fill-rule="evenodd"></path>
+        </svg>
+        <span></span>
+    </span>
+
+    <svg role="presentation" class="ns-editor__toggle" fill="currentColor" height="12px" viewBox="0 0 16 16"
+         width="12px">
+        <path d="M14,11.75a.74.74,0,0,1-.53-.22L8,6.06,2.53,11.53a.75.75,0,0,1-1.06-1.06l6-6a.75.75,0,0,1,1.06,0l6,6a.75.75,0,0,1,0,1.06A.74.74,0,0,1,14,11.75Z"></path>
+    </svg>
+</button>
+
+<div *ngIf="showPopup" class="ns-editor__popup">
+    <div *ngFor="let colorGroup of presets; trackBy: trackByIndex" class="ns-editor__color--container">
+        <button class="ns-editor__color"
+                *ngFor="let color of colorGroup; trackBy: trackByIndex"
+                type="button"
+                [ngStyle]="{backgroundColor:color, color:getContrastYIQ(color)}"
+                [title]="color"
+                (click)="onColorSelect(color)"
+        ></button>
+    </div>
+</div>

@@ -1,15 +1,6 @@
-import {
-    Component,
-    Directive,
-    ElementRef,
-    forwardRef,
-    HostBinding,
-    HostListener,
-    Input,
-    Renderer2
-} from '@angular/core';
-import { NG_VALUE_ACCESSOR } from "@angular/forms";
-import { FormControlValueAccessor } from "../../models/form-control-value-accessor";
+import { Component, ElementRef, forwardRef, HostBinding, HostListener, Input, Renderer2 } from '@angular/core';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { FormControlValueAccessor } from '../../models/form-control-value-accessor';
 
 @Component( {
     selector: 'ns-content-editable',
@@ -20,7 +11,14 @@ import { FormControlValueAccessor } from "../../models/form-control-value-access
             useExisting: forwardRef( () => NsFormContentEditableComponent ),
             multi: true
         }
-    ]
+    ],
+    styles: [
+        ':host{display:block; position:relative; background-color:#fff; width:100%; height:fit-content; min-height:7rem; outline:none;}',
+        ':host.ns-content__disabled{background-color: #e9ecef}'
+    ],
+    host: {
+        '[class.ns-content__disabled]': 'disabled'
+    }
 } )
 export class NsFormContentEditableComponent extends FormControlValueAccessor<string>
 {
@@ -32,18 +30,21 @@ export class NsFormContentEditableComponent extends FormControlValueAccessor<str
 
     constructor( private elementRef: ElementRef, private renderer: Renderer2 )
     {
-        super()
+        super();
     }
 
     writeValue( value: string ): void
     {
-        this.renderer.setProperty( this.elementRef.nativeElement, 'innerText', value || '' );
+        if ( typeof value !== 'undefined' )
+        {
+            this.renderer.setProperty( this.elementRef.nativeElement, 'innerHTML', value || '' );
+        }
     }
 
     @HostListener( 'input' )
     onInput(): void
     {
-        this.onChange( this.elementRef.nativeElement.innerText );
+        this.onChange( this.elementRef.nativeElement.innerHTML );
     }
 
     @HostListener( 'blur' )
@@ -52,12 +53,18 @@ export class NsFormContentEditableComponent extends FormControlValueAccessor<str
         this.onTouched();
     }
 
-    @HostListener( 'keydown', [ "$event" ] )
+    @HostListener( 'keydown', [ '$event' ] )
     onKeyUp( event: KeyboardEvent )
     {
-        if ( this.maxLength && this.elementRef.nativeElement.innerText.length >= this.maxLength && event.key !== "Backspace" )
+        if ( this.maxLength && this.elementRef.nativeElement.innerText.length >= this.maxLength && event.key !== 'Backspace' )
         {
             event.preventDefault();
         }
+    }
+
+    setDisabledState( isDisabled: boolean )
+    {
+        this.disabled = isDisabled;
+        this.enabled = !isDisabled;
     }
 }

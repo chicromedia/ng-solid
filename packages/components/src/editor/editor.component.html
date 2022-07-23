@@ -1,0 +1,33 @@
+<ng-container *ngIf="label">
+    <label class="form-label" [attr.for]="id">{{label}}</label>
+</ng-container>
+
+<ul class="ns-editor-toolbar">
+    <li class="ns-editor-item">
+        <ns-editor-paragraph></ns-editor-paragraph>
+    </li>
+
+    <li class="ns-editor-item">
+        <ns-editor-toggle></ns-editor-toggle>
+    </li>
+
+    <li class="ns-editor-item">
+        <ns-editor-color-picker [presets]="presets"></ns-editor-color-picker>
+    </li>
+
+    <li class="ns-editor-item">
+        <ns-editor-list></ns-editor-list>
+    </li>
+
+    <li class="ns-editor-item">
+        <ns-editor-link></ns-editor-link>
+    </li>
+</ul>
+
+<ns-content-editable class="ns-editor__content"
+                     [id]="id"
+                     (blur)="blur()"
+                     [maxlength]="maxLength"
+                     [disabled]="disabled"
+                     [(ngModel)]="value"
+></ns-content-editable>

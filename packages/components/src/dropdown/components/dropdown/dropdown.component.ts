@@ -32,7 +32,7 @@ export class NsDropdownComponent extends FormControlValueAccessor implements OnI
     @Input()
     iconName: string;
     @Input()
-    defaultFirst: boolean = true;
+    defaultFirst: boolean;
     @Input()
     labelTop: boolean = true;
     @Input()
@@ -65,6 +65,10 @@ export class NsDropdownComponent extends FormControlValueAccessor implements OnI
         {
             this.collection = this.items.toArray();
         }
+        if ( notEmpty( this.collection ) && this.defaultFirst )
+        {
+            [ this.value ] = this.collection;
+        }
     }
 
     @Input()
@@ -82,9 +86,10 @@ export class NsDropdownComponent extends FormControlValueAccessor implements OnI
         return this._value;
     }
 
-    @HostListener( 'click' )
-    onClick()
+    @HostListener( 'click', [ '$event' ] )
+    onClick( event: MouseEvent )
     {
+        event.preventDefault();
         this.show = !this.show;
     }
 }

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NsTextAreaComponent } from './text-area.component';
+import { NsEditorListComponent } from './list.component';
 
-describe('TextAreaComponent', () => {
-  let component: NsTextAreaComponent;
-  let fixture: ComponentFixture<NsTextAreaComponent>;
+describe('ListComponent', () => {
+  let component: NsEditorListComponent;
+  let fixture: ComponentFixture<NsEditorListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NsTextAreaComponent ]
+      declarations: [ NsEditorListComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NsTextAreaComponent);
+    fixture = TestBed.createComponent(NsEditorListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

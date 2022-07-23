@@ -1,0 +1,78 @@
+@import "../styles/form";
+
+:host {
+  @include form;
+}
+
+.ns-editor {
+  &-toolbar {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background: #fafbfb;
+    border: 1px solid #cfcfdb;
+    border-bottom: none;
+    border-radius: 0.375rem 0.375rem 0 0;
+    padding: 0.375rem 0.5rem;
+    list-style: none;
+    margin-bottom: unset;
+  }
+
+  &-item {
+    display: flex;
+    align-items: center;
+
+    .dropdown {
+      display: inline-block;
+      margin-bottom: unset;
+
+      & > .btn {
+        background-color: transparent;
+        border: unset;
+        box-shadow: none;
+      }
+    }
+
+    .btn {
+      position: relative;
+      padding: unset;
+    }
+
+    &:not(:last-child):after {
+      font-size: 2rem;
+      font-weight: 100;
+      color: #dfdfdf;
+      content: "|";
+      margin: 0 8px;
+    }
+
+    svg {
+      fill: #5c5f62;
+      width: 1.5rem;
+      height: 1.5rem;
+
+      &.ns-editor__toggle, &.dropdown-toggle {
+        width: .8rem;
+        height: .8rem;
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  &__content {
+    padding: .5rem;
+    border: 1px solid #cfcfdb;
+    border-radius: 0 0 0.375rem 0.375rem;
+
+    textarea {
+      outline: none;
+      margin-bottom: -3px;
+      border: unset;
+      width: 100%;
+    }
+  }
+
+  &__disabled {
+    pointer-events: none;
+  }
+}
