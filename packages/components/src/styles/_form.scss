@@ -1,4 +1,5 @@
 @mixin form {
+  position: relative;
   font-size: .875rem;
 
   .form {
@@ -24,11 +25,5 @@
         font-size: .875rem;
       }
     }
-  }
-
-  label {
-    color: #362d59;
-    display: block;
-    font-weight: 700;
   }
 }

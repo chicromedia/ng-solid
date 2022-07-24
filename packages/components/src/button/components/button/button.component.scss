@@ -11,12 +11,12 @@
   height: 42px;
   border-radius: 0.5rem;
 
-  &-primary {
+  &__primary {
     background-color: #3665f3;
     color: #fff;
   }
 
-  &-secondary {
+  &__secondary {
     @include btn-secondary;
   }
 }

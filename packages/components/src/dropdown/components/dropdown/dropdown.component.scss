@@ -3,7 +3,6 @@
 
 :host {
   @include form;
-  display: block;
   margin-bottom: .5rem;
 }
 
@@ -12,12 +11,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.5rem;
   min-width: 200px;
   padding: 9px;
 
   &-secondary {
     @include btn-secondary;
+    background-color: #fff;
+    border: 1px solid #cfcfdb;
   }
 }
 

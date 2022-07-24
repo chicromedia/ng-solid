@@ -13,13 +13,17 @@
 }
 
 @mixin btn-secondary {
-  color: #3e3446;
-  background-color: #fff;
+  color: #42526E;
+  background-color: rgba(9, 30, 66, 0.04);
+  border: transparent;
 
   &:focus, &:active {
-    color: #3e3446;
-    background-color: #f5f3f7;
+    color: #42526E;
     border: 1px solid rgb(219, 214, 225);
-    box-shadow: rgb(43 34 51 / 4%) 0 1px 4px !important;
+    box-shadow: rgb(43 34 51 / 4%) 0 1px 4px;
+  }
+
+  &:hover {
+    background-color: rgba(9, 30, 66, 0.08);
   }
 }

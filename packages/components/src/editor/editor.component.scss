@@ -5,6 +5,9 @@
 }
 
 .ns-editor {
+  display: block;
+  margin-bottom: 0.5rem;
+
   &-toolbar {
     display: flex;
     justify-content: flex-start;
@@ -27,6 +30,7 @@
       margin-bottom: unset;
 
       & > .btn {
+        margin-bottom: unset;
         background-color: transparent;
         border: unset;
         box-shadow: none;

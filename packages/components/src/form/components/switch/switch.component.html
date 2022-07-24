@@ -1,4 +1,7 @@
-<div class="custom-control custom-switch">
-	<input type="checkbox" class="custom-control-input" [checked]="checked" [attr.id]="id" [disabled]="disabled">
-	<label class="custom-control-label" [attr.for]="id">{{label}}</label>
-</div>
+<input type="checkbox"
+       class="ns-switch__input"
+       role="switch"
+       [(ngModel)]="value"
+       [attr.id]="id"
+       [disabled]="disabled">
+<label class="ns-switch__label" [attr.for]="id">{{label}}</label>

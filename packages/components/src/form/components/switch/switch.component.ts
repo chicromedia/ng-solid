@@ -1,42 +1,35 @@
-import { Component, HostListener, Input, OnInit } from '@angular/core';
-import { FormControlValueAccessor } from "../../models/form-control-value-accessor";
-import { YesNo } from "@ng-solid/core";
+import { Component, Input, OnInit } from '@angular/core';
+import { FormControlValueAccessor } from '../../models/form-control-value-accessor';
+import { YesNo } from '@ng-solid/core';
 
-@Component({
-  selector: 'ns-switch',
-  templateUrl: './switch.component.html',
-  styleUrls: [ './switch.component.scss' ]
-})
+@Component( {
+    selector: 'ns-switch',
+    templateUrl: './switch.component.html',
+    styleUrls: [ './switch.component.scss' ],
+    host: {
+        '[class.ns-switch]': 'true'
+    }
+} )
 export class NsSwitchComponent extends FormControlValueAccessor implements OnInit
 {
 
-  @Input()
-  autoChange: boolean = true;
+    @Input()
+    boolean: boolean = true;
 
-  ngOnInit()
-  {
-  }
-
-  writeValue(value: string)
-  {
-    if ( !this.disabled )
+    ngOnInit()
     {
-      super.writeValue(value);
     }
-  }
 
-  @HostListener('click', [ '$event' ])
-  onClick(event)
-  {
-    if ( this.autoChange && !this.disabled )
+    @Input()
+    set value( checked: boolean )
     {
-      this.value = YesNo.isYes(this.value) ? YesNo.NO : YesNo.YES;
+        this._value = checked;
+        this.onChange( this.boolean ? checked : YesNo.yesOrNo( checked ) );
     }
-  }
 
-  get checked()
-  {
-    return YesNo.isYes(this.value);
-  }
+    get value()
+    {
+        return this._value;
+    }
 
 }

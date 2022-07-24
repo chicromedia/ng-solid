@@ -15,7 +15,7 @@ export class NsButtonComponent implements OnInit
     @Input()
     type: 'submit' | 'button' | 'link' = 'button';
     @Input()
-    primary: boolean = true;
+    primary: boolean;
     @Input()
     href: string;
     @Input()
