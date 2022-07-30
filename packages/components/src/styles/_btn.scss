@@ -10,6 +10,10 @@
   line-height: 1rem;
   padding: 10px 16px;
   box-shadow: rgb(43 34 51 / 4%) 0 1px 4px;
+
+  &:disabled {
+    pointer-events: none;
+  }
 }
 
 @mixin btn-secondary {

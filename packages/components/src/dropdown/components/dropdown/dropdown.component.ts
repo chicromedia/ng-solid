@@ -68,6 +68,9 @@ export class NsDropdownComponent extends FormControlValueAccessor implements OnI
     onClick( event: MouseEvent )
     {
         event.preventDefault();
-        this.show = !this.show;
+        if ( !this.disabled )
+        {
+            this.show = !this.show;
+        }
     }
 }

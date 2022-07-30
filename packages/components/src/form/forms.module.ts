@@ -12,6 +12,7 @@ import { NsIconModule } from '../icon/icon.module';
 import { NsInputGroupComponent } from './components/input-group/input-group.component';
 import { NsDropdownModule } from '../dropdown/dropdown.module';
 import { NsButtonModule } from '../button/button.module';
+import { NsTextAreaComponent } from './components/text-area/text-area.component';
 
 
 @NgModule( {
@@ -31,7 +32,8 @@ import { NsButtonModule } from '../button/button.module';
         NsPasswordComponent,
         NsFormContentEditableComponent,
         NsSwitchComponent,
-        NsInputGroupComponent
+        NsInputGroupComponent,
+        NsTextAreaComponent
     ],
     exports: [
         NsInputComponent,
@@ -40,7 +42,8 @@ import { NsButtonModule } from '../button/button.module';
         NsPasswordComponent,
         NsFormContentEditableComponent,
         NsSwitchComponent,
-        NsInputGroupComponent
+        NsInputGroupComponent,
+        NsTextAreaComponent
     ]
 } )
 export class NsFormsModule

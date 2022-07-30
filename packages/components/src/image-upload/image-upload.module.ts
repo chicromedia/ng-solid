@@ -17,4 +17,5 @@ import { NsFormsModule } from '../form/forms.module';
 } )
 export class NsImageUploadModule
 {
+
 }

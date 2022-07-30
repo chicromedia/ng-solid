@@ -1,20 +1,21 @@
-import { Component, ElementRef, forwardRef, Input, OnInit, Output, Renderer2, ViewChild } from '@angular/core';
+import { Component, ElementRef, forwardRef, Inject, Input, OnInit, Optional, Renderer2, ViewChild } from '@angular/core';
 import { FormControlValueAccessor } from '../../form/models/form-control-value-accessor';
-import { ImageUpload } from '../models/image-upload';
-import { NG_VALIDATORS } from '@angular/forms';
-import { Subject } from 'rxjs';
+import { NsImageUpload } from '../models/image-upload';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { NS_IMAGE_UPLOAD_PROVIDER, NsImageUploadClient } from '../models/image-upload-client';
 
 @Component( {
     selector: 'ns-image-upload',
     templateUrl: './image-upload.component.html',
     styleUrls: [ './image-upload.component.scss' ],
     providers: [ {
-        provide: NG_VALIDATORS,
+        provide: NG_VALUE_ACCESSOR,
         useExisting: forwardRef( () => NsImageUploadComponent ),
         multi: true
     } ],
     host: {
-        '[class.ns-image-loaded]': '!multi && !!value'
+        '[class.ns-image--loaded]': '!multi && !!value',
+        '[class.ns-image--disabled]': 'disabled'
     }
 } )
 export class NsImageUploadComponent extends FormControlValueAccessor implements OnInit
@@ -26,14 +27,12 @@ export class NsImageUploadComponent extends FormControlValueAccessor implements 
 
     @ViewChild( 'input', { static: false, read: ElementRef } ) imgRef: ElementRef<HTMLInputElement>;
 
-    @Output()
-    selected: Subject<number[]> = new Subject<number[]>();
-
-    private _selected: number[] = [];
+    public loading: Set<string> = new Set<string>();
     private _fromIndex: number;
     private _toIndex: number;
 
-    constructor( private renderer: Renderer2 )
+    constructor( @Optional() @Inject( NS_IMAGE_UPLOAD_PROVIDER ) private client: NsImageUploadClient,
+                 private renderer: Renderer2 )
     {
         super();
     }
@@ -46,7 +45,7 @@ export class NsImageUploadComponent extends FormControlValueAccessor implements 
     {
         if ( Array.isArray( value ) )
         {
-            this._value = value.map( i => new ImageUpload( i ) );
+            this._value = value.map( i => new NsImageUpload( i ) );
         } else
         {
             this._value = ( this.multi && !value ) ? [] : value;
@@ -71,23 +70,48 @@ export class NsImageUploadComponent extends FormControlValueAccessor implements 
                 const { name, type, size } = imageFile;
                 const result = reader.result.toString();
                 const data = result.split( ',' )[ 1 ];
-                const extension = name.match( /[^.]+$/ ).toString();
-                this.add( new ImageUpload( { name, type, size, data, extension } ) );
+                if ( ( !Array.isArray( this.value ) && data !== this.value.data ) || !this.value.some( i => i.data === data ) )
+                {
+                    const extension = name.match( /[^.]+$/ ).toString();
+                    this.add( new NsImageUpload( { name, type, size, data, extension } ) );
+                    this.imgRef.nativeElement.value = null;
+                }
             };
         }
     }
 
-    add( image: ImageUpload )
+    add( image: NsImageUpload )
     {
-        this.value = this.multi ? ( this.value || [] ).concat( image ) : image;
+        this.loading.add( image.name );
+        this._value = this.multi ? ( this.value || [] ).concat( image ) : image;
+        if ( this.client )
+        {
+            this.client.upload( image ).subscribe( data =>
+            {
+                this.value = this.multi ? ( this.value || [] ).map( img => img.name == data.name ? data : img ) : data;
+                this.loading.delete( image.name );
+            } );
+        } else
+        {
+            this.loading.delete( image.name );
+        }
     }
 
-    select( target: EventTarget, index: number )
+    remove( image: NsImageUpload )
     {
-        this._selected = ( target as HTMLInputElement ).checked
-            ? this._selected.concat( index )
-            : this._selected.filter( i => i !== index );
-        this.selected.next( this._selected );
+        this.loading.add( image.name );
+        if ( this.client && !!image.id )
+        {
+            this.client.remove( image ).subscribe( () =>
+            {
+                this.value = this.multi ? ( this.value || [] ).filter( img => img.name !== image.name ) : null;
+                this.loading.delete( image.name );
+            } );
+        } else
+        {
+            this.value = this.multi ? ( this.value || [] ).filter( img => img.name !== image.name ) : null;
+            this.loading.delete( image.name );
+        }
     }
 
     dragstart( event: DragEvent, index: number )

@@ -1,4 +1,4 @@
-export class ImageUpload
+export class NsImageUpload
 {
     public id: number;
     public name: string;
@@ -7,7 +7,7 @@ export class ImageUpload
     public size: number;
     public extension: string;
 
-    constructor( props: Partial<ImageUpload> = {} )
+    constructor( props: Partial<NsImageUpload> = {} )
     {
         Object.assign( this, props );
     }

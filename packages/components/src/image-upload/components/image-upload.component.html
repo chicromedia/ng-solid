@@ -1,40 +1,51 @@
-<div class="ns-image-wrap" [ngClass]="{'ns-image-multi': multi && value && value.length}">
+<div class="ns-image__wrap" [ngClass]="{'ns-image__multi': multi && value && value.length}">
     <ng-container *ngIf="multi">
-        <div class="ns-image-thumbnail" *ngFor="let image of value; index as i"
-             [draggable]="value?.length > 1"
+        <div class="ns-image__thumbnail"
+             *ngFor="let image of value; index as i"
+             [draggable]="!disabled && value?.length > 1"
              (dragstart)="dragstart($event, i)"
              (dragend)="dragend($event)"
              (dragover)="dragover($event, i)"
              (drop)="drop($event)"
         >
-            <button type="button">
+            <button type="button" class="ns-image__button"
+                    [ngClass]="{'ns-image__loading': loading.has(image.name)}"
+                    [disabled]="disabled">
                 <img class="ns-image" [src]="image | nsImageUrl" [attr.alt]="image.name">
+                <ns-icon class="ns-image__preload" name="preload" [size]="32"></ns-icon>
 
-                <div class="ns-image-overlay">
-                    <ns-checkbox class="ns-image-select" (change)="select($event.target,i)"></ns-checkbox>
-                    <ns-icon class="ns-image-drag" name="drag-handle" [size]="32"></ns-icon>
+                <div class="ns-image__overlay">
+                    <ns-icon class="ns-image__drag" name="drag-handle" [size]="32"></ns-icon>
+                    <button type="button" class="ns-image__remove" (click)="remove(image)">
+                        <ns-icon name="trash" [size]="32"></ns-icon>
+                    </button>
                 </div>
             </button>
         </div>
     </ng-container>
 
-    <button type="button" class="ns-image-drag-container"
+    <button type="button" class="ns-image__drag-container"
             (click)="onClick()"
-            [hidden]="multi && value?.length >= limit">
+            [ngClass]="{'ns-image--loading': value && !multi && loading.has(value?.name)}"
+            [hidden]="multi && value?.length >= limit"
+            [disabled]="disabled">
+
         <ng-container *ngIf="value && !multi">
-            <img class="ns-image-fluid" [src]="value | nsImageUrl" [ngClass]="{disabled: disabled}" alt>
+            <img class="ns-image__fluid" [src]="value | nsImageUrl" [ngClass]="{disabled: disabled}" alt>
         </ng-container>
 
-        <ng-container *ngIf="!disabled">
-            <div class="ns-image-overlay">
-                <div class="ns-image-empty">
-                    <ns-icon name="image"></ns-icon>
-                    <span>{{label}}</span>
-                </div>
+        <div class="ns-image__overlay">
+            <div class="ns-image__empty">
+                <ns-icon name="image"></ns-icon>
+                <span>{{label}}</span>
             </div>
-        </ng-container>
+        </div>
 
-        <input [hidden]="true" type="file" (change)="load()" [accept]="accept" #input [disabled]="disabled">
+        <input [hidden]="true" type="file"
+               (change)="load()"
+               [multiple]="false"
+               [accept]="accept" #input
+               [disabled]="disabled"/>
     </button>
 </div>
 

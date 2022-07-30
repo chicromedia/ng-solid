@@ -2,17 +2,17 @@
     <label class="form-label">{{label}}</label>
 </ng-container>
 
-<button class="btn btn-secondary" [id]="id" type="button">
+<button class="btn btn-secondary" [id]="id" type="button" [disabled]="disabled">
     <ng-container *ngIf="iconName">
         <ns-icon [name]="iconName" [size]="16"></ns-icon>
     </ng-container>
 
     <ng-container *ngIf="!labelTop && label && selected; else valueOnlyTemp">
-        <strong>{{label}}: </strong><span [innerHtml]="selected[labelField]"></span>
+        <label class="form-label">{{label}}: <span [innerHtml]="selected[labelField]"></span></label>
     </ng-container>
 
     <ng-template #valueOnlyTemp>
-        <span [innerHtml]="!!selected ? selected[labelField] : placeholder"></span>
+        <label class="form-label" [innerHtml]="!!selected ? selected[labelField] : placeholder"></label>
     </ng-template>
 
     <svg class="dropdown-toggle" viewBox="0 0 16 16" fill="currentColor" height="12px" width="12px">

@@ -3,8 +3,9 @@
 :host {
   display: block;
   min-height: 1.5rem;
-  padding-left: 2.5em;
+  padding-left: 2.5rem;
   margin-bottom: 0.5rem;
+  padding-top: 0.25rem;
 
   .ns-switch {
     &__input {
@@ -14,7 +15,7 @@
       width: 2em;
       height: 1em;
       float: left;
-      margin-top: 0.25em;
+      margin-top: 0.2em;
       vertical-align: top;
       background-size: contain;
       background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba%280, 0, 0, 0.25%29'/%3e%3c/svg%3e");

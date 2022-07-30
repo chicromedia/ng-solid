@@ -14,10 +14,10 @@ import { FormControlValueAccessor } from '../../models/form-control-value-access
     ],
     styles: [
         ':host{display:block; position:relative; background-color:#fff; width:100%; height:fit-content; min-height:7rem; outline:none;}',
-        ':host.ns-content__disabled{background-color: #e9ecef}'
+        ':host.ns-content--disabled{background-color: #e9ecef; opacity: 0.65;}'
     ],
     host: {
-        '[class.ns-content__disabled]': 'disabled'
+        '[class.ns-content--disabled]': 'disabled'
     }
 } )
 export class NsFormContentEditableComponent extends FormControlValueAccessor<string>

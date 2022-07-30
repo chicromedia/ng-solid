@@ -3,13 +3,23 @@
 
 :host {
   @include form;
-  margin-bottom: .5rem;
+
+  .form {
+    &-label {
+      margin-bottom: unset;
+      font-weight: 600;
+
+      span {
+        font-weight: 400;
+      }
+    }
+  }
 }
 
 .btn {
   @include btn;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   margin-bottom: 0.5rem;
   min-width: 200px;
@@ -19,6 +29,10 @@
     @include btn-secondary;
     background-color: #fff;
     border: 1px solid #cfcfdb;
+  }
+
+  &:disabled {
+    background-color: #e9ecef;
   }
 }
 
@@ -34,9 +48,9 @@
   }
 
   &-toggle {
+    margin-left: auto;
     transform: rotate(0deg);
     transition: transform 120ms ease-in-out 0s;
-    margin-left: 6px;
     flex-shrink: 0;
   }
 

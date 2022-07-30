@@ -1,14 +1,18 @@
 @import "../../../styles/btn";
 
+:host {
+  display: block;
+  width: fit-content;
+}
+
 .btn {
   @include btn;
   display: block;
   vertical-align: center;
   margin-bottom: 0.3rem;
-  min-width: 200px;
+  min-width: 5rem;
   padding: 9px;
   text-align: center;
-  height: 42px;
   border-radius: 0.5rem;
 
   &__primary {
@@ -18,5 +22,10 @@
 
   &__secondary {
     @include btn-secondary;
+  }
+
+  &__block {
+    width: 100%;
+    height: 42px;
   }
 }

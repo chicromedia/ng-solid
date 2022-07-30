@@ -37,7 +37,7 @@ const DEFAULT_COLOR_PRESETS = [
     encapsulation: ViewEncapsulation.None,
     host: {
         '[class.ns-editor]': 'true',
-        '[class.ns-editor__disabled]': 'disabled'
+        '[class.ns-editor--disabled]': 'disabled'
     }
 } )
 export class NsEditorComponent extends FormControlValueAccessor<string> implements OnInit, OnDestroy
