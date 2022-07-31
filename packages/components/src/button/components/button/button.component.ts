@@ -5,7 +5,7 @@ import { Component, Input, OnInit } from '@angular/core';
     templateUrl: './button.component.html',
     styleUrls: [ './button.component.scss' ],
     host: {
-        '[class.d-grid]': 'isBlock'
+        '[class.ns-button__grid]': 'isBlock'
     }
 } )
 export class NsButtonComponent implements OnInit

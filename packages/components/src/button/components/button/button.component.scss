@@ -3,6 +3,11 @@
 :host {
   display: block;
   width: fit-content;
+
+  &.ns-button__grid {
+    display: grid;
+    width: 100%;
+  }
 }
 
 .btn {

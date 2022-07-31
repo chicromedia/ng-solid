@@ -1,6 +1,6 @@
 {
   "name": "@ng-solid/core",
-  "version": "2.1.4",
+  "version": "2.1.5",
   "license": "MIT",
   "engines": {
     "node": ">=10.0.0"
@@ -12,12 +12,12 @@
     "url": "https://gitlab.com/chicromedia"
   },
   "peerDependencies": {
-    "@angular/common": "^10.2.5",
-    "@angular/platform-browser": "^10.2.5",
-    "@angular/core": "^10.2.5"
+    "@angular/common": "^13.3.11",
+    "@angular/platform-browser": "^13.3.11",
+    "@angular/core": "^13.3.11"
   },
   "dependencies": {
-    "tslib": "^1.10.0"
+    "tslib": "^2.0.0"
   },
   "keywords": [
     "@ng-solid",
