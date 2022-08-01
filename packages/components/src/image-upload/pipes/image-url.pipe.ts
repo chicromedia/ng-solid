@@ -17,7 +17,7 @@ export class NsImageUrlPipe implements PipeTransform
                 case isValidURL( image.data ) || /data:/.test( image.data ) :
                     return image.data;
                 default:
-                    return `data:${ image.type };base64,${ image.data }`;
+                    return `data:${ image.mimeType };base64,${ image.data }`;
             }
         }
     }

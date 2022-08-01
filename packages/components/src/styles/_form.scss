@@ -24,6 +24,10 @@
         font-weight: 600;
         font-size: .875rem;
       }
+
+      &:disabled {
+        opacity: 0.65;
+      }
     }
   }
 }

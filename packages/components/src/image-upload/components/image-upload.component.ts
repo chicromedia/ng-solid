@@ -73,7 +73,7 @@ export class NsImageUploadComponent extends FormControlValueAccessor implements 
                 if ( ( !Array.isArray( this.value ) && data !== this.value.data ) || !this.value.some( i => i.data === data ) )
                 {
                     const extension = name.match( /[^.]+$/ ).toString();
-                    this.add( new NsImageUpload( { name, type, size, data, extension } ) );
+                    this.add( new NsImageUpload( { name, mimeType: type, size, data, extension } ) );
                     this.imgRef.nativeElement.value = null;
                 }
             };
@@ -100,7 +100,7 @@ export class NsImageUploadComponent extends FormControlValueAccessor implements 
     remove( image: NsImageUpload )
     {
         this.loading.add( image.name );
-        if ( this.client && !!image.id )
+        if ( this.client && !!image.guid )
         {
             this.client.remove( image ).subscribe( () =>
             {

@@ -3,17 +3,6 @@
 
 :host {
   @include form;
-
-  .form {
-    &-label {
-      margin-bottom: unset;
-      font-weight: 600;
-
-      span {
-        font-weight: 400;
-      }
-    }
-  }
 }
 
 .btn {
@@ -29,6 +18,17 @@
     @include btn-secondary;
     background-color: #fff;
     border: 1px solid #cfcfdb;
+  }
+
+  .form {
+    &-label {
+      margin-bottom: unset;
+      font-weight: 600;
+
+      span {
+        font-weight: 400;
+      }
+    }
   }
 
   &:disabled {
