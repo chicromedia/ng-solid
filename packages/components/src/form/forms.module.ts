@@ -10,7 +10,6 @@ import { RouterModule } from '@angular/router';
 import { NsSwitchComponent } from './components/switch/switch.component';
 import { NsIconModule } from '../icon/icon.module';
 import { NsInputGroupComponent } from './components/input-group/input-group.component';
-import { NsDropdownModule } from '../dropdown/dropdown.module';
 import { NsButtonModule } from '../button/button.module';
 import { NsTextAreaComponent } from './components/text-area/text-area.component';
 
@@ -22,7 +21,6 @@ import { NsTextAreaComponent } from './components/text-area/text-area.component'
         ReactiveFormsModule,
         RouterModule,
         NsIconModule,
-        NsDropdownModule,
         NsButtonModule
     ],
     declarations: [

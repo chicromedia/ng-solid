@@ -2,6 +2,7 @@
 @import "../../../styles/btn";
 
 :host {
+  display: block;
   @include form;
 }
 
@@ -36,9 +37,51 @@
   }
 }
 
+.ns-dropdown {
+  &__search {
+    display: flex;
+    position: relative;
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-left: 10px;
+    padding-right: 10px;
+    align-items: center;
+    height: 36px;
+  }
+
+  &__placeholder {
+    color: #bdbed4;
+  }
+
+  &__value {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: .875rem;
+    z-index: 1001;
+  }
+
+  &__input {
+    position: absolute;
+    left: 0;
+    width: 100%;
+
+    .form-control {
+      margin-bottom: unset;
+    }
+  }
+}
+
 .dropdown {
   &-menu {
     min-width: 100%;
+    overflow: hidden;
+    overflow-y: auto;
+    position: relative;
+    height: auto;
+    box-sizing: border-box;
+    max-height: 240px;
 
     li {
       position: static;
