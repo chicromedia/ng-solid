@@ -8,6 +8,10 @@
     display: grid;
     width: 100%;
   }
+
+  &.ns-button--disabled, &.ns-button--loading {
+    pointer-events: none;
+  }
 }
 
 .btn {

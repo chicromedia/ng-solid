@@ -7,6 +7,14 @@
         <button [attr.type]="type"
                 class="btn"
                 [ngClass]="{'btn__primary': primary,'btn__secondary': !primary, 'btn__block': isBlock}"
-        >{{label}}</button>
+                [disabled]="disabled || loading"
+        >
+            <ng-container *ngIf="!loading;else showLoading">
+                {{label}}
+            </ng-container>
+            <ng-template #showLoading>
+                <ns-icon name="preload"></ns-icon>
+            </ng-template>
+        </button>
     </ng-template>
 </ng-container>

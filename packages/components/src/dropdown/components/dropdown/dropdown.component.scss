@@ -2,8 +2,10 @@
 @import "../../../styles/btn";
 
 :host {
-  display: block;
   @include form;
+
+  display: block;
+  margin-bottom: 0.5rem;
 }
 
 .btn {
@@ -11,7 +13,6 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  margin-bottom: 0.5rem;
   min-width: 200px;
   padding: 9px;
 
