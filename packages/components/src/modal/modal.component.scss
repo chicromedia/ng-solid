@@ -1,0 +1,79 @@
+.ns-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: var(--ns-backdrop-zindex, 1050);
+
+  &__content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    color: var(--ns-modal-color);
+    pointer-events: auto;
+    background-color: var(--ns-modal-bg, #fff);
+    background-clip: padding-box;
+    border: var(--ns-modal-border-width, 1px) solid var(--ns-modal-border-color, #0000002d);
+    border-radius: var(--ns-modal-border-radius, .5rem);
+    outline: 0;
+  }
+
+  &__dialog {
+    position: relative;
+    width: auto;
+    margin: var(--ns-modal-margin, 1.75rem);
+    margin-right: auto;
+    margin-left: auto;
+    pointer-events: none;
+    max-width: var(--ns-modal-width, 500px);
+    z-index: 1;
+
+    &.ns-modal__lg {
+      @media (min-width: 992px) {
+        --ns-modal-width: 800px;
+      }
+    }
+  }
+
+  &__backdrop {
+    background-color: var(--ns-backdrop-bg, rgb(0 0 0 / 47%));
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  &__title {
+    margin-bottom: unset;
+  }
+
+  &__open {
+    overflow: hidden;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--ns-modal-header-padding, 1rem);
+  }
+
+  &__body {
+    position: relative;
+    flex: 1 1 auto;
+    padding: var(--ns-modal-padding, 1rem);
+  }
+
+  &__footer {
+    display: flex;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    padding: var(--ns-modal-footer-padding, 1rem);
+  }
+
+}

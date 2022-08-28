@@ -1,0 +1,29 @@
+<div class="ns-schedule__header-wrap">
+    <div class="ns-schedule__header"></div>
+    <div class="ns-schedule__header ns-schedule__selected">
+        <div class="ns-schedule__header-date">{{current}}</div>
+        <div class="ns-schedule__header-day">{{days.indexOf(current) | weekday}}</div>
+    </div>
+</div>
+
+<div class="ns-schedule__timeline-wrap">
+    <div class="ns-schedule__timeline" *ngFor="let timeline of hours">
+        <div class="ns-schedule__timeline-day">{{timeline}}</div>
+        <div class="ns-schedule__timeline-day ns-schedule__selected">
+            <ns-schedule-cell [day]="current"
+                              [timeline]="timeline"
+                              [startIn]="0"
+                              [endIn]="30"
+            ></ns-schedule-cell>
+            <ns-schedule-cell [day]="current"
+                              [timeline]="timeline+1"
+                              [startIn]="30"
+                              [endIn]="0"
+            ></ns-schedule-cell>
+
+            <ng-container *ngFor="let schedule of schedules | filterByDay: current">
+                <ns-schedule-event [schedule]="schedule" [timeline]="timeline"></ns-schedule-event>
+            </ng-container>
+        </div>
+    </div>
+</div>

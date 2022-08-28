@@ -1,13 +1,28 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
-import { environment } from "../environments/environment";
-import { NsFacebookModule } from "@ng-solid/facebook";
-import { HttpClientModule } from "@angular/common/http";
-import { NsTwitterModule } from "@ng-solid/twitter";
-import { NsGoogleModule } from "@ng-solid/google";
-import { NsCoreModule } from "@ng-solid/core";
-import { NsDropdownModule, NsIconModule, NsSchemaMarkupModule } from "@ng-solid/components";
+import { environment } from '../environments/environment';
+import { NsFacebookModule } from '@ng-solid/facebook';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { NsTwitterModule } from '@ng-solid/twitter';
+import { NsGoogleModule } from '@ng-solid/google';
+import { NsCoreModule } from '@ng-solid/core';
+import {
+    NS_IMAGE_UPLOAD_PROVIDER,
+    NsButtonModule,
+    NsDropdownModule,
+    NsEditorModule,
+    NsIconModule,
+    NsImageUpload,
+    NsImageUploadClient,
+    NsImageUploadModule,
+    NsScheduleModule,
+    NsSchemaMarkupModule
+} from '@ng-solid/components';
+import { ReactiveFormsModule } from '@angular/forms';
+import { Observable, of } from 'rxjs';
+import { delay } from 'rxjs/operators';
+import { NsModalModule } from '../../packages/components/src/modal/modal.module';
 
 @NgModule( {
     imports: [

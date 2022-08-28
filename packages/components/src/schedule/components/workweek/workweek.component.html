@@ -1,0 +1,36 @@
+<div class="ns-schedule__header-wrap">
+    <div class="ns-schedule__header"></div>
+    <div class="ns-schedule__header"
+         *ngFor="let day of days, index as i"
+         [ngClass]="{'ns-schedule__selected': current === day}"
+    >
+        <div class="ns-schedule__header-date">{{day}}</div>
+        <div class="ns-schedule__header-day">{{(i + 1) | weekday}}</div>
+    </div>
+</div>
+
+<div class="ns-schedule__timeline-wrap">
+    <div class="ns-schedule__timeline" *ngFor="let timeline of hours">
+        <div class="ns-schedule__timeline-day">{{timeline}}</div>
+        <div class="ns-schedule__timeline-day" *ngFor="let day of days"
+             [ngClass]="{'ns-schedule__selected': current === day}"
+        >
+            <ns-schedule-cell [day]="current"
+                              [timeline]="timeline"
+                              [startIn]="0"
+                              [endIn]="30"
+            ></ns-schedule-cell>
+            <ns-schedule-cell [day]="current"
+                              [timeline]="timeline + 1"
+                              [startIn]="30"
+                              [endIn]="0"
+            ></ns-schedule-cell>
+
+            <ng-container *ngFor="let schedule of schedules | filterByDay: day">
+                <ns-schedule-event [schedule]="schedule"
+                                   [timeline]="timeline"
+                ></ns-schedule-event>
+            </ng-container>
+        </div>
+    </div>
+</div>

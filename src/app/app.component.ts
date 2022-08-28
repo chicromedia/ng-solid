@@ -10,17 +10,12 @@ export class AppComponent implements OnInit
   show: boolean;
   constructor() {}
 
-  ngOnInit()
-  {
-  }
+    ngOnInit()
+    {
+    }
 
-  onLogin(status: fb.StatusResponse)
-  {
-
-  }
-
-  onShared(shared: fb.ShareDialogResponse)
-  {
-
-  }
+    click( event: any )
+    {
+        console.log( event );
+    }
 }

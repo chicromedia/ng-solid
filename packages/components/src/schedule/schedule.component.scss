@@ -1,0 +1,87 @@
+:host {
+  display: block;
+  width: 100%;
+  color: #616161;
+  font-size: 12px;
+  background-color: #f5f5f5;
+}
+
+.ns-schedule {
+  &__tools {
+    display: flex;
+    justify-content: space-between;
+    padding: .5rem 0;
+  }
+
+  &__view {
+    margin-bottom: unset;
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    padding: 0 1rem;
+    border: 1px solid #d1d1d1;
+    user-select: none;
+
+    &-date {
+      font-size: 2em;
+      font-weight: 600;
+    }
+
+    &-day {
+      font-size: 1em;
+    }
+
+    &:not(:first-child) {
+      border-left-width: 0;
+    }
+  }
+
+  &__timeline {
+    &-day {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      min-height: 6.5em;
+      border: 1px solid #d1d1d1;
+      border-top-width: 0;
+
+      &:not(:first-child) {
+        border-left-width: 0;
+      }
+
+      &:first-child {
+        text-align: center;
+      }
+
+      &.ns-workweek__selected {
+        background-color: #fafafa;
+      }
+    }
+
+    &-cell {
+      border-color: transparent;
+      background-color: transparent;
+      height: 100%;
+      flex: 1 1;
+
+      &:first-child {
+        border-bottom: 1px dashed #d1d1d1;
+      }
+
+      &:hover {
+        background-color: #ededed;
+      }
+    }
+  }
+
+  &__selected {
+    color: #5b5fc7;
+    background-color: #fff;
+  }
+
+  &__header-wrap, &__timeline {
+    display: grid;
+  }
+}

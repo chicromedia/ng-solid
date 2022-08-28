@@ -1,0 +1,29 @@
+<div class="ns-schedule__tools">
+    <ns-button class="ns-scheduler__today" label="Today" (click)="goToday()"></ns-button>
+
+    <ns-dropdown class="ns-schedule__view" [(ngModel)]="view">
+        <ns-dropdown-item label="Day" value="day"></ns-dropdown-item>
+        <ns-dropdown-item label="Work week" value="workweek"></ns-dropdown-item>
+        <ns-dropdown-item label="Week" value="week"></ns-dropdown-item>
+    </ns-dropdown>
+</div>
+
+<ng-container [ngSwitch]="view">
+    <ng-template [ngSwitchCase]="'day'">
+        <ns-schedule-day [currentDate]="selected"
+                         [schedules]="data"
+        ></ns-schedule-day>
+    </ng-template>
+
+    <ng-template [ngSwitchCase]="'week'">
+        <ns-schedule-week [currentDate]="selected"
+                          [schedules]="data"
+        ></ns-schedule-week>
+    </ng-template>
+
+    <ng-template ngSwitchDefault>
+        <ns-schedule-workweek [currentDate]="selected"
+                              [schedules]="data"
+        ></ns-schedule-workweek>
+    </ng-template>
+</ng-container>

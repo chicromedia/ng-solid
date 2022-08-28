@@ -1,0 +1,7 @@
+<ng-container *ngIf="schedule">
+    <span class="ns-schedule__event--subject">
+        {{schedule?.subject}}
+    </span>
+    <div class="ns-schedule__event--body" [innerHtml]="schedule?.body"></div>
+</ng-container>
+
