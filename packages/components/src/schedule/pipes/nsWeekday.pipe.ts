@@ -1,9 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe( {
-    name: 'weekday'
+    name: 'nsWeekday'
 } )
-export class WeekdayPipe implements PipeTransform
+export class NsWeekdayPipe implements PipeTransform
 {
     private weekdays: string[] = [ 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday' ];
 

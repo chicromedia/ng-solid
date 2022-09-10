@@ -11,11 +11,13 @@ export class WeekComponent implements OnInit
 {
     @Input() schedules: NsSchedule[];
 
-    public current: number;
+    public currentDay: number;
     public first: number;
     public last: number;
     public days: number[];
     public hours: number[];
+
+    private DAYS_OF_WEEK: number = 7;
 
     constructor( private service: NsScheduleService )
     {
@@ -23,7 +25,7 @@ export class WeekComponent implements OnInit
 
     ngOnInit(): void
     {
-        this.current = new Date().getDate();
+        this.currentDay = new Date().getDate();
         this.hours = Array( 24 ).fill( 0 ).map( ( x, y ) => x + y );
     }
 
@@ -34,8 +36,16 @@ export class WeekComponent implements OnInit
         {
             this.first = date.getDate() - date.getDay();
             this.last = this.first + 6;
-            this.days = Array( 7 ).fill( this.first ).map( ( x, y ) => x + y );
             this.service.setCurrentDate( date );
+            let lastDayOfPrevMonth = new Date( date.getFullYear(), date.getMonth() + 1, 0 ).getDate();
+            this.days = Array( this.DAYS_OF_WEEK ).fill( this.first ).map(
+                ( day, index ) => day > 0 ? day + index : lastDayOfPrevMonth--
+            );
         }
+    }
+
+    get current()
+    {
+        return this.service.currentDate;
     }
 }

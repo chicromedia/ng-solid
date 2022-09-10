@@ -10,6 +10,7 @@
   line-height: 1rem;
   padding: 10px 16px;
   box-shadow: rgb(43 34 51 / 4%) 0 1px 4px;
+  outline: none;
 
   &:disabled {
     pointer-events: none;
@@ -19,7 +20,7 @@
 @mixin btn-secondary {
   color: #42526E;
   background-color: rgba(9, 30, 66, 0.04);
-  border: transparent;
+  background-color: #fff;
 
   &:focus, &:active {
     color: #42526E;

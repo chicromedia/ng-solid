@@ -5,7 +5,7 @@
          [ngClass]="{'ns-schedule__selected': current === day}"
     >
         <div class="ns-schedule__header-date">{{day}}</div>
-        <div class="ns-schedule__header-day">{{(i + 1) | weekday}}</div>
+        <div class="ns-schedule__header-day">{{(i + 1) | nsWeekday}}</div>
     </div>
 </div>
 
@@ -26,7 +26,7 @@
                               [endIn]="0"
             ></ns-schedule-cell>
 
-            <ng-container *ngFor="let schedule of schedules | filterByDay: day">
+            <ng-container *ngFor="let schedule of schedules | filterByDay: day; trackBy: identityDay">
                 <ns-schedule-event [schedule]="schedule"
                                    [timeline]="timeline"
                 ></ns-schedule-event>

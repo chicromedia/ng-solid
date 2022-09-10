@@ -5,6 +5,7 @@ import { Component, Input, OnInit } from '@angular/core';
     templateUrl: './button.component.html',
     styleUrls: [ './button.component.scss' ],
     host: {
+        '[class.ns-button]': 'true',
         '[class.ns-button__grid]': 'isBlock',
         '[class.ns-button--loading]': 'loading',
         '[class.ns-button--disabled]': 'disabled'
@@ -26,6 +27,8 @@ export class NsButtonComponent implements OnInit
     disabled: boolean;
     @Input()
     loading: boolean;
+    @Input()
+    iconName: string;
 
     constructor()
     {

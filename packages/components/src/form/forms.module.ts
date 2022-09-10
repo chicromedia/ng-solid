@@ -12,11 +12,14 @@ import { NsIconModule } from '../icon/icon.module';
 import { NsInputGroupComponent } from './components/input-group/input-group.component';
 import { NsButtonModule } from '../button/button.module';
 import { NsTextAreaComponent } from './components/text-area/text-area.component';
+import { NsScheduleCalendarComponent } from '../schedule/components/calendar/calendar.component';
+import { NsCoreModule } from '@ng-solid/core';
 
 
 @NgModule( {
     imports: [
         CommonModule,
+        NsCoreModule,
         FormsModule,
         ReactiveFormsModule,
         RouterModule,
@@ -31,7 +34,8 @@ import { NsTextAreaComponent } from './components/text-area/text-area.component'
         NsFormContentEditableComponent,
         NsSwitchComponent,
         NsInputGroupComponent,
-        NsTextAreaComponent
+        NsTextAreaComponent,
+        NsScheduleCalendarComponent
     ],
     exports: [
         NsInputComponent,
@@ -41,7 +45,8 @@ import { NsTextAreaComponent } from './components/text-area/text-area.component'
         NsFormContentEditableComponent,
         NsSwitchComponent,
         NsInputGroupComponent,
-        NsTextAreaComponent
+        NsTextAreaComponent,
+        NsScheduleCalendarComponent
     ]
 } )
 export class NsFormsModule

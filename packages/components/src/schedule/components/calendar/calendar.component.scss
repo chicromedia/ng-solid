@@ -1,0 +1,118 @@
+:host {
+  display: block;
+  position: relative;
+  font-size: 0.875rem;
+}
+
+.btn {
+  font-weight: 500;
+
+  &:focus {
+    box-shadow: none;
+
+    &:not(:focus-visible) {
+      outline: none;
+    }
+  }
+
+  &:disabled {
+    background-color: #e9ecef;
+  }
+}
+
+.ns-dropdown {
+  &__menu {
+    position: relative;
+    overflow: hidden;
+    min-width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    z-index: 1100;
+    display: none;
+    margin: 0;
+    font-size: 1rem;
+    color: #212529;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 0.25rem;
+
+    &.ns-show {
+      display: block;
+    }
+  }
+
+  &__toggle {
+    margin-left: auto;
+    transform: rotate(0deg);
+    transition: transform 120ms ease-in-out 0s;
+    flex-shrink: 0;
+  }
+
+  &:not(:host.ns-show) {
+    .ns-dropdown__toggle {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__start {
+    position: absolute;
+    inset: auto auto auto 0;
+    margin: 0;
+    left: 0;
+  }
+
+  &__end {
+    position: absolute;
+    inset: auto;
+    margin: 0;
+    right: 0;
+  }
+}
+
+.ns-calendar {
+  &__month {
+    display: grid;
+    grid-template-columns: [arrow-left] 2rem [date] 4fr [arrow-right] 2rem;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding: 0.5rem;
+    text-align: center;
+
+    &::ng-deep .btn {
+      min-width: unset;
+      padding: unset;
+    }
+  }
+
+  &__grid, &__days-of-week {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    padding: .2rem;
+  }
+
+  &__day {
+    border: none;
+    background-color: transparent;
+    text-align: center;
+    border-radius: 1rem;
+    height: 2rem;
+    width: 2rem;
+  }
+
+  &--current {
+    background-color: #5b5fc7;
+    color: #fff;
+  }
+
+  &--in-week {
+    background-color: #dcdffa;
+  }
+
+  &--disabled {
+    pointer-events: none;
+    color: #bdbdbd;
+  }
+}

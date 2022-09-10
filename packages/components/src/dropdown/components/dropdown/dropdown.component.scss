@@ -3,9 +3,7 @@
 
 :host {
   @include form;
-
   display: block;
-  margin-bottom: 0.5rem;
 }
 
 .btn {
@@ -16,7 +14,7 @@
   min-width: 200px;
   padding: 9px;
 
-  &-secondary {
+  &__secondary {
     @include btn-secondary;
     background-color: #fff;
     border: 1px solid #cfcfdb;
@@ -83,6 +81,7 @@
     height: auto;
     box-sizing: border-box;
     max-height: 240px;
+    z-index: 1100;
 
     li {
       position: static;

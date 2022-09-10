@@ -10,6 +10,7 @@ import { NsSchedule } from './models/schedule';
     styleUrls: [ './schedule.component.scss' ],
     encapsulation: ViewEncapsulation.None,
     host: {
+        '[class.ns-schedule]': 'true',
         '[style.height.px]': 'height'
     }
 } )
@@ -34,6 +35,6 @@ export class NsScheduleComponent implements OnInit
 
     goToday()
     {
-        this.service.setCurrentDate( new Date() );
+        this.selected = new Date();
     }
 }

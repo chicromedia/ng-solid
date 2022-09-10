@@ -2,10 +2,10 @@
     <div class="ns-schedule__header"></div>
     <div class="ns-schedule__header"
          *ngFor="let day of days, index as i"
-         [ngClass]="{'ns-schedule__selected': current === day}"
+         [ngClass]="{'ns-schedule__selected': currentDay === day}"
     >
         <div class="ns-schedule__header-date">{{day}}</div>
-        <div class="ns-schedule__header-day">{{i | weekday}}</div>
+        <div class="ns-schedule__header-day">{{i | nsWeekday}}</div>
     </div>
 </div>
 
@@ -13,7 +13,7 @@
     <div class="ns-schedule__timeline" *ngFor="let timeline of hours">
         <div class="ns-schedule__timeline-day">{{timeline}}</div>
         <div class="ns-schedule__timeline-day" *ngFor="let day of days"
-             [ngClass]="{'ns-schedule__selected': current === day}"
+             [ngClass]="{'ns-schedule__selected': currentDay === day}"
         >
             <ns-schedule-cell [day]="day"
                               [timeline]="timeline"

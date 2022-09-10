@@ -1,31 +1,33 @@
-:host {
+.ns-schedule {
   display: block;
   width: 100%;
   color: #616161;
-  font-size: 12px;
+  font-size: 14px;
   background-color: #f5f5f5;
-}
+  padding: 1rem;
 
-.ns-schedule {
   &__tools {
-    display: flex;
-    justify-content: space-between;
-    padding: .5rem 0;
+    display: grid;
+    grid-template-columns: [today] 0.3fr [calendar] 1fr [view] 4fr;
+    padding: 0.5rem 0;
+    grid-gap: 0.3rem;
   }
 
   &__view {
+    margin-left: auto;
     margin-bottom: unset;
   }
 
   &__header {
     display: flex;
     flex-direction: column;
-    padding: 0 1rem;
+    padding: .5em 1rem;
     border: 1px solid #d1d1d1;
     user-select: none;
+    line-height: 1;
 
     &-date {
-      font-size: 2em;
+      font-size: 1.5em;
       font-weight: 600;
     }
 

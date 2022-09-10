@@ -15,8 +15,12 @@ export class NsWorkweekComponent implements OnInit
     public current: number;
     public first: number;
     public last: number;
-    public days: number[];
+    public days: number[] = [];
     public hours: number[];
+
+    identityDay = ( index, item: NsSchedule ) => item.id;
+
+    private DAYS_OF_WORKWEEK: number = 5;
 
     constructor( private service: NsScheduleService )
     {
@@ -33,10 +37,20 @@ export class NsWorkweekComponent implements OnInit
     {
         if ( date instanceof Date )
         {
-            this.first = date.getDate() - ( date.getDay() - 1 );
+            this.first = ( date.getDate() - date.getDay() ) + 1;
             this.last = this.first + 4;
-            this.days = Array( 5 ).fill( this.first ).map( ( x, y ) => x + y );
+            this.days = [];
             this.service.setCurrentDate( date );
+            let lastDayOfPrevMonth = new Date( date.getFullYear(), date.getMonth() - 1, -1 ).getDate();
+
+            let current = 0;
+            while ( current < this.DAYS_OF_WORKWEEK )
+            {
+                this.days.push( this.first < 1 ? lastDayOfPrevMonth : this.first );
+                this.first++;
+                lastDayOfPrevMonth--;
+                current++;
+            }
         }
     }
 }

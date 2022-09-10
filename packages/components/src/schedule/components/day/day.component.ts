@@ -17,6 +17,8 @@ export class DayComponent implements OnInit
     public days: number[];
     public hours: number[];
 
+    private DAYS_OF_WEEK: number = 7;
+
     constructor( private service: NsScheduleService )
     {
     }
@@ -33,7 +35,7 @@ export class DayComponent implements OnInit
         {
             this.current = date.getDate();
             this.first = date.getDate() - date.getDay();
-            this.days = Array( 7 ).fill( this.first ).map( ( x, y ) => x + y );
+            this.days = Array( this.DAYS_OF_WEEK ).fill( this.first ).map( ( x, y ) => x + y );
             this.service.setCurrentDate( date );
         }
     }

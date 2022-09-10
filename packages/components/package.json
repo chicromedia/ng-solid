@@ -1,12 +1,12 @@
 {
   "name": "@ng-solid/components",
-  "version": "2.1.41",
+  "version": "2.1.42",
   "license": "MIT",
   "description": "An Angular UI component library based on Ant Design.",
   "engines": {
     "node": ">=10.0.0"
   },
-  "homepage": "https://github.com/chicromedia/ng-solid",
+  "homepage": "https://github.com/chicromedia/ng-solid/tree/master/packages/components",
   "author": {
     "name": "Ulises Familia Rodríguez",
     "email": "chicromedia@hotmail.com",
@@ -21,7 +21,7 @@
     "@angular/core": "^13.3.11"
   },
   "dependencies": {
-    "@ng-solid/core": "^2.1.5",
+    "@ng-solid/core": "^2.1.7",
     "tslib": "^2.0.0"
   },
   "keywords": [

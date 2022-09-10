@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NsScheduleComponent } from './schedule.component';
 import { NsWorkweekComponent } from './components/workweek/workweek.component';
-import { WeekdayPipe } from './pipes/weekday.pipe';
 import { DayComponent } from './components/day/day.component';
 import { WeekComponent } from './components/week/week.component';
 import { FilterByDayPipe } from './pipes/filter-by-day.pipe';
@@ -11,24 +10,29 @@ import { NsScheduleCellComponent } from './components/cell/cell.component';
 import { NsButtonModule } from '../button/button.module';
 import { NsDropdownModule } from '../dropdown/dropdown.module';
 import { FormsModule } from '@angular/forms';
+import { NsFormsModule } from '../form/forms.module';
+import { NsCoreModule } from '@ng-solid/core';
+import { NsWeekdayPipe } from './pipes/nsWeekday.pipe';
 
 
 @NgModule( {
     imports: [
         CommonModule,
+        NsCoreModule,
         NsButtonModule,
         NsDropdownModule,
-        FormsModule
+        FormsModule,
+        NsFormsModule
     ],
     declarations: [
         NsScheduleComponent,
         NsWorkweekComponent,
-        WeekdayPipe,
+        NsWeekdayPipe,
         DayComponent,
         WeekComponent,
         FilterByDayPipe,
         NsScheduleEventComponent,
-        NsScheduleCellComponent
+        NsScheduleCellComponent,
     ],
     exports: [
         NsScheduleComponent

@@ -10,6 +10,9 @@
                 [disabled]="disabled || loading"
         >
             <ng-container *ngIf="!loading;else showLoading">
+                <ng-container *ngIf="iconName">
+                    <ns-icon [name]="iconName" [size]="24"></ns-icon>
+                </ng-container>
                 {{label}}
             </ng-container>
             <ng-template #showLoading>
