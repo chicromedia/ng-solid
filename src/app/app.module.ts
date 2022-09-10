@@ -22,7 +22,6 @@ import {
 import { ReactiveFormsModule } from '@angular/forms';
 import { Observable, of } from 'rxjs';
 import { delay } from 'rxjs/operators';
-import { NsModalModule } from '../../packages/components/src/modal/modal.module';
 
 @NgModule( {
     imports: [

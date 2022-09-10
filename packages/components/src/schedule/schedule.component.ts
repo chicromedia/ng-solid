@@ -1,8 +1,8 @@
 import { Component, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
-import { NsScheduleView } from './index';
 import { Subject } from 'rxjs';
 import { NsScheduleService } from './services/schedule.service';
 import { NsSchedule } from './models/schedule';
+import { NsScheduleView } from './types/schedule-view';
 
 @Component( {
     selector: 'ns-schedule',
@@ -10,8 +10,7 @@ import { NsSchedule } from './models/schedule';
     styleUrls: [ './schedule.component.scss' ],
     encapsulation: ViewEncapsulation.None,
     host: {
-        '[class.ns-schedule]': 'true',
-        '[style.height.px]': 'height'
+        '[class.ns-schedule]': 'true'
     }
 } )
 export class NsScheduleComponent implements OnInit

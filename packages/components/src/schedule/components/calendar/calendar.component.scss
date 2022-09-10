@@ -75,8 +75,7 @@
 .ns-calendar {
   &__month {
     display: grid;
-    grid-template-columns: [arrow-left] 2rem [date] 4fr [arrow-right] 2rem;
-    align-items: center;
+    grid-template-columns: [arrow-left] 1fr [date] 4fr [arrow-right] 1fr;
     border-bottom: 1px solid #eee;
     padding: 0.5rem;
     text-align: center;

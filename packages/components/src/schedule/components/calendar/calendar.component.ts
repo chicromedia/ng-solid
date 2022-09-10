@@ -1,7 +1,7 @@
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { FormControlValueAccessor } from '../../../form/models/form-control-value-accessor';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { NsScheduleView } from '../../index';
+import { NsScheduleView } from '../../types/schedule-view';
 
 @Component( {
     selector: 'ns-schedule-calendar',
