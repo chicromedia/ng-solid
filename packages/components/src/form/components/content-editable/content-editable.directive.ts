@@ -13,8 +13,8 @@ import { FormControlValueAccessor } from '../../models/form-control-value-access
         }
     ],
     styles: [
-        ':host{display:block; position:relative; background-color:#fff; width:100%; height:fit-content; min-height:7rem; outline:none;}',
-        ':host.ns-content--disabled{background-color: #e9ecef; opacity: 0.65;}'
+        ':host{display:block; position:relative; background-color:var(--ns-content-bg, #fff); width:100%; height:fit-content; min-height:7rem; outline:none;}',
+        ':host.ns-content--disabled{background-color: var(--ns-content-disabled-bg,#e9ecef); opacity: 0.65;}'
     ],
     host: {
         '[class.ns-content--disabled]': 'disabled'

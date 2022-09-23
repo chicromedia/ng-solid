@@ -16,7 +16,6 @@ import { NG_VALUE_ACCESSOR } from "@angular/forms";
     ],
     host: {
         '[class.ns-avatar]': 'true',
-        '[class.ns-avatar-rounded]': 'rounded == true',
         '[style.width.px]': 'size',
         '[style.height.px]': 'size'
     }
@@ -24,8 +23,6 @@ import { NG_VALUE_ACCESSOR } from "@angular/forms";
 export class NsAvatarComponent extends FormControlValueAccessor<string> implements OnInit
 {
 
-    @Input()
-    rounded: boolean = true;
     @Input()
     size: number = 60;
 

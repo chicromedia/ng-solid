@@ -145,6 +145,8 @@
 :host-context([data-theme="dark"]) {
   background-color: $dark-background-color;
   color: $dark-color;
+  --ns-content-bg: transparent;
+  --ns-content-disabled-bg: transparent;
 
   .ns-comment {
     &-input {

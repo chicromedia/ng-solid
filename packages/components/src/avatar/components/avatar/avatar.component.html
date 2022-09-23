@@ -1,7 +1,14 @@
 <ng-container *ngIf="canShowImage; else avatarTemp">
-	<img class="ns-avatar" [src]="value" [attr.alt]="shortName">
+    <img class="ns-avatar" [src]="value" [attr.alt]="shortName">
 </ng-container>
 
 <ng-template #avatarTemp>
-	<h4 class="ns-avatar-text" [ngStyle]="{'font-size': fontSize}">{{shortName}}</h4>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 58.32 58.32">
+        <g>
+            <circle class="ns-avatar__circle" cx="29.16" cy="29.16" r="29.16"/>
+            <text class="ns-avatar__text" [ngStyle]="{'font-size': fontSize}" transform="translate(10.87 39.6)">
+                <tspan x="0" y="0">{{shortName}}</tspan>
+            </text>
+        </g>
+    </svg>
 </ng-template>

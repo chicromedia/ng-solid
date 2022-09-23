@@ -4,26 +4,29 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 50%;
   user-select: none;
-  background-color: #f4f4f4;
+  overflow: hidden;
+}
 
-  .ns-avatar-text {
-    color: #777;
-    margin-bottom: unset;
+.ns-avatar {
+  &__circle {
+    fill: #f4f4f4;
   }
 
-  &.ns-avatar {
-    &-rounded {
-      border-radius: 50%;
-      overflow: hidden;
-    }
+  &__text {
+    fill: #777;
   }
 }
 
 :host-context([data-theme="dark"]) {
-  background-color: #292d32;
+  .ns-avatar {
+    &__circle {
+      fill: #292d32;
+    }
 
-  .ns-avatar-text {
-    color: #fff;
+    &__text {
+      fill: #fff;
+    }
   }
 }
