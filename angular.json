@@ -135,6 +135,11 @@
       "projectType": "library",
       "root": "packages/components",
       "sourceRoot": "projects/components/src",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
       "prefix": "ns",
       "architect": {
         "build": {
@@ -175,6 +180,11 @@
       "projectType": "library",
       "root": "packages/facebook",
       "sourceRoot": "packages/facebook/src",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
       "prefix": "ns",
       "architect": {
         "build": {
@@ -215,7 +225,12 @@
       "projectType": "library",
       "root": "packages/core",
       "sourceRoot": "packages/core/src",
-      "prefix": "lib",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "prefix": "ns",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
@@ -255,6 +270,11 @@
       "projectType": "library",
       "root": "packages/twitter",
       "sourceRoot": "packages/twitter/src",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
       "prefix": "ns",
       "architect": {
         "build": {
@@ -295,6 +315,11 @@
       "projectType": "library",
       "root": "packages/google",
       "sourceRoot": "packages/google/src",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
       "prefix": "ns",
       "architect": {
         "build": {

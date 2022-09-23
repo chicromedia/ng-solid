@@ -1,0 +1,57 @@
+<ng-container *ngIf="editable; else presentation">
+    <div class="ns-date-picker__inputs">
+        <input class="form-control" [(ngModel)]="value" type="text" [attr.id]="id" nsDateMask/>
+        <ns-dropdown [collection]="times" [(ngModel)]="hour" [filterable]="true"></ns-dropdown>
+    </div>
+</ng-container>
+
+<ng-template #presentation>
+    <button [attr.id]="id" type="button" class="btn btn__secondary" (click)="toggle()">
+        {{value | nsFormatDate: format}}
+
+        <svg class="ns-dropdown__toggle" viewBox="0 0 16 16" fill="currentColor" height="12px" width="12px">
+            <path d="M14,11.75a.74.74,0,0,1-.53-.22L8,6.06,2.53,11.53a.75.75,0,0,1-1.06-1.06l6-6a.75.75,0,0,1,1.06,0l6,6a.75.75,0,0,1,0,1.06A.74.74,0,0,1,14,11.75Z"></path>
+        </svg>
+    </button>
+</ng-template>
+
+<div class="ns-date-picker__menu" [attr.aria-labelledby]="id"
+     [ngClass]="{'ns-show': show, 'ns-date-picker__menu--start': placement !== 'end', 'ns-date-picker__menu--end' : placement == 'end' }"
+     (mouseleave)="toggle()"
+>
+    <div class="ns-date-picker__month">
+        <ns-button iconName="angle-left" (click)="prev()"></ns-button>
+        {{viewDate | nsFormatDate: format}}
+        <ns-button iconName="angle-right" (click)="next()"></ns-button>
+    </div>
+
+    <table class="ns-date-picker__wrap">
+        <thead>
+        <tr>
+            <th class="ns-date-picker__day">D</th>
+            <th class="ns-date-picker__day">M</th>
+            <th class="ns-date-picker__day">L</th>
+            <th class="ns-date-picker__day">X</th>
+            <th class="ns-date-picker__day">J</th>
+            <th class="ns-date-picker__day">V</th>
+            <th class="ns-date-picker__day">S</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr *ngFor="let week of weeks">
+            <td *ngFor="let day of week; trackBy: identity"
+                [ngClass]="{'ns-date-picker--in-week': selectedInWeek(day, week)}">
+                <button class="ns-date-picker__day"
+                        (click)="value = day"
+                        [ngClass]="{
+                            'ns-date-picker--current':isCurrentDate(day),
+                            'ns-date-picker--disabled':day.getMonth() !== viewDate.getMonth()
+                        }">
+                    {{day.getDate()}}
+                </button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,7 +1,6 @@
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, from, Observable } from 'rxjs';
 import { filter } from 'rxjs/operators';
-import { fromPromise } from 'rxjs/internal-compatibility';
 import { Meta } from '@angular/platform-browser';
 import { isPlatformBrowser } from '@angular/common';
 import { NS_FACEBOOK_CONFIG } from '../providers/config.provider';
@@ -66,14 +65,14 @@ export class NsFacebookService
 
     get checkLoginState(): Observable<fb.StatusResponse>
     {
-        return fromPromise( new Promise(
+        return from( new Promise<fb.StatusResponse>(
             resolve => FB.getLoginStatus( resolve )
         ) );
     }
 
     login( scope: string )
     {
-        return fromPromise( new Promise<fb.StatusResponse>( ( resolve, reject ) =>
+        return from( new Promise<fb.StatusResponse>( ( resolve, reject ) =>
             FB.login( response =>
             {
                 if ( response.status === 'connected' )
@@ -89,7 +88,7 @@ export class NsFacebookService
 
     logout()
     {
-        return fromPromise(
+        return from(
             new Promise( resolve => FB.logout( resolve ) )
         );
     }
@@ -107,7 +106,7 @@ export class NsFacebookService
     share( params: ShareDialogParams )
     {
         params.hashtag = 'hashtag' in params && params.hashtag ? `#${ params.hashtag }` : null;
-        return fromPromise(
+        return from(
             new Promise<fb.ShareDialogResponse>( resolve =>
                 FB.ui( {
                     app_id: this.config.appId,

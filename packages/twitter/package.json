@@ -1,6 +1,6 @@
 {
   "name": "@ng-solid/twitter",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "license": "MIT",
   "description": "A library of Twitter UI components for Angular",
   "engines": {
@@ -13,9 +13,9 @@
     "url": "https://gitlab.com/chicromedia"
   },
   "peerDependencies": {
-    "@angular/common": "^9.1.13",
-    "@angular/core": "^9.1.13",
-    "@ng-solid/core": "^2.1.0"
+    "@angular/common": "^13.3.11",
+    "@angular/core": "^13.3.11",
+    "@ng-solid/core": "^2.1.9"
   },
   "dependencies": {
     "tslib": "^1.10.0"

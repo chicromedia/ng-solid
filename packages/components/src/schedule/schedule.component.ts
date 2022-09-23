@@ -2,7 +2,7 @@ import { Component, Input, OnInit, Output, ViewEncapsulation } from '@angular/co
 import { Subject } from 'rxjs';
 import { NsScheduleService } from './services/schedule.service';
 import { NsSchedule } from './models/schedule';
-import { NsScheduleView } from './types/schedule-view';
+import { NsDateView } from '../types';
 
 @Component( {
     selector: 'ns-schedule',
@@ -16,7 +16,7 @@ import { NsScheduleView } from './types/schedule-view';
 export class NsScheduleComponent implements OnInit
 {
 
-    @Input() view: NsScheduleView = 'workweek';
+    @Input() view: NsDateView = 'workweek';
     @Input() selected: Date = new Date();
     @Input() height: number = 520;
     @Input() data: NsSchedule[];

@@ -4,6 +4,8 @@
 :host {
   @include form;
   display: block;
+  margin-bottom: .5rem;
+  width: fit-content;
 }
 
 .btn {

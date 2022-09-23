@@ -12,8 +12,10 @@ import { NsIconModule } from '../icon/icon.module';
 import { NsInputGroupComponent } from './components/input-group/input-group.component';
 import { NsButtonModule } from '../button/button.module';
 import { NsTextAreaComponent } from './components/text-area/text-area.component';
-import { NsScheduleCalendarComponent } from '../schedule/components/calendar/calendar.component';
 import { NsCoreModule } from '@ng-solid/core';
+import { NsDatePickerComponent } from './components/date-picker/date-picker.component';
+import { MaskDirective } from './directives/mask.directive';
+import { NsDropdownModule } from '../dropdown/dropdown.module';
 
 
 @NgModule( {
@@ -24,7 +26,8 @@ import { NsCoreModule } from '@ng-solid/core';
         ReactiveFormsModule,
         RouterModule,
         NsIconModule,
-        NsButtonModule
+        NsButtonModule,
+        NsDropdownModule
     ],
     declarations: [
         NsInputComponent,
@@ -35,7 +38,8 @@ import { NsCoreModule } from '@ng-solid/core';
         NsSwitchComponent,
         NsInputGroupComponent,
         NsTextAreaComponent,
-        NsScheduleCalendarComponent
+        NsDatePickerComponent,
+        MaskDirective
     ],
     exports: [
         NsInputComponent,
@@ -46,7 +50,7 @@ import { NsCoreModule } from '@ng-solid/core';
         NsSwitchComponent,
         NsInputGroupComponent,
         NsTextAreaComponent,
-        NsScheduleCalendarComponent
+        NsDatePickerComponent
     ]
 } )
 export class NsFormsModule

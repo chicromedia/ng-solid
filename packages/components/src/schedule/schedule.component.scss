@@ -13,9 +13,9 @@
 
   &__tools {
     display: grid;
-    grid-template-columns: [today] 0.3fr [calendar] 1fr [view] 4fr;
+    grid-template-columns: [today] 5rem [calendar] 1fr [view] 4fr;
     margin-bottom: .5rem;
-    grid-gap: 0.3rem;
+    grid-gap: 0.5rem;
   }
 
   &__view {

@@ -30,7 +30,7 @@ export class NsFormatDatePipe implements PipeTransform
         'Saturday'
     ];
 
-    transform( date: Date, format: string = 'yyyy-mm-dd' ): string
+    transform( date: Date, format: string = 'dd/mm/yyyy' ): string
     {
         return date instanceof Date
             ? format

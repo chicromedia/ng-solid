@@ -1,4 +1,7 @@
+@import "../../../styles/form";
+
 :host {
+  @include form;
   display: block;
   position: relative;
   font-size: 0.875rem;
@@ -20,9 +23,9 @@
   }
 }
 
-.ns-dropdown {
+.ns-date-picker {
   &__menu {
-    position: relative;
+    position: absolute;
     overflow: hidden;
     min-width: 100%;
     height: auto;
@@ -44,35 +47,6 @@
     }
   }
 
-  &__toggle {
-    margin-left: auto;
-    transform: rotate(0deg);
-    transition: transform 120ms ease-in-out 0s;
-    flex-shrink: 0;
-  }
-
-  &:not(:host.ns-show) {
-    .ns-dropdown__toggle {
-      transform: rotate(180deg);
-    }
-  }
-
-  &__start {
-    position: absolute;
-    inset: auto auto auto 0;
-    margin: 0;
-    left: 0;
-  }
-
-  &__end {
-    position: absolute;
-    inset: auto;
-    margin: 0;
-    right: 0;
-  }
-}
-
-.ns-calendar {
   &__month {
     display: grid;
     grid-template-columns: [arrow-left] 1fr [date] 4fr [arrow-right] 1fr;
@@ -113,5 +87,43 @@
   &--disabled {
     pointer-events: none;
     color: #bdbdbd;
+  }
+
+  &__toggle {
+    margin-left: auto;
+    transform: rotate(0deg);
+    transition: transform 120ms ease-in-out 0s;
+    flex-shrink: 0;
+  }
+
+  &:not(:host.ns-show) {
+    .ns-dropdown__toggle {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__start {
+    position: absolute;
+    inset: auto auto auto 0;
+    margin: 0;
+    left: 0;
+  }
+
+  &__end {
+    position: absolute;
+    inset: auto;
+    margin: 0;
+    right: 0;
+  }
+
+  &__inputs {
+    display: grid;
+    grid-template-columns: [input] 3fr [select] 2fr;
+    grid-gap: 0.5rem;
+    max-width: 220px;
+
+    ns-dropdown {
+      width: 100%;
+    }
   }
 }

@@ -11,7 +11,6 @@ import { FormsModule } from '@angular/forms';
     imports: [
         CommonModule,
         NsIconModule,
-        NsFormsModule,
         FormsModule
     ],
     declarations: [

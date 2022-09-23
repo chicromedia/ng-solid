@@ -1,14 +1,14 @@
 {
   "name": "@ng-solid/google",
-  "version": "2.1.1",
+  "version": "2.1.3",
   "license": "MIT",
   "engines": {
     "node": ">=10.0.0"
   },
   "peerDependencies": {
-    "@angular/common": "^9.1.13",
-    "@angular/core": "^9.1.13",
-    "@ng-solid/core": "^2.1.0"
+    "@angular/common": "^13.3.11",
+    "@angular/core": "^13.3.11",
+    "@ng-solid/core": "^2.1.9"
   },
   "dependencies": {
     "tslib": "^1.10.0"

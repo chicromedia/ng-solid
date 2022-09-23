@@ -1,6 +1,6 @@
 <div class="ns-schedule__tools">
     <ns-button class="ns-scheduler__today" label="Today" (click)="goToday()"></ns-button>
-    <ns-schedule-calendar [(ngModel)]="selected" [view]="view"></ns-schedule-calendar>
+    <ns-date-picker [(ngModel)]="selected" [view]="view"></ns-date-picker>
 
     <ns-dropdown class="ns-schedule__view" [(ngModel)]="view">
         <ns-dropdown-item label="Day" value="day"></ns-dropdown-item>
