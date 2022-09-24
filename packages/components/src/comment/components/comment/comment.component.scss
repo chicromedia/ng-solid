@@ -81,6 +81,7 @@
 
     &-content {
       position: relative;
+      min-height: 1rem;
       z-index: 2;
 
       &:focus-visible {
