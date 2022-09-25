@@ -14,6 +14,7 @@ import { FormControlValueAccessor } from '../../../form/models/form-control-valu
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { NsDropdownItemDirective } from '../directives/dropdown-item.directive';
 import { isEmpty } from '@ng-solid/core';
+import { IconKeys } from '../../../icon/icons';
 
 @Component( {
     selector: 'ns-dropdown',
@@ -39,7 +40,7 @@ export class NsDropdownComponent extends FormControlValueAccessor implements OnI
     @Input()
     valueField = 'value';
     @Input()
-    iconName: string;
+    iconName: IconKeys;
     @Input()
     defaultFirst: boolean;
     @Input()

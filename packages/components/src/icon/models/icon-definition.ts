@@ -1,12 +1,10 @@
-import { SafeHtml } from "@angular/platform-browser";
-
 export class IconDefinition
 {
-  name: string;
-  icon: SafeHtml;
+    name: string;
+    icon: string;
 
-  constructor(props: IconDefinition)
-  {
-    Object.assign(this, props)
-  }
+    constructor( props: IconDefinition )
+    {
+        Object.assign( this, props );
+    }
 }
