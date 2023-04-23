@@ -1,12 +1,16 @@
 <ng-container *ngIf="editable; else presentation">
+    <ng-container *ngIf="label">
+        <label class="form-label">{{label}}</label>
+    </ng-container>
+
     <div class="ns-date-picker__inputs">
-        <input class="form-control" [(ngModel)]="value" type="text" [attr.id]="id" nsDateMask/>
-        <ns-dropdown [collection]="times" [(ngModel)]="hour" [filterable]="true"></ns-dropdown>
+        <input class="form-control" [(ngModel)]="value" type="text" [attr.id]="id" nsDateMask [disabled]="disabled"/>
+        <ns-dropdown [collection]="times" [(ngModel)]="hour" [filterable]="true" [disabled]="disabled"></ns-dropdown>
     </div>
 </ng-container>
 
 <ng-template #presentation>
-    <button [attr.id]="id" type="button" class="btn btn__secondary" (click)="toggle()">
+    <button [attr.id]="id" type="button" class="btn btn__secondary" (click)="toggle()" [disabled]="disabled">
         {{value | nsFormatDate: format}}
 
         <svg class="ns-dropdown__toggle" viewBox="0 0 16 16" fill="currentColor" height="12px" width="12px">

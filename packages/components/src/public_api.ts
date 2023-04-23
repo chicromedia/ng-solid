@@ -18,6 +18,8 @@ export { NsImageUpload } from './image-upload/models/image-upload';
 export { NS_IMAGE_UPLOAD_PROVIDER, NsImageUploadClient } from './image-upload/models/image-upload-client';
 export { NsSchemaMarkup } from './schema/models/schema';
 export { IComment } from './comment/interfaces/comment';
+export { FormControlValueAccessor } from './form/models/form-control-value-accessor';
+
 
 export * from './schema/components/schema.component';
 export * from './avatar/components/avatar/avatar.component';

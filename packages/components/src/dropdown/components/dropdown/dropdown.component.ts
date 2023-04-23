@@ -22,6 +22,7 @@ import { IconKeys } from '../../../icon/icons';
     styleUrls: [ './dropdown.component.scss' ],
     host: {
         '[class.dropdown]': 'true',
+        '[class.ns-dropdown__filterable]': 'filterable',
         '[class.show]': 'show'
     },
     providers: [

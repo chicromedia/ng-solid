@@ -22,10 +22,6 @@ export abstract class FormControlValueAccessor<T = any> implements ControlValueA
     public onTouched = () => {};
     public onChange = ( value: T ) => {};
 
-    constructor()
-    {
-    }
-
     writeValue( value: T ): void
     {
         if ( typeof value !== 'undefined' )

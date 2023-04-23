@@ -3,14 +3,14 @@
 </ng-container>
 
 <ng-container *ngIf="filterable; else toggleTemp">
-    <div class="ns-dropdown__search">
+    <div class="ns-dropdown__search" [class.disabled]="disabled">
         <div class="ns-dropdown__value"
              [ngClass]="{'ns-dropdown__placeholder': !selected || show}"
              [hidden]="!!search">
             <span class="ns-dropdown__value-label">{{!!selected ? selected[labelField] : placeholder}}</span>
         </div>
         <div class="ns-dropdown__input">
-            <input class="form-control" [(ngModel)]="search" #input/>
+            <input class="form-control" [(ngModel)]="search" #input [disabled]="disabled"/>
         </div>
 
         <svg class="dropdown-toggle" viewBox="0 0 16 16" fill="currentColor" height="12px" width="12px">

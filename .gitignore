@@ -3,3 +3,4 @@
 /packages/*/node_modules
 /dist
 *-lock.json
+.DS_Store

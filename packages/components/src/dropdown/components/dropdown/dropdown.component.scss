@@ -5,7 +5,6 @@
   @include form;
   display: block;
   margin-bottom: .5rem;
-  width: fit-content;
 }
 
 .btn {
@@ -13,8 +12,8 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  min-width: 200px;
   padding: 9px;
+  width: 100%;
 
   &__secondary {
     @include btn-secondary;
@@ -49,6 +48,14 @@
     padding-right: 10px;
     align-items: center;
     height: 36px;
+
+    &.disabled {
+      pointer-events: none;
+
+      .ns-dropdown__value-label {
+        opacity: .65;
+      }
+    }
   }
 
   &__placeholder {

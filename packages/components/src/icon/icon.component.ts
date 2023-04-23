@@ -5,9 +5,9 @@ import {
     InjectionToken,
     Input,
     OnChanges,
+    Optional,
     Renderer2,
     SimpleChanges,
-    SkipSelf,
     ViewChild
 } from '@angular/core';
 import { IconCollection } from './models/icon-collection';
@@ -34,14 +34,14 @@ export class NsIconComponent implements OnChanges
 
     @ViewChild( 'content', { read: ElementRef, static: true } ) element: ElementRef<HTMLOrSVGElement>;
 
-    constructor( @SkipSelf() @Inject( NS_ICONS ) private icons: IconCollection,
+    constructor( @Optional() @Inject( NS_ICONS ) private icons: IconCollection,
                  private renderer: Renderer2 )
     {
     }
 
     ngOnChanges( { name }: SimpleChanges )
     {
-        if ( name && name.currentValue )
+        if ( name && name.currentValue && this.icons )
         {
             const { icon } = this.icons.get( name.currentValue );
             this.renderer.setProperty( this.element.nativeElement, 'innerHTML', icon );

@@ -8,7 +8,7 @@
     "start": "ng serve",
     "build": "ng build",
     "build:core": "ng-packagr -p packages/core/ng-package.json",
-    "build:components": "ng-packagr -p packages/components/ng-package.json",
+    "build:components": "ng-packagr -p packages/components/ng-package.json -c packages/components/tsconfig.lib.prod.json",
     "build:facebook": "ng-packagr -p packages/facebook/ng-package.json",
     "build:twitter": "ng-packagr -p packages/twitter/ng-package.json",
     "build:google": "ng-packagr -p packages/google/ng-package.json",
