@@ -3,7 +3,7 @@ import { Directive, Input } from '@angular/core';
 import { Guid } from '@ng-solid/core';
 
 @Directive()
-export abstract class FormControlValueAccessor<T = any> implements ControlValueAccessor
+export abstract class NsFormControlValueAccessor<T = any> implements ControlValueAccessor
 {
 
     @Input()

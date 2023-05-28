@@ -1,7 +1,7 @@
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { NsDateView } from '../../../types';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { FormControlValueAccessor } from '../../models/form-control-value-accessor';
+import { NsFormControlValueAccessor } from '../../models/form-control-value-accessor';
 import { isDateValid } from '@ng-solid/core';
 
 
@@ -20,7 +20,7 @@ import { isDateValid } from '@ng-solid/core';
         }
     ]
 } )
-export class NsDatePickerComponent extends FormControlValueAccessor implements OnInit
+export class NsDatePickerComponent extends NsFormControlValueAccessor implements OnInit
 {
 
     @Input()

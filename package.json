@@ -8,15 +8,17 @@
     "start": "ng serve",
     "build": "ng build",
     "build:core": "ng-packagr -p packages/core/ng-package.json",
-    "build:components": "ng-packagr -p packages/components/ng-package.json -c packages/components/tsconfig.lib.prod.json",
+    "build:components": "ng-packagr -p packages/components/ng-package.json",
     "build:facebook": "ng-packagr -p packages/facebook/ng-package.json",
-    "build:twitter": "ng-packagr -p packages/twitter/ng-package.json",
     "build:google": "ng-packagr -p packages/google/ng-package.json",
-    "publish:core": "npm publish ./dist/core --access=public",
+    "build:icons": "ng-packagr -p packages/icons/ng-package.json",
+    "build:twitter": "ng-packagr -p packages/twitter/ng-package.json",
     "publish:components": "npm publish ./dist/components --access=public",
+    "publish:core": "npm publish ./dist/core --access=public",
     "publish:facebook": "npm publish ./dist/facebook --access=public",
-    "publish:twitter": "npm publish ./dist/twitter --access=public",
     "publish:google": "npm publish ./dist/google --access=public",
+    "publish:icons": "npm publish ./dist/icons --access=public",
+    "publish:twitter": "npm publish ./dist/twitter --access=public",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -33,7 +35,8 @@
     "@angular/platform-browser": "~13.4.0",
     "@angular/platform-browser-dynamic": "~13.4.0",
     "@angular/router": "~13.4.0",
-    "@ng-solid/core": "^2.1.9",
+    "@ng-solid/core": "^3.0.0",
+    "@ng-solid/icons": "^1.0.0",
     "bootstrap": "~5.1.3",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
@@ -53,6 +56,7 @@
     "karma-coverage-istanbul-reporter": "~3.0.2",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "^1.7.0",
+    "ng-packagr": "^13.0.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
     "typescript": "~4.6.4"
@@ -74,8 +78,5 @@
   },
   "bugs": {
     "url": "https://gitlab.com/chicromedia/ng-solid/issues"
-  },
-  "workspaces": [
-    "./packages/*"
-  ]
+  }
 }

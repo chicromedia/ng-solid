@@ -1,5 +1,5 @@
 import { Component, forwardRef, OnInit } from '@angular/core';
-import { FormControlValueAccessor } from "../../models/form-control-value-accessor";
+import { NsFormControlValueAccessor } from "../../models/form-control-value-accessor";
 import { NG_VALUE_ACCESSOR } from "@angular/forms";
 
 @Component({
@@ -14,7 +14,7 @@ import { NG_VALUE_ACCESSOR } from "@angular/forms";
     }
   ]
 })
-export class NsCheckboxComponent extends FormControlValueAccessor implements OnInit
+export class NsCheckboxComponent extends NsFormControlValueAccessor implements OnInit
 {
 
   constructor()

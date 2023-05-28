@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NsDropdownComponent } from './components/dropdown/dropdown.component';
-import { NsDropdownItemDirective } from './components/directives/dropdown-item.directive';
-import { NsIconModule } from '../icon/icon.module';
+import { NsDropdownComponent } from './dropdown.component';
+import { NsDropdownItemDirective } from './directives/dropdown-item.directive';
+import { NsIconsModule } from '@ng-solid/icons';
 import { FormsModule } from '@angular/forms';
 
 
 @NgModule( {
     imports: [
         CommonModule,
-        NsIconModule,
+        NsIconsModule,
         FormsModule
     ],
     declarations: [

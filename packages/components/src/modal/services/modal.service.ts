@@ -19,7 +19,7 @@ import { take } from 'rxjs/operators';
 @Injectable( {
     providedIn: 'root'
 } )
-export class NsModal
+export class NsModalService
 {
     private readonly modalStack: Set<ComponentRef<NsModalWindow>> = new Set<ComponentRef<NsModalWindow>>();
 
@@ -62,7 +62,7 @@ export class NsModal
         return nsModalRef;
     }
 
-    closeAll()
+    close()
     {
         this.modalStack.forEach( ( { instance } ) => instance.close() );
     }

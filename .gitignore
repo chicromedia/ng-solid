@@ -4,3 +4,4 @@
 /dist
 *-lock.json
 .DS_Store
+/.angular

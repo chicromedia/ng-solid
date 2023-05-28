@@ -12,9 +12,6 @@ import { NsModalFooter } from './directives/modal.directive';
     ],
     exports: [
         NsModalFooter
-    ],
-    entryComponents: [
-        NsModalWindow
     ]
 } )
 export class NsModalModule

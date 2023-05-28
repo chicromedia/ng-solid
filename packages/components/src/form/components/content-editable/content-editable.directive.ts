@@ -1,6 +1,6 @@
 import { Component, ElementRef, forwardRef, HostBinding, HostListener, Input, Renderer2 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { FormControlValueAccessor } from '../../models/form-control-value-accessor';
+import { NsFormControlValueAccessor } from '../../models/form-control-value-accessor';
 
 @Component( {
     selector: 'ns-content-editable',
@@ -8,7 +8,7 @@ import { FormControlValueAccessor } from '../../models/form-control-value-access
     providers: [
         {
             provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef( () => NsFormContentEditableComponent ),
+            useExisting: forwardRef( () => NsContentEditableComponent ),
             multi: true
         }
     ],
@@ -20,7 +20,7 @@ import { FormControlValueAccessor } from '../../models/form-control-value-access
         '[class.ns-content--disabled]': 'disabled'
     }
 } )
-export class NsFormContentEditableComponent extends FormControlValueAccessor<string>
+export class NsContentEditableComponent extends NsFormControlValueAccessor<string>
 {
     @Input( 'maxlength' )
     maxLength: number;

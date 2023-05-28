@@ -1,5 +1,5 @@
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
-import { FormControlValueAccessor } from '../../models/form-control-value-accessor';
+import { NsFormControlValueAccessor } from '../../models/form-control-value-accessor';
 import { YesNo } from '@ng-solid/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
@@ -16,7 +16,7 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
         '[class.ns-switch]': 'true'
     }
 } )
-export class NsSwitchComponent extends FormControlValueAccessor implements OnInit
+export class NsSwitchComponent extends NsFormControlValueAccessor implements OnInit
 {
 
     @Input()

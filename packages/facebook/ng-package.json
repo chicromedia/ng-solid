@@ -2,14 +2,8 @@
   "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
   "dest": "../../dist/facebook",
   "lib": {
-    "entryFile": "src/public_api.ts",
-    "umdModuleIds": {
-      "@ng-solid/core": "NsCoreModule"
-    }
+    "entryFile": "src/public_api.ts"
   },
-  "whitelistedNonPeerDependencies": [
-    "@ng-solid/core"
-  ],
   "assets": [
     "README.md"
   ]

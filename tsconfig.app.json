@@ -12,8 +12,7 @@
   },
   "files": [
     "src/main.ts",
-    "src/polyfills.ts",
-    "packages/google/src/index.ts"
+    "src/polyfills.ts"
   ],
   "include": [
     "src/**/*.d.ts"

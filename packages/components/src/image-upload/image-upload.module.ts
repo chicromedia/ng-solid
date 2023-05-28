@@ -1,16 +1,19 @@
-import { NgModule } from '@angular/core';
+import { InjectionToken, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NsImageUploadComponent } from './components/image-upload.component';
-import { NsIconModule } from '../icon/icon.module';
+import { NsImageUploadComponent } from './image-upload.component';
 import { NsImageUrlPipe } from './pipes/image-url.pipe';
 import { NsFormsModule } from '../form/forms.module';
+import { NsIconsModule } from '@ng-solid/icons';
+import { NsImageUpload } from './models/image-upload';
+import { Observable } from 'rxjs';
+
 
 
 @NgModule( {
     imports: [
         CommonModule,
-        NsIconModule,
-        NsFormsModule
+        NsFormsModule,
+        NsIconsModule
     ],
     declarations: [ NsImageUploadComponent, NsImageUrlPipe ],
     exports: [ NsImageUploadComponent ]

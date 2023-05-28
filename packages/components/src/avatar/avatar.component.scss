@@ -1,0 +1,32 @@
+@import "../styles/styles";
+
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  user-select: none;
+  overflow: hidden;
+}
+
+.ns-avatar {
+  &__circle {
+    fill: #f4f4f4;
+  }
+
+  &__text {
+    fill: #777;
+  }
+}
+
+:host-context([data-theme="dark"]) {
+  .ns-avatar {
+    &__circle {
+      fill: #292d32;
+    }
+
+    &__text {
+      fill: #fff;
+    }
+  }
+}

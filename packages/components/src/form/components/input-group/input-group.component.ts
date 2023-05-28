@@ -1,6 +1,6 @@
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { FormControlValueAccessor } from '../../models/form-control-value-accessor';
+import { NsFormControlValueAccessor } from '../../models/form-control-value-accessor';
 
 @Component( {
     selector: 'ns-input-group',
@@ -14,7 +14,7 @@ import { FormControlValueAccessor } from '../../models/form-control-value-access
         }
     ]
 } )
-export class NsInputGroupComponent extends FormControlValueAccessor implements OnInit
+export class NsInputGroupComponent extends NsFormControlValueAccessor implements OnInit
 {
 
     @Input()

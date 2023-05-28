@@ -39,38 +39,8 @@ export class AppModule
 }
 ```
 
-### Icons
-
-```ts
-import { NsIconModule } from '@ng-solid/components';
-
-@NgModule({
-  imports: [
-    ...
-      NsIconModule.forRoot({ path: './assets/icons' })
-  ]
-})
-export class AppModule
-{
-}
-```
-
-Add to file `angular.json` the following
-
-```json
-{
-  "assets": [
-    {
-      "glob": "**/*.svg",
-      "input": "node_modules/@ng-solid/components/assets",
-      "output": "assets/icons"
-    }
-  ]
-}
-```
-
 and in your html template
 
 ```angular2html
-<ns-icon [name]="'add'"></ns-icon>
+<ns-button label="My Button" [primary]="true"></ns-button>
 ```

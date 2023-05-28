@@ -1,5 +1,5 @@
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
-import { FormControlValueAccessor } from "../../models/form-control-value-accessor";
+import { NsFormControlValueAccessor } from "../../models/form-control-value-accessor";
 import { NG_VALUE_ACCESSOR } from "@angular/forms";
 
 @Component({
@@ -14,7 +14,7 @@ import { NG_VALUE_ACCESSOR } from "@angular/forms";
     }
   ]
 })
-export class NsPasswordComponent extends FormControlValueAccessor implements OnInit
+export class NsPasswordComponent extends NsFormControlValueAccessor implements OnInit
 {
 
   @Input()

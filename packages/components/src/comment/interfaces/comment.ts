@@ -1,4 +1,4 @@
-export interface IComment
+export interface NsComment
 {
   id?: number;
   cover: {

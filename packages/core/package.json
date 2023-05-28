@@ -1,9 +1,9 @@
 {
   "name": "@ng-solid/core",
-  "version": "2.1.9",
+  "version": "3.0.0",
   "license": "MIT",
   "engines": {
-    "node": ">=10.0.0"
+    "node": ">=16.0.0"
   },
   "homepage": "https://gitlab.com/chicromedia/ng-solid",
   "author": {
@@ -12,9 +12,9 @@
     "url": "https://gitlab.com/chicromedia"
   },
   "peerDependencies": {
-    "@angular/common": "^13.3.11",
-    "@angular/platform-browser": "^13.3.11",
-    "@angular/core": "^13.3.11"
+    "@angular/common": "^13.4.0",
+    "@angular/platform-browser": "^13.4.0",
+    "@angular/core": "^13.4.0"
   },
   "dependencies": {
     "tslib": "^2.0.0"

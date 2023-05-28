@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NsCommentComponent } from './components/comment/comment.component';
+import { NsCommentComponent } from './comment.component';
 import { NsCoreModule } from "@ng-solid/core";
 import { FormsModule } from "@angular/forms";
 import { NsAvatarModule } from "../avatar/avatar.module";
