@@ -1,4 +1,4 @@
-import { Component, forwardRef, Input, OnInit } from '@angular/core';
+import { Component, forwardRef, Input } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { NsFormControlValueAccessor } from '../../models/form-control-value-accessor';
 
@@ -14,21 +14,12 @@ import { NsFormControlValueAccessor } from '../../models/form-control-value-acce
         }
     ]
 } )
-export class NsInputGroupComponent extends NsFormControlValueAccessor implements OnInit
+export class NsInputGroupComponent extends NsFormControlValueAccessor
 {
-
     @Input()
     prepend: string;
     @Input()
     append: string;
-
-    constructor()
-    {
-        super();
-    }
-
-    ngOnInit(): void
-    {
-    }
-
+    @Input()
+    iconName: string;
 }

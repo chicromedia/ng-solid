@@ -2,14 +2,18 @@
     <label class="form-label" [attr.for]="id">{{label}}</label>
 </ng-container>
 
-<div class="input-group" [ngClass]="{'input-group-focus':''}">
+<div class="input-group">
     <ng-container *ngIf="prepend">
 		<span class="input-group-text">
-			<ns-icon [name]="prepend" [size]="16"></ns-icon>
+            <ng-container *ngIf="iconName">
+			    <ns-icon [name]="iconName" [size]="16"></ns-icon>
+            </ng-container>
+            {{prepend}}
 		</span>
     </ng-container>
 
     <input [(ngModel)]="value"
+           [attr.id]="id"
            class="form-control"
            [type]="type"
            [placeholder]="placeholder"
@@ -20,7 +24,10 @@
 
     <ng-container *ngIf="append">
 		<span class="input-group-text">
-			<ns-icon [name]="append" [size]="16"></ns-icon>
+            <ng-container *ngIf="iconName">
+			    <ns-icon [name]="iconName" [size]="16"></ns-icon>
+            </ng-container>
+            {{append}}
 		</span>
     </ng-container>
 </div>

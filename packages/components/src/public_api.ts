@@ -36,6 +36,7 @@ export { NsImageUploadModule } from './image-upload/image-upload.module';
 export { NsImageUploadComponent } from './image-upload/image-upload.component';
 export { NsImageUpload } from './image-upload/models/image-upload';
 export { NsImageUploadClient } from './image-upload/interfaces/image-upload-client';
+export { NS_IMAGE_UPLOAD } from './image-upload/providers/image-setup';
 
 export { NsModalModule } from './modal/modal.module';
 export { NsModalFooter } from './modal/directives/modal.directive';
