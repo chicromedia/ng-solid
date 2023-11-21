@@ -3,5 +3,7 @@
   "dest": "../../dist/google",
   "lib": {
     "entryFile": "src/public_api.ts"
-  }
+  },
+  "allowedNonPeerDependencies": ["@ng-solid/core"],
+  "assets": ["README.md"]
 }

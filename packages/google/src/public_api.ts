@@ -2,7 +2,7 @@
  * Public API Surface of google
  */
 
-import "./index";
+import "./types";
 
 export * from './components/google-adsense/google-adsense.component';
 export * from './enums/google-tags.enum';

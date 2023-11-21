@@ -4,6 +4,10 @@
   "lib": {
     "entryFile": "src/public_api.ts"
   },
+  "allowedNonPeerDependencies": [
+    "@ng-solid/core",
+    "@ng-solid/icons"
+  ],
   "assets": [
     "README.md"
   ]

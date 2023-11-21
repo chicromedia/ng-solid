@@ -2,7 +2,7 @@
  * Public API Surface of facebook
  */
 
-import './index';
+import './types';
 
 export * from './facebook.module';
 export * from './services/facebook.service';
