@@ -28,7 +28,7 @@ export class IconsComponent implements OnChanges
     @Input() color: string = 'currentColor';
     @Input() size: number = 24;
     @Input() strokeWidth = 1;
-    @Input() viewBox: string = '0 0 24 24';
+    @Input() viewBox: string = '0 0 30 30';
 
     @ViewChild( 'content', { read: ElementRef, static: true } ) container: ElementRef<HTMLOrSVGElement>;
 

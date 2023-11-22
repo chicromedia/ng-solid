@@ -2,17 +2,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
-import { NsCoreModule } from '@ng-solid/core';
-import { NsDropdownModule } from '@ng-solid/components';
-import { accessible, NsIconsModule } from '@ng-solid/icons';
+import { NsFormsModule } from '@ng-solid/components';
 
 @NgModule( {
     imports: [
         BrowserModule,
         HttpClientModule,
-        NsCoreModule,
-        NsDropdownModule,
-        NsIconsModule.forRoot( [ accessible ] )
+        NsFormsModule
     ],
     declarations: [
         AppComponent

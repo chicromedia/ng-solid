@@ -1,6 +1,6 @@
 {
   "name": "@ng-solid/icons",
-  "version": "4.0.0",
+  "version": "4.0.2",
   "license": "MIT",
   "description": "An Angular Icon Component, Semantic vector graphics.",
   "engines": {
@@ -13,8 +13,8 @@
     "url": "https://github.com/chicromedia"
   },
   "peerDependencies": {
-    "@angular/common": "^14.3.0",
-    "@angular/core": "^14.3.0"
+    "@angular/common": "^16.2.12",
+    "@angular/core": "^16.2.12"
   },
   "dependencies": {
     "tslib": "^2.3.0"

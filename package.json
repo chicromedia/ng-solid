@@ -1,6 +1,6 @@
 {
   "name": "ng-solid",
-  "version": "2.1.0",
+  "version": "4.0.0",
   "author": "Ulises Familia Rodríguez <chicromedia@hotmail.com> (https://gitlab.com/chicromedia)",
   "homepage": "https://gitlab.com/chicromedia/ng-solid#readme",
   "scripts": {
@@ -67,7 +67,7 @@
     "ts"
   ],
   "engines": {
-    "node": "^16.0.0"
+    "node": "^18.0.0"
   },
   "description": "A suite of development tools focused on streamlining Angular application development.",
   "repository": {
