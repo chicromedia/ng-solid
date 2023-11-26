@@ -1,9 +1,13 @@
 {
   "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
-  "dest": "../../dist/google",
+  "dest": "../../dist/packages/google",
   "lib": {
-    "entryFile": "src/public_api.ts"
+    "entryFile": "src/index.ts"
   },
-  "allowedNonPeerDependencies": ["@ng-solid/core"],
-  "assets": ["README.md"]
+  "allowedNonPeerDependencies": [
+    "@ng-solid/core"
+  ],
+  "assets": [
+    "README.md"
+  ]
 }

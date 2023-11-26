@@ -1,8 +1,8 @@
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { NsDateView } from '../../../types';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { NsFormControlValueAccessor } from '../../models/form-control-value-accessor';
 import { isDateValid } from '@ng-solid/core';
+import { NsFormControlValueAccessor } from '../../models/form-control-value-accessor';
 
 
 @Component( {
@@ -38,7 +38,7 @@ export class NsDatePickerComponent extends NsFormControlValueAccessor implements
     weeks: any[] = [];
     times: { [ key: string ]: string }[] = [];
 
-    identity = ( index, item: Date ) => item.getDate();
+    identity = ( _, item: Date ) => item.getDate();
 
     private readonly current: Date = new Date();
     private readonly HOURS: number = 24;

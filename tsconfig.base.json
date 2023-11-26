@@ -1,0 +1,28 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "strictPropertyInitialization": false,
+    "noImplicitOverride": false,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2020", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@ng-solid/components": ["packages/components/src/index.ts"],
+      "@ng-solid/core": ["packages/core/src/index.ts"],
+      "@ng-solid/facebook": ["packages/facebook/src/index.ts"],
+      "@ng-solid/google": ["packages/google/src/index.ts"],
+      "@ng-solid/icons": ["packages/icons/src/index.ts"],
+      "@ng-solid/twitter": ["packages/twitter/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"],
+}

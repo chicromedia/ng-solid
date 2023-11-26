@@ -8,11 +8,11 @@ import { FilterByDayPipe } from './pipes/filter-by-day.pipe';
 import { NsScheduleEventComponent } from './components/event/event.component';
 import { NsScheduleCellComponent } from './components/cell/cell.component';
 import { NsButtonModule } from '../button/button.module';
-import { NsDropdownModule } from '../dropdown/dropdown.module';
 import { FormsModule } from '@angular/forms';
-import { NsFormsModule } from '../form/forms.module';
 import { NsCoreModule } from '@ng-solid/core';
 import { NsWeekdayPipe } from './pipes/nsWeekday.pipe';
+import { NsDropdownModule } from '../dropdown';
+import { NsFormsModule } from '../form';
 
 
 @NgModule( {

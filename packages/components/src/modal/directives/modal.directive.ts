@@ -7,7 +7,7 @@ import { NsModalWindow } from '../modal.component';
 export class NsModalFooter implements AfterViewInit, OnDestroy
 {
     constructor( @SkipSelf() private modal: NsModalWindow,
-                 private templateRef: TemplateRef<NsModalFooter> )
+                 private readonly templateRef: TemplateRef<NsModalFooter> )
     {
     }
 

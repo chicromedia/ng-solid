@@ -1,0 +1,45 @@
+{
+  "name": "twitter",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "packages/twitter/src",
+  "tags": ["scope:twitter"],
+  "prefix": "ns",
+  "targets": {
+    "build": {
+      "outputs": ["{workspaceRoot}/dist/packages/twitter"],
+      "executor": "@nx/angular:package",
+      "dependsOn": ["^build"],
+      "options": {
+        "project": "packages/twitter/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "packages/twitter/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "packages/twitter/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "packages/twitter/jest.config.ts"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "packages/twitter/**/*.ts",
+          "packages/twitter/**/*.html",
+          "packages/twitter/package.json"
+        ]
+      }
+    }
+  }
+}

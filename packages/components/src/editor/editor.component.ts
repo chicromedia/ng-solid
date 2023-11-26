@@ -1,8 +1,7 @@
 import { Component, ElementRef, forwardRef, HostListener, Input, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
-import { NsFormControlValueAccessor } from '../form/models/form-control-value-accessor';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { NsContentEditableComponent } from '../form/components/content-editable/content-editable.directive';
 import { NsEditorService } from './services/editor.service';
+import { NsContentEditableComponent, NsFormControlValueAccessor } from '../form';
 
 const DEFAULT_COLOR_PRESETS = [
     '#b60205',

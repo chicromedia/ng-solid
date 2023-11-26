@@ -1,14 +1,11 @@
 /* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
-  "extends": "./tsconfig.json",
+  "extends": "./tsconfig.base.json",
   "compilerOptions": {
     "outDir": "./out-tsc/app",
     "types": [],
-    "paths": {
-      "@ng-solid/*": [
-        "packages/*/src/public_api.ts"
-      ]
-    }
+    "useDefineForClassFields": false,
+    "target": "es2022"
   },
   "files": [
     "src/main.ts",
@@ -16,5 +13,13 @@
   ],
   "include": [
     "src/**/*.d.ts"
-  ]
+  ],
+  "exclude": [
+    "src/**/*.spec.ts"
+  ],
+  "angularCompilerOptions": {
+    "enableIvy": false,
+    "fullTemplateTypeCheck": true,
+    "skipTemplateCodegen": false
+  }
 }

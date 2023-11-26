@@ -27,7 +27,4 @@ import { NsFormatDatePipe } from './pipes/format-date.pipe';
 } )
 export class NsCoreModule
 {
-    constructor()
-    {
-    }
 }
