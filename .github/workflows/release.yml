@@ -1,13 +1,14 @@
 name: Semantic Release
 
 on:
-  workflow_dispatch:
-  release:
-    types: [published]
+  pull_request:
+    branches:
+      - main
 
 jobs:
   release:
     name: Release
+    if: ${{ github.event.pull_request.merged == true }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -16,7 +17,7 @@ jobs:
       # Cache node_modules
       - uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 18.18.2
           cache: 'npm'
       - run: npm ci
       - uses: nrwl/nx-set-shas@v3
