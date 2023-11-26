@@ -3,7 +3,5 @@
   "npm": false,
   "github": true,
   "repositoryUrl": "https://github.com/chicromedia/ng-solid",
-  "branches": [
-    "main"
-  ]
+  "branches": ["main"]
 }
