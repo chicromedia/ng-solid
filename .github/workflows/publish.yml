@@ -1,11 +1,14 @@
-name: publish
+name: Release and Publish
 
 on:
-  release:
-    types: [ published ]
+  push:
+    branches:
+      - 'main'
+  pull_request:
+  workflow_dispatch:
 
 jobs:
-  main:
+  publish:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -22,7 +25,4 @@ jobs:
       - run: git branch --track main origin/main
 
       - run: npx nx format:check
-      - run: npx nx affected -t build --parallel=3
-      - run: npx nx run ng-solid:semantic-release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: npx nx affected -t publish --parallel=3
