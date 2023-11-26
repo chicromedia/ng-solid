@@ -1,10 +1,8 @@
-name: CI
+name: publish
+
 on:
-  push:
-    branches:
-      # Change this if your primary branch is not main
-      - main
-  pull_request:
+  release:
+    types: [ published ]
 
 jobs:
   main:
@@ -25,3 +23,6 @@ jobs:
 
       - run: npx nx format:check
       - run: npx nx affected -t build --parallel=3
+      - run: npx nx run ng-solid:semantic-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

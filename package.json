@@ -4,13 +4,13 @@
   "author": "Ulises Familia Rodríguez <chicromedia@hotmail.com> (https://gitlab.com/chicromedia)",
   "homepage": "https://gitlab.com/chicromedia/ng-solid#readme",
   "scripts": {
+    "prepare": "husky install",
     "ng": "ng",
     "start": "nx serve",
     "build": "nx build",
     "test": "nx test",
     "lint": "nx lint",
-    "e2e": "nx e2e",
-    "prepare": "husky install"
+    "e2e": "nx e2e"
   },
   "private": false,
   "license": "MIT",
