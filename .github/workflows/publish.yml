@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  main:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -26,6 +26,8 @@ jobs:
 
       - run: npx nx format:check
       - run: npx nx affected -t build --parallel=3
-      - run: npx nx run ng-solid:semantic-release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # Upload artifacts
+      - uses: actions/upload-artifact@v3
+        with:
+          name: ng-solid
+          path: dist/packages/*
