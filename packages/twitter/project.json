@@ -23,6 +23,9 @@
       },
       "defaultConfiguration": "production"
     },
+    "publish": {
+      "executor": "@theunderscorer/nx-semantic-release:semantic-release"
+    },
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],

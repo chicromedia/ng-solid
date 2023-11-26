@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  publish:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -25,9 +25,4 @@ jobs:
       - run: git branch --track main origin/main
 
       - run: npx nx format:check
-      - run: npx nx affected -t build --parallel=3
-      # Upload artifacts
-      - uses: actions/upload-artifact@v3
-        with:
-          name: ng-solid
-          path: dist/packages/*
+      - run: npx nx affected -t publish --parallel=3
