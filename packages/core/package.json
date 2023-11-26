@@ -24,5 +24,6 @@
     "angular",
     "components",
     "core"
-  ]
+  ],
+  "sideEffects": false
 }

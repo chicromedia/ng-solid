@@ -1,4 +1,4 @@
-export { NsSchemaMarkupModule } from "./schema-markup.module";
-export { NsSchemaComponent } from "./components/schema.component";
-export { NsSchemaType } from "./enums/schema-type.enum";
-export { NsSchemaMarkup } from "./models/schema";
+export * from './enums/schema-type.enum';
+export * from './models/schema';
+export * from './schema.component';
+export * from './schema.module';

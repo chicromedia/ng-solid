@@ -1,14 +1,11 @@
 {
   "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
-  "dest": "../../dist/components",
+  "dest": "../../dist/packages/components",
   "lib": {
-    "entryFile": "src/public_api.ts"
+    "entryFile": "src/index.ts"
   },
   "allowedNonPeerDependencies": [
     "@ng-solid/core",
     "@ng-solid/icons"
-  ],
-  "assets": [
-    "README.md"
   ]
 }

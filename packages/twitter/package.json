@@ -27,5 +27,6 @@
     "components",
     "ui",
     "frontend"
-  ]
+  ],
+  "sideEffects": false
 }

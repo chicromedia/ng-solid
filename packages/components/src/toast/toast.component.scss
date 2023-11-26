@@ -1,0 +1,45 @@
+:host {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10000;
+  left: 50%;
+  bottom: 1rem;
+  margin-left: 50%;
+  color: #fff;
+  width: 360px;
+  height: 64px;
+  box-sizing: border-box;
+  border-radius: var(--ns-border-radius, 8px);
+  transform: translateY(100%);
+  padding: 1rem;
+
+  &.ns-toast {
+    &--success {
+      background-color: var(--ns-success-color, #54b948);
+    }
+
+    &--warning {
+      background-color: var(--ns-info-color, #ffc500);
+    }
+
+    &--info {
+      background-color: var(--ns-info-color, #2980b9);
+    }
+
+    &--error {
+      background-color: var(--ns-danger-color, #c9243f);
+    }
+  }
+
+  .ns-toast {
+    &__message {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+  }
+}

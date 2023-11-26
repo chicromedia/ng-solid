@@ -5,3 +5,6 @@
 *-lock.json
 .DS_Store
 /.angular
+/.nx
+
+.angular
