@@ -1,7 +1,8 @@
-name: RELEASE
+name: Semantic Release
 on: [workflow_dispatch]
 jobs:
   main:
+    name: Release
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
