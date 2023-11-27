@@ -9,7 +9,6 @@ on:
 jobs:
   build:
     name: Build
-    if: ${{ contains(github.ref, 'refs/heads/main') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
