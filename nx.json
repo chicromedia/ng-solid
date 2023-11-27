@@ -51,5 +51,6 @@
     "@nx/js": {
       "analyzeSourceFiles": true
     }
-  }
+  },
+  "defaultProject": "ng-solid"
 }

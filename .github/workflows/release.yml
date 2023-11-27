@@ -1,53 +1,21 @@
-name: Semantic Release
-
-on:
-  pull_request:
-  push:
-    branches:
-      - main
-
+name: RELEASE
+on: [workflow_dispatch]
 jobs:
-  build:
-    name: Build
+  main:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      # Cache node_modules
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18.18.2
-          cache: 'npm'
-      - run: npm ci
       - uses: nrwl/nx-set-shas@v3
-      # This line is needed for nx affected to work when CI is running on a PR
-      - run: git branch --track main origin/main
-
-      - run: npx nx format:check
-      - run: npx nx affected -t build --parallel=3
-
-  release:
-    name: Release
-    if: ${{ contains(github.ref, 'refs/heads/main') }}
-    runs-on: ubuntu-latest
-    needs: ['build']
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      # Cache node_modules
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18.18.2
-          cache: 'npm'
-      - run: npm ci
-      - uses: nrwl/nx-set-shas@v3
-      # This line is needed for nx affected to work when CI is running on a PR
-      - run: git branch --track main origin/main
-
-      - run: npx nx format:check
-      - run: npx nx affected -t semantic-release --parallel=3
+      - name: Install deps
+        run: npm ci
+#      - name: Lint
+#        run: npx nx run-many -t lint
+#      - name: Test
+#        run: npx nx run-many -t test --configuration=ci
+      - name: Release
+        run: npx semantic-release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.SEMANTIC_RELEASE_NPM_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

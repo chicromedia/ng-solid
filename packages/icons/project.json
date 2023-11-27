@@ -49,6 +49,12 @@
           "packages/icons/package.json"
         ]
       }
+    },
+    "release": {
+      "executor": "nx-release:build-update-publish",
+      "options": {
+        "libName": "icons"
+      }
     }
   }
 }
