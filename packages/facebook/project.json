@@ -49,6 +49,12 @@
           "packages/facebook/package.json"
         ]
       }
+    },
+    "release": {
+      "executor": "nx-release:build-update-publish",
+      "options": {
+        "libName": "facebook"
+      }
     }
   }
 }

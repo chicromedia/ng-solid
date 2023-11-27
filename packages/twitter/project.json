@@ -23,15 +23,6 @@
       },
       "defaultConfiguration": "production"
     },
-    "semantic-release": {
-      "executor": "@theunderscorer/nx-semantic-release:semantic-release",
-      "options": {
-        "github": true,
-        "changelog": true,
-        "npm": true,
-        "tagFormat": "twitter-v${VERSION}"
-      }
-    },
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
@@ -48,6 +39,12 @@
           "packages/twitter/**/*.html",
           "packages/twitter/package.json"
         ]
+      }
+    },
+    "release": {
+      "executor": "nx-release:build-update-publish",
+      "options": {
+        "libName": "twitter"
       }
     }
   }

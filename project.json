@@ -29,7 +29,9 @@
             "output": "assets/icons"
           }
         ],
-        "styles": ["src/styles.scss"],
+        "styles": [
+          "src/styles.scss"
+        ],
         "scripts": [],
         "vendorChunk": true,
         "extractLicenses": false,
@@ -38,7 +40,9 @@
         "optimization": false,
         "namedChunks": true
       },
-      "dependsOn": ["^build"],
+      "dependsOn": [
+        "^build"
+      ],
       "configurations": {
         "production": {
           "fileReplacements": [
@@ -71,7 +75,9 @@
         }
       },
       "defaultConfiguration": "",
-      "outputs": ["{options.outputPath}"]
+      "outputs": [
+        "{options.outputPath}"
+      ]
     },
     "serve": {
       "executor": "@angular-devkit/build-angular:dev-server",
@@ -105,8 +111,13 @@
         "polyfills": "src/polyfills.ts",
         "tsConfig": "tsconfig.spec.json",
         "karmaConfig": "karma.conf.js",
-        "assets": ["src/favicon.ico", "src/assets"],
-        "styles": ["src/styles.scss"],
+        "assets": [
+          "src/favicon.ico",
+          "src/assets"
+        ],
+        "styles": [
+          "src/styles.scss"
+        ],
         "scripts": []
       }
     },
@@ -118,7 +129,9 @@
           "tsconfig.spec.json",
           "e2e/tsconfig.json"
         ],
-        "exclude": ["**/node_modules/**"]
+        "exclude": [
+          "**/node_modules/**"
+        ]
       }
     },
     "e2e": {
