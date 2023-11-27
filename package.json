@@ -1,8 +1,8 @@
 {
   "name": "ng-solid",
   "version": "4.0.0",
-  "author": "Ulises Familia Rodríguez <chicromedia@hotmail.com> (https://gitlab.com/chicromedia)",
-  "homepage": "https://gitlab.com/chicromedia/ng-solid#readme",
+  "author": "Ulises Familia Rodríguez <chicromedia@hotmail.com> (https://github.com/chicromedia)",
+  "homepage": "https://github.com/chicromedia/ng-solid#readme",
   "scripts": {
     "prepare": "husky install",
     "ng": "ng",
@@ -103,10 +103,10 @@
   "description": "A suite of development tools focused on streamlining Angular application development.",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@gitlab.com/chicromedia/ng-solid.git"
+    "url": "https://github.com/chicromedia/ng-solid.git"
   },
   "bugs": {
-    "url": "https://gitlab.com/chicromedia/ng-solid/issues"
+    "url": "https://github.com/chicromedia/ng-solid/issues"
   },
   "workspaces": [
     "packages/*"
