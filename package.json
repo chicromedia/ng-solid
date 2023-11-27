@@ -103,7 +103,7 @@
   "description": "A suite of development tools focused on streamlining Angular application development.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/chicromedia/ng-solid.git"
+    "url": "git@github.com:chicromedia/ng-solid.git "
   },
   "bugs": {
     "url": "https://github.com/chicromedia/ng-solid/issues"
