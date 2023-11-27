@@ -4,9 +4,9 @@
   "license": "MIT",
   "description": "An Angular UI component library based on Ant Design.",
   "engines": {
-    "node": ">=16.0.0"
+    "node": ">=18.0.0"
   },
-  "homepage": "https://github.com/chicromedia/ng-solid/tree/master/packages/components",
+  "homepage": "https://github.com/chicromedia/ng-solid#readme",
   "author": {
     "name": "Ulises Familia Rodríguez",
     "email": "chicromedia@hotmail.com",

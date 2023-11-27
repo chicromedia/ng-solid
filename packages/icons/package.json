@@ -4,7 +4,7 @@
   "license": "MIT",
   "description": "An Angular Icon Component, Semantic vector graphics.",
   "engines": {
-    "node": ">=16.0.0"
+    "node": ">=18.0.0"
   },
   "homepage": "https://github.com/chicromedia/ng-solid/tree/master/packages/icons",
   "author": {
