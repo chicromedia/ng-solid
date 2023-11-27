@@ -1,5 +1,8 @@
 name: Semantic Release
-on: [workflow_dispatch]
+on:
+  push:
+    branches:
+      - main
 jobs:
   main:
     name: Release
