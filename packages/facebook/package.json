@@ -4,13 +4,13 @@
   "license": "MIT",
   "description": "A library of Facebook UI components for Angular",
   "engines": {
-    "node": ">=10.0.0"
+    "node": ">=18.0.0"
   },
-  "homepage": "https://gitlab.com/chicromedia/ng-solid",
+  "homepage": "https://github.com/chicromedia/ng-solid#readme",
   "author": {
     "name": "Ulises Familia Rodríguez",
     "email": "chicromedia@hotmail.com",
-    "url": "https://gitlab.com/chicromedia"
+    "url": "https://github.com/chicromedia"
   },
   "peerDependencies": {
     "@angular/common": "^16.2.12",
