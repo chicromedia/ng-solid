@@ -1,9 +1,7 @@
 name: Semantic Release
 on:
-  pull_request:
-    types:
-      - closed
-      - synchronize
+  workflow_dispatch:
+
 jobs:
   main:
     name: Release
