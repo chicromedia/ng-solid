@@ -6,7 +6,7 @@
   "engines": {
     "node": ">=18.0.0"
   },
-  "homepage": "https://github.com/chicromedia/ng-solid/tree/master/packages/icons",
+  "homepage": "https://github.com/chicromedia/ng-solid",
   "author": {
     "name": "Ulises Familia Rodríguez",
     "email": "chicromedia@hotmail.com",
