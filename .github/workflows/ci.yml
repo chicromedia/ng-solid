@@ -1,4 +1,4 @@
-name: CI
+name: Continues Integration
 on:
   pull_request:
 
