@@ -2,14 +2,37 @@ name: Semantic Release
 
 on:
   pull_request:
+  push:
     branches:
       - main
 
 jobs:
+  build:
+    name: Build
+    if: ${{ contains(github.ref, 'refs/heads/main') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      # Cache node_modules
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18.18.2
+          cache: 'npm'
+      - run: npm ci
+      - uses: nrwl/nx-set-shas@v3
+      # This line is needed for nx affected to work when CI is running on a PR
+      - run: git branch --track main origin/main
+
+      - run: npx nx format:check
+      - run: npx nx affected -t build --parallel=3
+
   release:
     name: Release
-    if: ${{ github.event.pull_request.merged == true }}
+    if: ${{ contains(github.ref, 'refs/heads/main') }}
     runs-on: ubuntu-latest
+    needs: [ 'build' ]
     steps:
       - uses: actions/checkout@v4
         with:
