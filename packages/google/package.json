@@ -1,6 +1,6 @@
 {
   "name": "@ng-solid/google",
-  "version": "5.1.8",
+  "version": "1.0.0",
   "license": "MIT",
   "description": "A library of Google UI components for Angular",
   "engines": {
