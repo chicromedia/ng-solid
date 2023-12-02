@@ -1,6 +1,11 @@
 name: Semantic Release
 on:
-  pull_request:
+  push:
+    branches:
+      - master
+      - next
+      - beta
+      - "*.x"
 
 jobs:
   main:
