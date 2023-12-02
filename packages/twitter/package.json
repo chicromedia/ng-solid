@@ -1,6 +1,6 @@
 {
   "name": "@ng-solid/twitter",
-  "version": "1.0.0",
+  "version": "5.0.0",
   "license": "MIT",
   "description": "A library of Twitter UI components for Angular",
   "engines": {
