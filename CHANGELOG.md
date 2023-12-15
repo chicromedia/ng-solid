@@ -1,3 +1,10 @@
+## [5.1.10](https://github.com/chicromedia/ng-solid/compare/v5.1.9...v5.1.10) (2023-12-15)
+
+
+### Bug Fixes
+
+* export button.module ([#3](https://github.com/chicromedia/ng-solid/issues/3)) ([#33](https://github.com/chicromedia/ng-solid/issues/33)) ([620a51d](https://github.com/chicromedia/ng-solid/commit/620a51d60a69ccb3743fd93e2c206b3c91747edf))
+
 ## [5.1.9](https://github.com/chicromedia/ng-solid/compare/v5.1.8...v5.1.9) (2023-12-02)
 
 
