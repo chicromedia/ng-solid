@@ -1,3 +1,10 @@
+## [5.1.11](https://github.com/chicromedia/ng-solid/compare/v5.1.10...v5.1.11) (2023-12-25)
+
+
+### Bug Fixes
+
+* export buttonModule and add icons preload ([#34](https://github.com/chicromedia/ng-solid/issues/34)) ([fec23ce](https://github.com/chicromedia/ng-solid/commit/fec23ce60fd1d2e9d281934628c8cba25ed6126d)), closes [#3](https://github.com/chicromedia/ng-solid/issues/3)
+
 ## [5.1.10](https://github.com/chicromedia/ng-solid/compare/v5.1.9...v5.1.10) (2023-12-15)
 
 
