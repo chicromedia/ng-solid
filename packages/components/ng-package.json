@@ -5,7 +5,6 @@
     "entryFile": "src/index.ts"
   },
   "allowedNonPeerDependencies": [
-    "@ng-solid/core",
-    "@ng-solid/icons"
+    "@ng-solid/core"
   ]
 }

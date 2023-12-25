@@ -9,7 +9,7 @@ import { RouterModule } from '@angular/router';
 import { NsSwitchComponent } from './components/switch/switch.component';
 import { NsIconsModule } from '@ng-solid/icons';
 import { NsInputGroupComponent } from './components/input-group/input-group.component';
-import { NsButtonModule } from '../button/button.module';
+import { NsButtonModule } from '../button';
 import { NsTextAreaComponent } from './components/text-area/text-area.component';
 import { NsDatePickerComponent } from './components/date-picker/date-picker.component';
 import { MaskDirective } from './directives/mask.directive';
