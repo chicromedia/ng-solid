@@ -353,6 +353,7 @@ export * from './podcast';
 export * from './poll';
 export * from './poll-h';
 export * from './portrait';
+export * from './preload';
 export * from './print';
 export * from './project-diagram';
 export * from './qrcode';
