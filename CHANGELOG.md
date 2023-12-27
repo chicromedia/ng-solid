@@ -1,3 +1,15 @@
+## [5.1.12](https://github.com/chicromedia/ng-solid/compare/v5.1.11...v5.1.12) (2023-12-27)
+
+
+### Bug Fixes
+
+* update local dependencies (AP-2) ([#35](https://github.com/chicromedia/ng-solid/issues/35)) ([b47f50b](https://github.com/chicromedia/ng-solid/commit/b47f50b96ba2a60286a5da58c44684bef313f627))
+
+
+### Chores
+
+* export preload icon (AP-2) ([206b487](https://github.com/chicromedia/ng-solid/commit/206b487819d364babe5cd7a56f44ec9cbc1f29cc))
+
 ## [5.1.11](https://github.com/chicromedia/ng-solid/compare/v5.1.10...v5.1.11) (2023-12-25)
 
 
