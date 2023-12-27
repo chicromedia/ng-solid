@@ -17,11 +17,11 @@
     "@angular/forms": "^16.2.0",
     "@angular/platform-browser": "^16.2.0",
     "@angular/router": "^16.2.0",
-    "@ng-solid/icons": "^4.0.0",
+    "@ng-solid/icons": "^5.0.0",
     "@angular/core": "^16.2.0"
   },
   "dependencies": {
-    "@ng-solid/core": "^4.0.0",
+    "@ng-solid/core": "^5.0.0",
     "tslib": "^2.0.0"
   },
   "keywords": [
