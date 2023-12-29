@@ -17,9 +17,7 @@ import { NsIconsPatchService } from './services/icons-patch.service';
     styles: [ ':host.ns-icon{display: inline-flex}' ],
     host: {
         '[class.ns-icon]': 'true',
-        '[style.--ns-icon-color]': 'color',
-        '[style.width.px]': 'size',
-        '[style.height.px]': 'size'
+        '[style.--ns-icon-color]': 'color'
     }
 } )
 export class IconsComponent implements OnChanges

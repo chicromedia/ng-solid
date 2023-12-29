@@ -10,7 +10,7 @@ export class NsIconsService
 
     private readonly cache: Map<string, string> = new Map<string, string>();
 
-    constructor( @Optional() @Inject( NS_ICONS ) private readonly icons: NsIconDefinition[] )
+    constructor( @Optional() @Inject( NS_ICONS ) icons: NsIconDefinition[] )
     {
         this.addIcon( ...( icons || [] ) );
     }

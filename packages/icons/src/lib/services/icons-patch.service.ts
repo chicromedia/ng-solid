@@ -10,8 +10,8 @@ export class NsIconsPatchService
 {
     patched = false;
 
-    constructor( @Optional() @Self() @Inject( NS_ICONS_PATCH ) private extraIcons: NsIconDefinition[],
-                 private service: NsIconsService
+    constructor( @Optional() @Self() @Inject( NS_ICONS_PATCH ) private readonly extraIcons: NsIconDefinition[],
+                 private readonly service: NsIconsService
     )
     {
         if ( this.extraIcons )
