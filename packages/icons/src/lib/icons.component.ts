@@ -33,7 +33,6 @@ export class IconsComponent implements OnChanges
     constructor( private renderer: Renderer2,
                  private service: NsIconsService)
     {
-
     }
 
     ngOnChanges( { name }: SimpleChanges )
