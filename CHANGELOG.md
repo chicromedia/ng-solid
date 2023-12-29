@@ -1,3 +1,10 @@
+## [5.1.13](https://github.com/chicromedia/ng-solid/compare/v5.1.12...v5.1.13) (2023-12-29)
+
+
+### Bug Fixes
+
+* resize icons ([#37](https://github.com/chicromedia/ng-solid/issues/37)) ([8c2bb09](https://github.com/chicromedia/ng-solid/commit/8c2bb093b41a550a858b697b2d474aac08af6b42))
+
 ## [5.1.12](https://github.com/chicromedia/ng-solid/compare/v5.1.11...v5.1.12) (2023-12-27)
 
 
