@@ -31,8 +31,14 @@ export class IconsComponent implements OnChanges
     @ViewChild( 'content', { read: ElementRef, static: true } ) container: ElementRef<HTMLOrSVGElement>;
 
     constructor( private renderer: Renderer2,
-                 private service: NsIconsService)
+                 private service: NsIconsService,
+                 @Optional() iconPatch: NsIconsPatchService
+    )
     {
+        if ( iconPatch )
+        {
+            iconPatch.doPatch();
+        }
     }
 
     ngOnChanges( { name }: SimpleChanges )
