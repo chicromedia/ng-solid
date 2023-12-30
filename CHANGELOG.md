@@ -1,3 +1,15 @@
+## [5.1.14](https://github.com/chicromedia/ng-solid/compare/v5.1.13...v5.1.14) (2023-12-30)
+
+
+### Chores
+
+* forzar deploy ([#37](https://github.com/chicromedia/ng-solid/issues/37)) ([#38](https://github.com/chicromedia/ng-solid/issues/38)) ([fc26159](https://github.com/chicromedia/ng-solid/commit/fc261590b201038b9aee4a6355607f181da50e6a))
+
+
+### Refactoring
+
+* responsive ns-avatar ([#36](https://github.com/chicromedia/ng-solid/issues/36)) ([#39](https://github.com/chicromedia/ng-solid/issues/39)) ([788044e](https://github.com/chicromedia/ng-solid/commit/788044ef7a06ba15f7ce8ae880ef2e60e2dcb8b2))
+
 ## [5.1.13](https://github.com/chicromedia/ng-solid/compare/v5.1.12...v5.1.13) (2023-12-29)
 
 
