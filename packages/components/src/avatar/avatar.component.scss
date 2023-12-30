@@ -1,32 +1,36 @@
 @import "../styles/styles";
 
-:host {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-  user-select: none;
-  overflow: hidden;
-}
-
 .ns-avatar {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: #fff;
+  font-size: 14px;
+  font-variant: tabular-nums;
+  line-height: 32px;
+  list-style: none;
+  font-feature-settings: "tnum";
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-align: center;
+  vertical-align: middle;
+  background: #ccc;
+  width: 32px;
+  height: 32px;
+
   &__circle {
-    fill: #f4f4f4;
+    border-radius: 50%;
+  }
+
+  &__square {
+    border-radius: 2px;
   }
 
   &__text {
-    fill: #777;
-  }
-}
-
-:host-context([data-theme="dark"]) {
-  .ns-avatar {
-    &__circle {
-      fill: #292d32;
-    }
-
-    &__text {
-      fill: #fff;
-    }
+    position: absolute;
+    left: 50%;
+    transform-origin: 0 center;
   }
 }

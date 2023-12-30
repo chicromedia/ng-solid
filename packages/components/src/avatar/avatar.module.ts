@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NsAvatarComponent } from './avatar.component';
+import { NsIconsModule } from '@ng-solid/icons';
 
 @NgModule( {
     imports: [
-        CommonModule
+        CommonModule,
+        NsIconsModule
     ],
     declarations: [
         NsAvatarComponent
