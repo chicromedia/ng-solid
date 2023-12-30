@@ -1,6 +1,6 @@
 {
   "name": "@ng-solid/core",
-  "version": "5.1.14",
+  "version": "5.1.15",
   "license": "MIT",
   "engines": {
     "node": ">=18.0.0"

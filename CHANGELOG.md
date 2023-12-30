@@ -1,3 +1,10 @@
+## [5.1.15](https://github.com/chicromedia/ng-solid/compare/v5.1.14...v5.1.15) (2023-12-30)
+
+
+### Bug Fixes
+
+* patch icon service ([#40](https://github.com/chicromedia/ng-solid/issues/40)) ([#41](https://github.com/chicromedia/ng-solid/issues/41)) ([59da96a](https://github.com/chicromedia/ng-solid/commit/59da96a2688b47812086ffdc11f45cd03faeb5e4))
+
 ## [5.1.14](https://github.com/chicromedia/ng-solid/compare/v5.1.13...v5.1.14) (2023-12-30)
 
 

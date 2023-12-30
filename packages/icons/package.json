@@ -1,6 +1,6 @@
 {
   "name": "@ng-solid/icons",
-  "version": "5.1.14",
+  "version": "5.1.15",
   "license": "MIT",
   "description": "An Angular Icon Component, Semantic vector graphics.",
   "engines": {
