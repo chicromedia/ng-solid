@@ -1,3 +1,10 @@
+## [6.0.1](https://github.com/chicromedia/ng-solid/compare/v6.0.0...v6.0.1) (2024-04-05)
+
+
+### Bug Fixes
+
+* components dependencies ([#40](https://github.com/chicromedia/ng-solid/issues/40)) ([dfc3345](https://github.com/chicromedia/ng-solid/commit/dfc33450a1b64739921c4f62dad15ce81d7c58b4))
+
 ## [5.1.15](https://github.com/chicromedia/ng-solid/compare/v5.1.14...v5.1.15) (2023-12-30)
 
 
