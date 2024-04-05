@@ -32,14 +32,7 @@
     },
     "lint": {
       "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"],
-      "options": {
-        "lintFilePatterns": [
-          "packages/twitter/**/*.ts",
-          "packages/twitter/**/*.html",
-          "packages/twitter/package.json"
-        ]
-      }
+      "outputs": ["{options.outputFile}"]
     },
     "release": {
       "executor": "nx-release:build-update-publish",
