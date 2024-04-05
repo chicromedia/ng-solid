@@ -98,7 +98,7 @@
     "ts"
   ],
   "engines": {
-    "node": "^18.0.0"
+    "node": "^20.0.0"
   },
   "description": "A suite of development tools focused on streamlining Angular application development.",
   "repository": {
