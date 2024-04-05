@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
+import { Component, Input, Output, ViewEncapsulation } from '@angular/core';
 import { Subject } from 'rxjs';
 import { NsScheduleService } from './services/schedule.service';
 import { NsSchedule } from './models/schedule';
@@ -13,7 +13,7 @@ import { NsDateView } from '../types';
         '[class.ns-schedule]': 'true'
     }
 } )
-export class NsScheduleComponent implements OnInit
+export class NsScheduleComponent
 {
 
     @Input() view: NsDateView = 'workweek';
@@ -22,14 +22,11 @@ export class NsScheduleComponent implements OnInit
     @Input() data: NsSchedule[];
 
     @Output()
-    onClick: Subject<NsSchedule> = this.service.onClick$;
+    onClick: Subject<NsSchedule>;
 
     constructor( private service: NsScheduleService )
     {
-    }
-
-    ngOnInit(): void
-    {
+        this.onClick = this.service.onClick$;
     }
 
     goToday()
