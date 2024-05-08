@@ -14,13 +14,19 @@ export abstract class NsFormControlValueAccessor<T = any> implements ControlValu
     public label: string;
     @Input()
     public disabled: boolean;
+    @Input()
+    public readonly: boolean;
 
     public id = Guid.create();
 
     protected _value: T;
 
-    public onTouched = () => {};
-    public onChange = ( value: T ) => {};
+    public onTouched = () =>
+    {
+    };
+    public onChange = ( value: T ) =>
+    {
+    };
 
     writeValue( value: T ): void
     {

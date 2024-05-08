@@ -3,7 +3,7 @@
 @mixin btn {
   display: inline-block;
   position: relative;
-  border-radius: 4px;
+  border-radius: var(--ns-border-radius, 6px);
   text-transform: none;
   border: 1px solid rgb(219, 214, 225);
   font-size: 0.875rem;

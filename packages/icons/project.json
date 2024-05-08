@@ -7,9 +7,8 @@
   "tags": ["scope:icons"],
   "targets": {
     "build": {
-      "outputs": ["{workspaceRoot}/dist/packages/icons"],
       "executor": "@nx/angular:package",
-      "dependsOn": ["^build"],
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
       "options": {
         "project": "packages/icons/ng-package.json"
       },
@@ -22,15 +21,6 @@
         }
       },
       "defaultConfiguration": "production"
-    },
-    "semantic-release": {
-      "executor": "@theunderscorer/nx-semantic-release:semantic-release",
-      "options": {
-        "github": true,
-        "changelog": true,
-        "npm": true,
-        "tagFormat": "icons-v${VERSION}"
-      }
     },
     "test": {
       "executor": "@nx/jest:jest",

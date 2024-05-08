@@ -13,14 +13,11 @@
     "url": "https://github.com/chicromedia"
   },
   "peerDependencies": {
-    "@angular/common": "~17.2.0",
-    "@angular/core": "~17.2.0"
+    "@angular/common": "~17.3.6",
+    "@angular/core": "~17.3.6"
   },
   "dependencies": {
     "tslib": "^2.3.0"
   },
-  "sideEffects": false,
-  "publishConfig": {
-    "access": "public"
-  }
+  "sideEffects": false
 }

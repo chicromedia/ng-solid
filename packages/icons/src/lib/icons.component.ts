@@ -14,7 +14,6 @@ import { NsIconsPatchService } from './services/icons-patch.service';
              #content>
         </svg>
     `,
-    styles: [ ':host.ns-icon{display: inline-flex}' ],
     host: {
         '[class.ns-icon]': 'true',
         '[style.--ns-icon-color]': 'color'

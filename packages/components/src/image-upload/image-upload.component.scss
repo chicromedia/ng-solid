@@ -39,7 +39,7 @@
 
 
   &__drag-container {
-    position: relative;
+    position: absolute;
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -81,7 +81,7 @@
   &__empty {
     display: flex;
     flex-direction: column;
-    text-align: center;
+    align-items: center;
     padding: 1rem;
   }
 
