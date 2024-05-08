@@ -12,7 +12,6 @@ import {writeFileSync} from 'fs';
 import chalk from 'chalk';
 import semver from 'semver';
 import devkit from '@nx/devkit';
-import path from 'path';
 
 const {readCachedProjectGraph, readJsonFile} = devkit;
 
@@ -23,51 +22,55 @@ function invariant(condition, message) {
     }
 }
 
-function getNextVersion(name, increase) {
+function getNextVersion(name, increase, currentVersion) {
     const {status, stdout} = spawnSync(
         'npm',
-        ['view', `@ns-solid/${name}`, `dist-tags`, '--json', registry !== 'undefined' ? `--registry=${registry}` : ''].filter(Boolean),
+        ['view', `@ng-solid/${name}`, `dist-tags`, '--json', registry !== 'undefined' ? `--registry=${registry}` : ''].filter(Boolean),
         {encoding: 'utf-8'}
     );
-    let {version} = readJsonFile(path.resolve('package.json'));
     if (status === 0) {
         const formatted = stdout.replace(/\n/g, '');
         const {latest, next} = JSON.parse(formatted);
-        version = next && semver.lte(latest, next) ? next : latest;
-        version = semver.inc(version, increase);
+        currentVersion = next && semver.lte(latest, next) ? next : latest;
+        currentVersion = semver.inc(currentVersion, increase);
     }
-    return version;
+    return currentVersion;
 }
 
 // Executing publish script: node path/to/publish.mjs {name} --increase {increase} --tag {tag}
 // Default "tag" to "next" so we won't publish the "latest" tag by accident.
-const [, , name, increase = 'patch', tag = 'next', registry] = process.argv;
-
-const graph = readCachedProjectGraph();
-const project = graph.nodes[name];
+const [, , name, increase = 'patch', tag = 'latest', registry] = process.argv;
 
 invariant(
     ['patch', 'minor', 'major'].includes(increase),
     `No increase provided or increase did not match Semantic Versioning, expected: patch, minor or mayor, got '${increase}'.`
 );
 
+const {nodes} = readCachedProjectGraph();
+const project = nodes[name];
+
 invariant(
     project,
     `Could not find project "${name}" in the workspace. Is the project.json configured correctly?`
 );
 
-const {outputPath} = project.data?.targets?.build?.options;
+const [outputPath] = project.data?.targets?.build?.outputs;
+
 invariant(
     outputPath,
     `Could not find "build.options.outputPath" of project "${name}". Is project.json configured  correctly?`
 );
 
-process.chdir(outputPath);
+const outputDir = outputPath
+    .replace('{workspaceRoot}', '.')
+    .replace('{projectRoot}', project.data.root)
+
+process.chdir(outputDir);
 
 // Updating the version in "package.json" before publishing
 try {
     const json = readJsonFile('package.json');
-    json.version = getNextVersion(name, increase);
+    json.version = getNextVersion(name, increase, json.version);
     writeFileSync(`package.json`, JSON.stringify(json, null, 2));
 } catch (e) {
     console.error(

@@ -23,6 +23,10 @@
       },
       "defaultConfiguration": "production"
     },
+    "publish": {
+      "command": "node tools/scripts/publish.mjs twitter {args.increase} latest http://localhost:4873",
+      "dependsOn": ["build"]
+    },
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],

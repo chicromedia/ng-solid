@@ -23,14 +23,9 @@
       },
       "defaultConfiguration": "production"
     },
-    "semantic-release": {
-      "executor": "@theunderscorer/nx-semantic-release:semantic-release",
-      "options": {
-        "github": true,
-        "changelog": true,
-        "npm": true,
-        "tagFormat": "google-v${VERSION}"
-      }
+    "publish": {
+      "command": "node tools/scripts/publish.mjs google {args.increase} latest http://localhost:4873",
+      "dependsOn": ["build"]
     },
     "test": {
       "executor": "@nx/jest:jest",
