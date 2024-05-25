@@ -39,11 +39,11 @@ export abstract class NsFormControlValueAccessor<T = any> implements ControlValu
     @Input()
     set value( value: T )
     {
-        if ( typeof value !== 'undefined' )
+        if ( this._value !== value )
         {
-            this._value = value;
-            this.onChange( this._value );
+            this.onChange( value );
         }
+        this._value = value;
     }
 
     get value(): T

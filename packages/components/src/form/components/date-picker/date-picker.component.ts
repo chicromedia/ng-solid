@@ -64,7 +64,7 @@ export class NsDatePickerComponent extends NsFormControlValueAccessor implements
         }
     }
 
-    writeValue( date: any )
+    override writeValue( date: any )
     {
         this._value = new Date( isDateValid( date ) ? date : null );
         this.refreshView( this.value );

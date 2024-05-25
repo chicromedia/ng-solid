@@ -1,6 +1,6 @@
-import { Component, ElementRef, forwardRef, Inject, Input, OnInit, Optional, Renderer2, ViewChild } from '@angular/core';
-import { NsFormControlValueAccessor } from '../form/models/form-control-value-accessor';
-import { NsImageUpload } from './models/image-upload';
+import { Component, ElementRef, forwardRef, Inject, Input, Optional, Renderer2, ViewChild } from '@angular/core';
+import { NsFormControlValueAccessor } from '../form';
+import { NsImage, NsImageCreate } from './models/image-upload';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { NsImageUploadClient } from './interfaces/image-upload-client';
 import { NS_IMAGE_UPLOAD } from './providers/image-setup';
@@ -19,12 +19,11 @@ import { NS_IMAGE_UPLOAD } from './providers/image-setup';
         '[class.ns-image--disabled]': 'disabled'
     }
 } )
-export class NsImageUploadComponent extends NsFormControlValueAccessor implements OnInit
+export class NsImageUploadComponent extends NsFormControlValueAccessor
 {
-
-    @Input() accept: string = '.jpg,.jpeg,.png,.webp';
-    @Input() multi: boolean = false;
-    @Input() limit: number = 5;
+    @Input() accept = '.jpg,.jpeg,.png,.webp';
+    @Input() multi = false;
+    @Input() limit = 5;
 
     @ViewChild( 'input', { static: false, read: ElementRef } ) imgRef: ElementRef<HTMLInputElement>;
 
@@ -38,15 +37,11 @@ export class NsImageUploadComponent extends NsFormControlValueAccessor implement
         super();
     }
 
-    ngOnInit()
-    {
-    }
-
-    writeValue( value: any )
+    override writeValue( value: NsImage )
     {
         if ( Array.isArray( value ) )
         {
-            this._value = value.map( i => new NsImageUpload( i ) );
+            this._value = value.map( i => new NsImage( i ) );
         } else
         {
             this._value = ( this.multi && !value ) ? [] : value;
@@ -63,54 +58,49 @@ export class NsImageUploadComponent extends NsFormControlValueAccessor implement
         const { files } = this.imgRef.nativeElement;
         if ( files.length )
         {
-            const reader = new FileReader();
-            const imageFile: File = files.item( 0 );
-            reader.readAsDataURL( imageFile );
-            reader.onload = () =>
-            {
-                const { name, type, size } = imageFile;
-                const result = reader.result.toString();
-                const data = result.split( ',' )[ 1 ];
-                if ( ( !Array.isArray( this.value ) && data !== this.value.data ) || !this.value.some( i => i.data === data ) )
-                {
-                    const extension = name.match( /[^.]+$/ ).toString();
-                    this.add( new NsImageUpload( { name, mimeType: type, size, data, extension } ) );
-                    this.imgRef.nativeElement.value = null;
-                }
-            };
+            this.add( new NsImageCreate( files.item( 0 ) ) );
+            this.imgRef.nativeElement.value = null;
         }
     }
 
-    add( image: NsImageUpload )
+    add( image: NsImageCreate )
     {
-        this.loading.add( image.name );
-        this._value = this.multi ? ( this.value || [] ).concat( image ) : image;
         if ( this.client )
         {
+            this.loading.add( image.name );
             this.client.upload( image ).subscribe( data =>
             {
-                this.value = this.multi ? ( this.value || [] ).map( img => img.name == data.name ? data : img ) : data;
+                if ( this.multi )
+                {
+                    this.value = ( this.value || [] ).concat( data );
+                } else
+                {
+                    this.value = data;
+                }
                 this.loading.delete( image.name );
             } );
-        } else
-        {
-            this.loading.delete( image.name );
         }
     }
 
-    remove( image: NsImageUpload )
+    remove( image: NsImage )
     {
         this.loading.add( image.name );
-        if ( this.client && !!image.guid )
+        if ( this.client && !!image.id )
         {
             this.client.remove( image ).subscribe( () =>
             {
-                this.value = this.multi ? ( this.value || [] ).filter( img => img.name !== image.name ) : null;
+                if ( this.multi )
+                {
+                    this.value = ( this.value || [] ).filter( ( img: NsImage ) => img.id !== image.id );
+                } else
+                {
+                    this.value = null;
+                }
                 this.loading.delete( image.name );
             } );
         } else
         {
-            this.value = this.multi ? ( this.value || [] ).filter( img => img.name !== image.name ) : null;
+            this.value = this.multi ? ( this.value || [] ).filter( img => img.id !== image.id ) : null;
             this.loading.delete( image.name );
         }
     }

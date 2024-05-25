@@ -33,7 +33,7 @@ export class NsContentEditableComponent extends NsFormControlValueAccessor<strin
         super();
     }
 
-    writeValue( value: string ): void
+    override writeValue( value: string ): void
     {
         if ( typeof value !== 'undefined' )
         {
@@ -62,7 +62,7 @@ export class NsContentEditableComponent extends NsFormControlValueAccessor<strin
         }
     }
 
-    setDisabledState( isDisabled: boolean )
+    override setDisabledState( isDisabled: boolean )
     {
         this.disabled = isDisabled;
         this.enabled = !isDisabled;

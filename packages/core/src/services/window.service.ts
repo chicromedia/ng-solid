@@ -13,7 +13,7 @@ export class WindowRef
     return window;
   }
 
-  navigateTo(url: string, target?: Target, features?: string[])
+  navigateTo(url: string, target?: Target, features: string[]= [])
   {
     return this.nativeWindow.open(url, target, features.join(','));
   }

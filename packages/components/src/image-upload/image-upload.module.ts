@@ -4,7 +4,7 @@ import { NsImageUploadComponent } from './image-upload.component';
 import { NsImageUrlPipe } from './pipes/image-url.pipe';
 import { NsFormsModule } from '../form/forms.module';
 import { NsIconsModule } from '@ng-solid/icons';
-import { NsImageUpload } from './models/image-upload';
+import { NsImageCreate } from './models/image-upload';
 import { Observable } from 'rxjs';
 
 

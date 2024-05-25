@@ -16,6 +16,7 @@ import { MaskDirective } from './directives/mask.directive';
 import { NsDropdownModule } from '../dropdown';
 import { NsCoreModule } from '@ng-solid/core';
 import { NsContentEditableComponent } from './directives/content-editable.directive';
+import { NsInputNumberComponent } from './components/input-number/input-number.component';
 
 
 @NgModule( {
@@ -31,6 +32,7 @@ import { NsContentEditableComponent } from './directives/content-editable.direct
     ],
     declarations: [
         NsInputComponent,
+        NsInputNumberComponent,
         NsDateComponent,
         NsCheckboxComponent,
         NsPasswordComponent,
@@ -43,6 +45,7 @@ import { NsContentEditableComponent } from './directives/content-editable.direct
     ],
     exports: [
         NsInputComponent,
+        NsInputNumberComponent,
         NsDateComponent,
         NsCheckboxComponent,
         NsPasswordComponent,

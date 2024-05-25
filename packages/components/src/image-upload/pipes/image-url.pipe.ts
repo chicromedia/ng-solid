@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { isValidURL } from '@ng-solid/core';
-import { NsImageUpload } from '../models/image-upload';
+import { NsImage } from '../models/image-upload';
 
 @Pipe( {
     name: 'nsImageUrl'
@@ -8,18 +8,21 @@ import { NsImageUpload } from '../models/image-upload';
 export class NsImageUrlPipe implements PipeTransform
 {
 
-    transform( image: NsImageUpload ): string
+    transform( image: NsImage ): string
     {
+        let url = '';
         if ( image && image.data )
         {
             switch ( true )
             {
                 case isValidURL( image.data ) || /data:/.test( image.data ) :
-                    return image.data;
+                    url = image.data;
+                    break;
                 default:
-                    return `data:${ image.mimeType };base64,${ image.data }`;
+                    url = `data:${ image.type };base64,${ image.data }`;
             }
         }
+        return url;
     }
 
 }

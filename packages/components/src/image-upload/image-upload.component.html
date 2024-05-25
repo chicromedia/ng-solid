@@ -11,7 +11,7 @@
             <button type="button" class="ns-image__button"
                     [ngClass]="{'ns-image__loading': loading.has(image.name)}"
                     [disabled]="disabled">
-                <img class="ns-image" [src]="image | nsImageUrl" [attr.alt]="image.name">
+                <img class="ns-image" [attr.src]="image | nsImageUrl" [attr.alt]="image.name">
                 <ns-icon class="ns-image__preload" name="preload" [size]="32"></ns-icon>
 
                 <div class="ns-image__overlay">
@@ -31,13 +31,13 @@
             [disabled]="disabled">
 
         <ng-container *ngIf="value && !multi">
-            <img class="ns-image__fluid" [src]="value | nsImageUrl" [ngClass]="{disabled: disabled}" alt>
+            <img class="ns-image__fluid" [attr.src]="value | nsImageUrl" [ngClass]="{disabled: disabled}" alt>
         </ng-container>
 
         <div class="ns-image__overlay">
             <div class="ns-image__empty">
                 <ns-icon name="image"></ns-icon>
-                <span>{{label}}</span>
+                <span>{{ label }}</span>
             </div>
         </div>
 

@@ -39,7 +39,7 @@ export class NsDateComponent extends NsFormControlValueAccessor implements OnIni
 
   }
 
-  writeValue(value: string)
+  override writeValue(value: string)
   {
     if ( value )
     {

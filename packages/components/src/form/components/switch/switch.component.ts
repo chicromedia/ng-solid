@@ -27,13 +27,13 @@ export class NsSwitchComponent extends NsFormControlValueAccessor implements OnI
     }
 
     @Input()
-    set value( checked: boolean )
+    override set value( checked: boolean )
     {
         this._value = checked;
         this.onChange( this.boolean ? checked : YesNo.yesOrNo( checked ) );
     }
 
-    get value()
+    override get value()
     {
         return this._value;
     }

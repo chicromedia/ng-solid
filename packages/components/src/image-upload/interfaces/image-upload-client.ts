@@ -1,8 +1,8 @@
 import { Observable } from 'rxjs';
-import { NsImageUpload } from '../models/image-upload';
+import { NsImage, NsImageCreate } from '../models/image-upload';
 
-export interface NsImageUploadClient
+export interface NsImageUploadClient<TIdentify = unknown>
 {
-    upload: ( image: NsImageUpload ) => Observable<NsImageUpload>;
-    remove: ( image: NsImageUpload ) => Observable<boolean>;
+    upload: ( image: NsImageCreate ) => Observable<NsImage<TIdentify>>;
+    remove: ( image: NsImage<TIdentify> ) => Observable<boolean>;
 }
