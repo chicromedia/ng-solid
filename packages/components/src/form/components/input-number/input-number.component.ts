@@ -35,36 +35,39 @@ const NS_INPUT_NUMBER_PROVIDER: Provider = {
     styleUrls: [ './input-number.component.scss' ],
     providers: [ NS_INPUT_NUMBER_PROVIDER ]
 } )
-export class NsInputNumberComponent extends NsFormControlValueAccessor<string>
+export class NsInputNumberComponent extends NsFormControlValueAccessor<number>
 {
     @Input( { transform: booleanAttribute } ) format: boolean = true;
     @Input() min: number = -Infinity;
     @Input() max: number = Infinity;
     @Input() step: number;
     @Input() precision?: number;
-    @Input() precisionMode?: 'cut' | 'toFixed' | ( ( value: number | string, precision: number ) => string ) = 'toFixed';
+    @Input() precisionMode?: 'cut' | 'toFixed' | ( ( value: number | string, precision: number ) => number ) = 'toFixed';
     @Input() inputMode: 'decimal' | 'numeric' = 'decimal';
 
     @ViewChild( 'input', { static: true } ) input: ElementRef<HTMLInputElement>;
 
     override writeValue( value: unknown )
     {
-        const displayValue = !isNullOrUndefined( value ) ? this.formatValue( value as string ) : '';
-        this.input.nativeElement.value = `${ displayValue }`;
-        this._value = displayValue;
+        if ( !isNullOrUndefined( value ) )
+        {
+            const formatted = this.formatValue( value as string );
+            this.input.nativeElement.value = formatted;
+            this._value = this.toNumber( formatted );
+        }
     }
 
     onModelChange( value: string ): void
     {
         const formatted = this.formatValue( value );
         this.input.nativeElement.value = formatted;
-        this.value = this.toFixed( formatted );
+        this.value = this.toNumber( formatted );
     }
 
     onFocusOut( event: FocusEvent )
     {
         const input = event.target as HTMLInputElement;
-        if ( !!input.value )
+        if ( !!input.value && !isNullOrUndefined( this.precision ) )
         {
             if ( input.value.includes( '.' ) )
             {
@@ -81,9 +84,9 @@ export class NsInputNumberComponent extends NsFormControlValueAccessor<string>
     {
         let trimmed = '';
 
-        if ( value.indexOf( '.' ) !== 0 )
+        if ( value && String( value ).indexOf( '.' ) !== 0 )
         {
-            trimmed = value.replace( /[^\d.]+/g, '' );
+            trimmed = String( value ).replace( /[^\d.]+/g, '' );
             if ( trimmed.split( '.' ).length > this.precision )
             {
                 trimmed = trimmed.replace( /\.([^.]*)$/, '$1' );
@@ -108,7 +111,7 @@ export class NsInputNumberComponent extends NsFormControlValueAccessor<string>
             {
                 decimals = decimals.substring( 0, this.precision );
             }
-            return `${ integer }.${ decimals }`;
+            return [ integer, decimals ].join( '.' );
         }
 
         return integer;
@@ -125,26 +128,26 @@ export class NsInputNumberComponent extends NsFormControlValueAccessor<string>
         );
     }
 
-    private toFixed( num: string | number ): string
+    private toNumber( num: string | number ): number
     {
         if ( this.isNotCompleteNumber( num ) )
         {
-            return num as string;
+            return Number( num );
         }
         const numStr = String( num );
-        if ( numStr.indexOf( '.' ) >= 0 && !isNullOrUndefined( this.precision ) )
+        if ( numStr.includes( '.' ) && !isNullOrUndefined( this.precision ) )
         {
             if ( typeof this.precisionMode === 'function' )
             {
-                return this.precisionMode( num, this.precision ) as string;
+                return this.precisionMode( num, this.precision );
             } else if ( this.precisionMode === 'cut' )
             {
                 const numSplit = numStr.split( '.' );
                 numSplit[ 1 ] = numSplit[ 1 ].slice( 0, this.precision );
-                return numSplit.join( '.' );
+                return Number( numSplit.join( '.' ) );
             }
-            return Number( num ).toFixed( this.precision );
+            return Number( Number( num ).toFixed( this.precision ) );
         }
-        return num as string;
+        return Number( num );
     }
 }

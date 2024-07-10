@@ -1,7 +1,6 @@
 :host {
   display: block;
   position: relative;
-  min-height: 15rem;
   margin-bottom: 0.5rem;
 
   &.ns-image--loaded .ns-image__overlay {
@@ -23,7 +22,7 @@
 
   &__wrap {
     width: 100%;
-    min-height: 7.5rem;
+    min-height: 10rem;
     user-select: none;
 
     &.ns-image__multi {
